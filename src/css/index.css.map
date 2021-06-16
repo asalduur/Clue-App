@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../sass/index.scss",
+        "../sass/_variables.scss"
+    ],
+    "names": [],
+    "file": "index.css"
+}
