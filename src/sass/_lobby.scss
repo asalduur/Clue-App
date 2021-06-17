@@ -1,0 +1,10 @@
+@import './variables';
+
+.lobby {
+    background-color: $color-primary;
+    text-align: center;
+
+    h1 {
+        color: $color-pop
+    }
+}
