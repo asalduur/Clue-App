@@ -1,12 +1,11 @@
 import './css/reset.css';
 import './css/index.css';
-import Lobby from './components/Lobby'
+import routes from './routes'
 
 function App() {
   return (
     <div className="App">
-      APP
-      <Lobby />
+      {routes}
     </div>
   );
 }

@@ -3,8 +3,7 @@
     "mappings": "",
     "sources": [
         "../sass/index.scss",
-        "../sass/_variables.scss",
-        "../sass/_mixins.scss"
+        "../sass/_variables.scss"
     ],
     "names": [],
     "file": "index.css"
