@@ -1,0 +1,112 @@
+.blueRoom {
+  height: 20vh;
+  width: 20vw;
+  background-color: $color-dark;
+  margin-top: 1%;
+  margin-left: 1%;
+  border-radius: 3px;
+}
+.blueText {
+  text-align: center;
+  padding-top: 40%;
+  color: white;
+  font-family: $font-secondary;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+.redRoom {
+  height: 20vh;
+  width: 20vw;
+  background-color: $color-red;
+  margin-top: 1%;
+  margin-left: 1%;
+  border-radius: 3px;
+}
+.redText {
+  text-align: center;
+  padding-top: 40%;
+  color: white;
+  font-family: $font-secondary;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+.greenRoom {
+  height: 20vh;
+  width: 20vw;
+  background-color: $color-green;
+  margin-top: 1%;
+  margin-left: 1%;
+  border-radius: 3px;
+}
+.greenText {
+  text-align: center;
+  padding-top: 40%;
+  color: white;
+  font-family: $font-secondary;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+.purpleRoom {
+  height: 20vh;
+  width: 20vw;
+  background-color: $color-purple;
+  margin-top: 1%;
+  margin-left: 1%;
+  border-radius: 3px;
+}
+.purpleText {
+  text-align: center;
+  padding-top: 40%;
+  color: white;
+  font-family: $font-secondary;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+.homeRoom {
+  height: 20vh;
+  width: 20vw;
+  margin-top: 1%;
+  margin-left: 1%;
+  border-radius: 3px;
+  border: 2px solid #8e734c;
+}
+.homeText {
+  text-align: center;
+  padding-top: 40%;
+  color: #8e734c;
+  font-family: $font-secondary;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+.yellowRoom {
+  height: 20vh;
+  width: 20vw;
+  margin-top: 1%;
+  margin-left: 1%;
+  border-radius: 3px;
+  background-color: $color-pop;
+}
+.yellowText {
+  text-align: center;
+  padding-top: 40%;
+  color: black;
+  font-family: $font-secondary;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+.orangeRoom {
+  height: 20vh;
+  width: 20vw;
+  margin-top: 1%;
+  margin-left: 1%;
+  border-radius: 3px;
+  background-color: $color-orange;
+}
+.orangeText {
+  text-align: center;
+  padding-top: 40%;
+  color: black;
+  font-family: $font-secondary;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
