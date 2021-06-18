@@ -1,8 +1,10 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AEEA,AAAA,MAAM,CAAC;EACH,gBAAgB,EDHJ,OAAO;ECInB,UAAU,EAAE,MAAM;CAKrB;;AAPD,AAII,MAJE,CAIF,EAAE,CAAC;EACC,KAAK,EDHD,OAAO;CCId",
     "sources": [
         "../sass/index.scss",
+        "../sass/_variables.scss",
+        "../sass/_lobby.scss",
         "../sass/_variables.scss"
     ],
     "names": [],

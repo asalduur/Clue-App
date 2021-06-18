@@ -1,1 +1,9 @@
-/* No CSS *//*# sourceMappingURL=index.css.map */
+.lobby {
+  background-color: #BAE8E8;
+  text-align: center;
+}
+
+.lobby h1 {
+  color: #FFD803;
+}
+/*# sourceMappingURL=index.css.map */
