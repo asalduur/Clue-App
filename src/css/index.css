@@ -1,3 +1,11 @@
+.lobby {
+  background-color: #BAE8E8;
+  text-align: center;
+}
+
+.lobby h1 {
+  color: #FFD803;
+}
 .dice-container {
   display: -webkit-box;
   display: -ms-flexbox;

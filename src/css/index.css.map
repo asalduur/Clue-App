@@ -8,6 +8,7 @@
         "../sass/_diceroll.scss"
         "../sass/_gameboard.scss",
         "../sass/_game.scss",
+        "../sass/_lobby.scss",
         "../sass/_rooms.scss"
     ],
     "names": [],
