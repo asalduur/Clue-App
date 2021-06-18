@@ -1,1 +1,100 @@
-/* No CSS *//*# sourceMappingURL=index.css.map */
+.dice-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100px;
+  background: #E3F6F5;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.dice-container .dice-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 0;
+}
+
+.dice-container .die-1 {
+  color: #272343;
+  font-size: 40px;
+  -webkit-animation: shake 1s 1;
+          animation: shake 1s 1;
+}
+
+.dice-container .die-2 {
+  color: #272343;
+  font-size: 40px;
+  -webkit-animation: shake 1s 1;
+          animation: shake 1s 1;
+}
+
+.dice-container .roll {
+  width: 40px;
+  height: 25px;
+  background: #FFD803;
+  -webkit-box-shadow: 0px 2px 3px #6E8898;
+          box-shadow: 0px 2px 3px #6E8898;
+  border: none;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.dice-container .roll:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+@-webkit-keyframes shake {
+  25% {
+    -webkit-transform: rotate(20deg);
+            transform: rotate(20deg);
+  }
+  50% {
+    -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+  }
+  75% {
+    -webkit-transform: rotate(5deg);
+            transform: rotate(5deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
+@keyframes shake {
+  25% {
+    -webkit-transform: rotate(20deg);
+            transform: rotate(20deg);
+  }
+  50% {
+    -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+  }
+  75% {
+    -webkit-transform: rotate(5deg);
+            transform: rotate(5deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+/*# sourceMappingURL=index.css.map */
