@@ -1,12 +1,13 @@
 .gameBoard {
   height: 65vh;
   width: 75vw;
-  border: 6px solid #8e734c;
+  border: 6px solid #6e8898;
   border-radius: 3px;
   -webkit-box-shadow: 2px 0px 5px #545454;
           box-shadow: 2px 0px 5px #545454;
   margin-left: 5%;
-  background-color: #e2c090;
+  margin-bottom: 5%;
+  background-color: #e3f6f5;
 }
 
 .gameBoard .flexBoard {
@@ -22,17 +23,8 @@
 
 @media (max-width: 600px) {
   .gameBoard {
-    height: 65vh;
-    width: 75vw;
     padding-left: 5vw;
     padding-right: 5vw;
-    border: 6px solid #8e734c;
-    border-radius: 3px;
-    -webkit-box-shadow: 2px 0px 5px #545454;
-            box-shadow: 2px 0px 5px #545454;
-    margin-left: 5%;
-    background-color: #e2c090;
-    margin-bottom: 5%;
   }
   .gameBoard .flexBoard {
     display: -webkit-box;
@@ -48,9 +40,11 @@
 
 .headerText {
   font-family: "Righteous", cursive;
+  color: #6e8898;
   text-align: center;
   font-size: 5rem;
   padding-bottom: 2%;
+  text-shadow: 2px 1px 5px #545454;
 }
 
 .flexGameboard {
@@ -66,9 +60,37 @@
           flex-direction: row;
 }
 
+.flexGameboard .sideBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 @media (max-width: 600px) {
+  .headerText {
+    font-size: 3.5rem;
+  }
   .flexGameboard {
     display: inline-block;
+  }
+  .flexGameboard .sideBar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    margin-bottom: 10%;
   }
 }
 
@@ -315,7 +337,7 @@
   color: #ffd803;
 }
 
-.playerToken {
+.greenToken {
   width: 25px;
   height: 25px;
   background-color: green;
@@ -326,15 +348,17 @@
 
 .playerName {
   font-family: "Nunito Sans", sans-serif;
+  text-align: center;
+  font-weight: 700;
+  font-size: larger;
 }
 
 @media (max-width: 600px) {
-  .playerToken {
-    margin-top: 5%;
+  .greenToken {
+    margin-top: 45%;
   }
   .playerName {
-    text-align: center;
-    font-weight: 700;
+    font-size: medium;
   }
 }
 /*# sourceMappingURL=index.css.map */

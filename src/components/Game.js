@@ -2,6 +2,7 @@ import GameBoard from "./GameBoard";
 import { useEffect, useContext } from "react";
 import { SocketContext } from "../context/SocketContext";
 import Player from "./Player";
+import DiceRoll from "./DiceRoll";
 
 //import rooms, weapons, and people from sockets here
 
@@ -14,7 +15,10 @@ const Game = () => {
       <h2 className="headerText">Hunch</h2>
       <div className="flexGameboard">
         <GameBoard />
-        <Player playerInfo={fakeplayer} />
+        <div className="sideBar">
+          <DiceRoll />
+          <Player playerInfo={fakeplayer} />
+        </div>
       </div>
     </>
   );

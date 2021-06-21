@@ -1,4 +1,4 @@
-.playerToken {
+.greenToken {
   width: 25px;
   height: 25px;
   background-color: green;
@@ -9,15 +9,17 @@
 
 .playerName {
   font-family: $font-secondary;
+  text-align: center;
+  font-weight: 700;
+  font-size: larger;
 }
 
 @media (max-width: 600px) {
-  .playerToken {
-    margin-top: 5%;
+  .greenToken {
+    margin-top: 45%;
   }
 
   .playerName {
-    text-align: center;
-    font-weight: 700;
+    font-size: medium;
   }
 }
