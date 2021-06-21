@@ -4,3 +4,9 @@
   font-size: 5rem;
   padding-bottom: 2%;
 }
+
+.flexGameboard {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
