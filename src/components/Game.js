@@ -1,38 +1,21 @@
 import GameBoard from "./GameBoard";
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
+import { SocketContext } from "../context/SocketContext";
+import Player from "./Player";
 
-const rooms = [
-  "Red room",
-  "Blue room",
-  "Green room",
-  "Yellow room",
-  "Orange room",
-  "Purple room",
-];
-
-const weapons = [
-  "Candlestick",
-  "Knife",
-  "Rope",
-  "Revolver",
-  "Lead pipe",
-  "Wrench",
-];
-
-const persons = [
-  "Miss Scarlet",
-  "Colonel Mustard",
-  "Mrs. White",
-  "Mr. Green",
-  "Mrs. Peacock",
-  "Professor Plum",
-];
+//import rooms, weapons, and people from sockets here
 
 const Game = () => {
+  const { fakeplayer } = useContext(SocketContext);
+
+  useEffect(() => {}, []);
   return (
     <>
       <h2 className="headerText">Hunch</h2>
-      <GameBoard />
+      <div className="flexGameboard">
+        <GameBoard />
+        <Player playerInfo={fakeplayer} />
+      </div>
     </>
   );
 };
