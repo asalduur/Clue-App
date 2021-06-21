@@ -10,3 +10,9 @@
   justify-content: space-evenly;
   flex-direction: row;
 }
+
+@media (max-width: 600px) {
+  .flexGameboard {
+    display: inline-block;
+  }
+}

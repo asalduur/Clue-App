@@ -1,20 +1,23 @@
 import Rooms from "./Rooms";
 
 const GameBoard = () => {
-  const roomColors = [
-    "blue",
-    "red",
-    "green",
-    "purple",
-    "home",
-    "yellow",
-    "orange",
+  const roomNames = [
+    { room: "grotto" },
+    { room: "pool-house" },
+    { room: "library" },
+    { room: "kitchen" },
+    { room: "foyer" },
+    { room: "wine-cellar" },
+    { room: "basement" },
+    { room: "garden" },
+    { room: "master-bedroom" },
   ];
+
   return (
     <>
       <div className="gameBoard">
         <div className="flexBoard">
-          <Rooms roomColors={roomColors} />
+          <Rooms roomNames={roomNames} />
         </div>
       </div>
     </>

@@ -10,3 +10,14 @@
 .playerName {
   font-family: $font-secondary;
 }
+
+@media (max-width: 600px) {
+  .playerToken {
+    margin-top: 5%;
+  }
+
+  .playerName {
+    text-align: center;
+    font-weight: 700;
+  }
+}
