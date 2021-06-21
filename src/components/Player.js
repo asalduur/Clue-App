@@ -4,7 +4,7 @@ const Player = ({ playerInfo }) => {
     <>
       <div>
         <h2 className="playerName">{playerInfo.player}</h2>
-        <div className="playerToken"></div>
+        <div className={`${playerInfo.token}Token`}></div>
       </div>
     </>
   );
