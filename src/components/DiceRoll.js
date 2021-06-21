@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import {
   FaDiceOne,
   FaDiceTwo,
@@ -7,17 +7,23 @@ import {
   FaDiceFive,
   FaDiceSix
 } from 'react-icons/fa'
+import { SocketContext } from '../context/SocketContext'
 
 const DiceRoll = () => {
   let [firstDieValue, setFirstDieValue] = useState(1)
   let [secondDieValue, setSecondDieValue] = useState(1)
+  let [diceTotal, setDiceTotal] = useState(0)
 
-  const handleRoll = () => {
-    setFirstDieValue(0)
-    setSecondDieValue(0)
-    setFirstDieValue(Math.floor(Math.random() * 6) +1)
-    setSecondDieValue(Math.floor(Math.random() * 6) +1)
-    console.log(firstDieValue, secondDieValue)
+  const {activeRoll} = useContext(SocketContext)
+
+  const handleRoll = async () => {
+    await setFirstDieValue(0)
+    await setSecondDieValue(0)
+    if(activeRoll) {
+      setFirstDieValue(Math.floor(Math.random() * 6) +1)
+      setSecondDieValue(Math.floor(Math.random() * 6) +1)
+      setDiceTotal((prevTotal) => prevTotal + firstDieValue + secondDieValue)
+    }
   }
 
   return (
@@ -39,7 +45,7 @@ const DiceRoll = () => {
         { secondDieValue === 6 ? <FaDiceSix className='die-2'/> : null }
       </div>
 
-      <span className='dice-count'> total: {firstDieValue + secondDieValue}</span>
+      <span className='dice-count'> total: {diceTotal}</span>
 
       <button 
         className="roll"
