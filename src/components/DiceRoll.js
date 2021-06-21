@@ -30,13 +30,15 @@ const DiceRoll = () => {
     <div className="dice-container">
 
       <div className="dice-wrapper">
+        { firstDieValue === 0 ? <div className='empty'></div> : null }
         { firstDieValue === 1 ? <FaDiceOne className='die-1'/> : null }
         { firstDieValue === 2 ? <FaDiceTwo className='die-1'/> : null }
         { firstDieValue === 3 ? <FaDiceThree className='die-1'/> : null }
         { firstDieValue === 4 ? <FaDiceFour className='die-1'/> : null }
         { firstDieValue === 5 ? <FaDiceFive className='die-1'/> : null }
         { firstDieValue === 6 ? <FaDiceSix className='die-1'/> : null }
-
+        
+        { secondDieValue === 0 ? <div className='empty'></div> : null }
         { secondDieValue === 1 ? <FaDiceOne className='die-2'/> : null }
         { secondDieValue === 2 ? <FaDiceTwo className='die-2'/> : null }
         { secondDieValue === 3 ? <FaDiceThree className='die-2'/> : null }
