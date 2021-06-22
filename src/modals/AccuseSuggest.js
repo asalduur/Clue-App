@@ -2,7 +2,6 @@ import Modal from 'react-modal'
 import {useState} from 'react'
 import Accuse from './Accuse'
 
-
 Modal.setAppElement('#root')
 const AccuseSuggest = () => {
 
@@ -15,53 +14,54 @@ const AccuseSuggest = () => {
         setAccuse(true)
     }
 
+    const handleSetWeapon = (e) => {
+        setSelectedWeapon(e.target.value)
+    }
+
+    console.log(selectedWeapon)
+    console.log(selectedRoom)
+    console.log(selectedSuspect)
+
     return (
         <div>
             <Modal isOpen={true}>
                 <div className='modal_display'>
-                    <div>
-                        <h2> Weapons </h2>
-                        <ul className='weapon_list'>
-                            <li onClick={() => setSelectedWeapon('IcePick')}> IcePick </li>
-                            <li onClick={() => setSelectedWeapon('Shank')}> Shank </li>
-                            <li onClick={() => setSelectedWeapon('Coat Hanger')}> Coat Hanger </li>
-                            <li onClick={() => setSelectedWeapon('Arsenic')}> Arsenic </li>
-                            <li onClick={() => setSelectedWeapon('Blowtorch')}> Blowtorch </li>
-                            <li onClick={() => setSelectedWeapon('Ninja Star')}> Ninja Star </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h2> Rooms </h2>
-                        <ul className='room_list'>
-                            <li onClick={() => setSelectedRoom('Grotto')}> Grotto </li>
-                            <li onClick={() => setSelectedRoom('Pool-House')}> Pool-House </li>
-                            <li onClick={() => setSelectedRoom('Library')}> Library </li>
-                            <li onClick={() => setSelectedRoom('Kitchen')}> Kitchen </li>
-                            <li onClick={() => setSelectedRoom('Basement')}> Basement </li>
-                            <li onClick={() => setSelectedRoom('Wine Cellar')}> Wine Cellar </li>
-                            <li onClick={() => setSelectedRoom('Foyer')}> Foyer </li>
-                            <li onClick={() => setSelectedRoom('Garden')}> Garden </li>
-                            <li onClick={() => setSelectedRoom('Master Bedroom')}> Master Bedroom </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h2> Suspects </h2>
-                        <ul className='suspect_list'>
-                            <li onClick={() => setSelectedSuspect('Butler')}> Butler </li>
-                            <li onClick={() => setSelectedSuspect('Nanny')}> Nanny </li>
-                            <li onClick={() => setSelectedSuspect('Doctor')}> Doctor </li>
-                            <li onClick={() => setSelectedSuspect('Nosy-Neighbor')}> Nosy-Neighbor </li>
-                            <li onClick={() => setSelectedSuspect('Chef')}> Chef </li>
-                            <li onClick={() => setSelectedSuspect('Baby')}> Baby </li>
-                        </ul>
-                    </div>
-                </div> 
 
-                <div>
-                    <h1> {selectedWeapon} </h1>
-                    <h1> {selectedRoom} </h1>
-                    <h1> {selectedSuspect} </h1>
-                </div>
+                <select onChange={(e) => setSelectedSuspect(e.target.value)}> 
+                    <option value=''> </option>
+                    <option value='Butler'> Butler </option>
+                    <option value='Nanny'> Nanny </option>
+                    <option value='Doctor'> Doctor </option>
+                    <option value='Nosy-Neighbor'> Nosy-Neighbor </option>
+                    <option value='Chef'> Chef </option>
+                    <option value='Baby'> Baby </option>
+                </select>
+
+
+                <select onChange={(e) => setSelectedRoom(e.target.value)}>
+                    <option value=''> </option>
+                    <option value='Grotto'> Grotto </option>
+                    <option value='Pool-House'> Pool-House </option>
+                    <option value='Library'> Library </option>
+                    <option value='Kitchen'> Kitchen </option>
+                    <option value='Basement'> Basement </option>
+                    <option value='Wine Cellar'> Wine Cellar </option>
+                    <option value='Foyer'> Foyer </option>
+                    <option value='Garden'> Garden </option>
+                    <option value='Master Bedroom'> Master Bedroom </option>                 
+                </select>
+
+                <select onChange={(e) => setSelectedWeapon(e.target.value)}>
+                    <option value=''> </option>
+                    <option value='IcePick'> IcePick </option>
+                    <option value='Shank'> Shank </option>
+                    <option value='Coat Hanger'> Coat Hanger </option>
+                    <option value='Arsenic'> Arsenic </option>
+                    <option value='Blowtorch'> Blowtorch </option>
+                    <option value='Ninja Star'> Ninja Star </option>
+                </select>
+              
+                </div> 
 
                 <div>
                     <Accuse accuse={accuse} setAccuse={setAccuse} selectedSuspect={selectedSuspect} selectedRoom={selectedRoom} selectedWeapon={selectedWeapon}/>
