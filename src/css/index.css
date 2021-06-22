@@ -166,10 +166,96 @@
   border-radius: 3px;
 }
 
+.flexTokens {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.redCurrent {
+  width: 25px;
+  height: 25px;
+  margin-top: 5px;
+  margin-left: 5px;
+  border-radius: 50%;
+  -webkit-box-shadow: 2px 2px 5px black;
+          box-shadow: 2px 2px 5px black;
+  background-color: #ff4f58;
+}
+
+.greenCurrent {
+  width: 25px;
+  height: 25px;
+  margin-top: 5px;
+  margin-left: 5px;
+  border-radius: 50%;
+  -webkit-box-shadow: 2px 2px 5px black;
+          box-shadow: 2px 2px 5px black;
+  background-color: #3b9465;
+}
+
+.purpleCurrent {
+  width: 25px;
+  height: 25px;
+  margin-top: 5px;
+  margin-left: 5px;
+  border-radius: 50%;
+  -webkit-box-shadow: 2px 2px 5px black;
+          box-shadow: 2px 2px 5px black;
+  background-color: #5f4b66;
+}
+
+.orangeCurrent {
+  width: 25px;
+  height: 25px;
+  margin-top: 5px;
+  margin-left: 5px;
+  border-radius: 50%;
+  -webkit-box-shadow: 2px 2px 5px black;
+          box-shadow: 2px 2px 5px black;
+  background-color: #ecad5f;
+}
+
+.yellowCurrent {
+  width: 25px;
+  height: 25px;
+  margin-top: 5px;
+  margin-left: 5px;
+  border-radius: 50%;
+  -webkit-box-shadow: 2px 2px 5px black;
+          box-shadow: 2px 2px 5px black;
+  background-color: #ffd803;
+}
+
+.blueCurrent {
+  width: 25px;
+  height: 25px;
+  margin-top: 5px;
+  margin-left: 5px;
+  border-radius: 50%;
+  -webkit-box-shadow: 2px 2px 5px black;
+          box-shadow: 2px 2px 5px black;
+  background-color: #6e8898;
+}
+
+.filler {
+  height: 25px;
+  margin-top: 5px;
+}
+
 .roomName {
   color: white;
   text-align: center;
-  padding-top: 40%;
+  padding-top: 25%;
   font-family: "Nunito Sans", sans-serif;
   font-weight: 800;
   font-size: 1.25rem;
@@ -180,6 +266,7 @@
   .roomName {
     font-size: 0.75rem;
     max-width: 20vw;
+    margin: 0 auto;
   }
   .grottoBackground {
     width: 22vw;
@@ -225,6 +312,33 @@
     width: 22vw;
     height: 15vh;
     margin-top: 10%;
+  }
+  .redCurrent {
+    width: 15px;
+    height: 15px;
+  }
+  .greenCurrent {
+    width: 15px;
+    height: 15px;
+  }
+  .purpleCurrent {
+    width: 15px;
+    height: 15px;
+  }
+  .orangeCurrent {
+    width: 15px;
+    height: 15px;
+  }
+  .yellowCurrent {
+    width: 15px;
+    height: 15px;
+  }
+  .blueCurrent {
+    width: 15px;
+    height: 15px;
+  }
+  .filler {
+    height: 15px;
   }
 }
 
