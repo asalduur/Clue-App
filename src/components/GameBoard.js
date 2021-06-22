@@ -1,4 +1,6 @@
 import Rooms from "./Rooms";
+import { SocketContext } from "../context/SocketContext";
+import { useContext } from "react";
 
 const GameBoard = () => {
   const roomNames = [
@@ -13,11 +15,13 @@ const GameBoard = () => {
     { room: "master-bedroom" },
   ];
 
+  const { fakeplayer } = useContext(SocketContext);
+
   return (
     <>
       <div className="gameBoard">
         <div className="flexBoard">
-          <Rooms roomNames={roomNames} />
+          <Rooms roomNames={roomNames} player={fakeplayer} />
         </div>
       </div>
     </>

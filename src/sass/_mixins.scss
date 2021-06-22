@@ -12,3 +12,30 @@
   color: $color-darkest;
   font-size: 40px;
 }
+
+@mixin currentTokenStyle {
+  width: 25px;
+  height: 25px;
+  margin-top: 5px;
+  margin-left: 5px;
+  border-radius: 50%;
+  box-shadow: 2px 2px 5px black;
+}
+
+@mixin tokenMobileStyle {
+  width: 15px;
+  height: 15px;
+}
+
+@mixin mobileRoomBg {
+  width: 22vw;
+  height: 15vh;
+  margin-top: 10%;
+}
+
+@mixin roomBg {
+  width: 20vw;
+  height: 20vh;
+  margin-top: 1%;
+  border-radius: 3px;
+}

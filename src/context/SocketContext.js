@@ -15,11 +15,12 @@ export const SocketProvider = (props) => {
   const [fakeplayer, setFakePlayer] = useState({
     player: "Player 1",
     id: "O09aIvQ6mAvYpasGAAAH",
-    location: "home",
+    location: "foyer",
     roll: 0,
     token: "green",
     cards: [],
   });
+  const [currentRoom, setCurrentRoom] = useState("foyer");
 
   const playerRef = useRef(player);
 
@@ -123,6 +124,9 @@ export const SocketProvider = (props) => {
         player,
         active,
         fakeplayer,
+        currentRoom,
+        setCurrentRoom,
+        sendRoom,
       }}
     >
       {props.children}
