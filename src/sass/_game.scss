@@ -1,6 +1,34 @@
 .headerText {
   font-family: $font-logo;
+  color: $color-dark;
   text-align: center;
   font-size: 5rem;
   padding-bottom: 2%;
+  text-shadow: 2px 1px 5px #545454;
+}
+
+.flexGameboard {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  .sideBar {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .headerText {
+    font-size: 3.5rem;
+  }
+  .flexGameboard {
+    display: inline-block;
+    .sideBar {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      margin-bottom: 10%;
+    }
+  }
 }

@@ -1,19 +1,27 @@
-.flexBoard {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-}
 .gameBoard {
   height: 65vh;
   width: 75vw;
-  border: 6px solid #8e734c;
+  border: 6px solid $color-dark;
   border-radius: 3px;
   box-shadow: 2px 0px 5px #545454;
   margin-left: 5%;
-  background-color: #e2c090;
+  margin-bottom: 5%;
+  background-color: $color-light;
   .flexBoard {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 600px) {
+  .gameBoard {
+    padding-left: 5vw;
+    padding-right: 5vw;
+    .flexBoard {
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+    }
   }
 }

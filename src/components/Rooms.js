@@ -1,10 +1,10 @@
-const Rooms = ({ roomColors }) => {
+const Rooms = ({ roomNames }) => {
   return (
     <>
-      {roomColors.map((color, index) => {
+      {roomNames.map((room, index) => {
         return (
-          <div className={`${color}Room`} key={index}>
-            <h2 className={`${color}Text`}>{color.toUpperCase()} ROOM</h2>
+          <div key={index} className={`${room.room}Background`}>
+            <h2 className="roomName">{room.room.toUpperCase()}</h2>
           </div>
         );
       })}

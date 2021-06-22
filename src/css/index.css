@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .flexBoard {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -13,11 +14,22 @@
   height: 65vh;
   width: 75vw;
   border: 6px solid #8e734c;
+=======
+.gameBoard {
+  height: 65vh;
+  width: 75vw;
+  border: 6px solid #6e8898;
+>>>>>>> master
   border-radius: 3px;
   -webkit-box-shadow: 2px 0px 5px #545454;
           box-shadow: 2px 0px 5px #545454;
   margin-left: 5%;
+<<<<<<< HEAD
   background-color: #e2c090;
+=======
+  margin-bottom: 5%;
+  background-color: #e3f6f5;
+>>>>>>> master
 }
 
 .gameBoard .flexBoard {
@@ -31,6 +43,7 @@
       flex-wrap: wrap;
 }
 
+<<<<<<< HEAD
 .headerText {
   font-family: "Righteous", cursive;
   text-align: center;
@@ -84,84 +97,347 @@
 }
 
 .greenText {
+=======
+@media (max-width: 600px) {
+  .gameBoard {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+  .gameBoard .flexBoard {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
+.headerText {
+  font-family: "Righteous", cursive;
+  color: #6e8898;
   text-align: center;
-  padding-top: 40%;
+  font-size: 5rem;
+  padding-bottom: 2%;
+  text-shadow: 2px 1px 5px #545454;
+}
+
+.flexGameboard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.flexGameboard .sideBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+@media (max-width: 600px) {
+  .headerText {
+    font-size: 3.5rem;
+  }
+  .flexGameboard {
+    display: inline-block;
+  }
+  .flexGameboard .sideBar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    margin-bottom: 10%;
+  }
+}
+
+.grottoBackground {
+  background-image: url("https://i.natgeofe.com/n/f3500942-4eb9-4dfa-b6c9-53cd5510cd46/47789.jpg?w=636&h=464");
+  width: 20vw;
+  height: 20vh;
+  margin-top: 1%;
+  border-radius: 3px;
+}
+
+.pool-houseBackground {
+  background-image: url("https://camblab.info/wp-content/uploads/2017/02/pool-water.jpg");
+  width: 20vw;
+  height: 20vh;
+  margin-top: 1%;
+  border-radius: 3px;
+}
+
+.libraryBackground {
+  background-image: url("https://media-exp1.licdn.com/dms/image/C4D12AQHhqwC7hIgJAw/article-cover_image-shrink_720_1280/0/1588327869583?e=1628726400&v=beta&t=VY855dPQZ2AYQDXgYhPGGUtfZZr-LXUSnqbT0LixfGc");
+  width: 20vw;
+  height: 20vh;
+  margin-top: 1%;
+  border-radius: 3px;
+}
+
+.kitchenBackground {
+  background-image: url("https://media.istockphoto.com/photos/bowls-and-spoons-for-a-measurement-picture-id1168852146?k=6&m=1168852146&s=612x612&w=0&h=NOkDNBdZPUuZzQ4Ap_WH82xyYAUUIS3lhCrJoV-bBpI=");
+  width: 20vw;
+  height: 20vh;
+  margin-top: 1%;
+  border-radius: 3px;
+}
+
+.basementBackground {
+  background-image: url("https://static.tvtropes.org/pmwiki/pub/images/basement_1558.jpg");
+  width: 20vw;
+  height: 20vh;
+  margin-top: 1%;
+  border-radius: 3px;
+}
+
+.wine-cellarBackground {
+  background-image: url("https://images.unsplash.com/photo-1611575189074-9dfbbceb258a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8d2luZSUyMGNlbGxhcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80");
+  width: 20vw;
+  height: 20vh;
+  margin-top: 1%;
+  border-radius: 3px;
+}
+
+.foyerBackground {
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTOSgyRybcjvuKwH9DWOHAjYE8ymdfsU87GA&usqp=CAU");
+  width: 20vw;
+  height: 20vh;
+  margin-top: 1%;
+  border-radius: 3px;
+}
+
+.gardenBackground {
+  background-image: url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-gardening-tools-amazon-1520283471.jpg?crop=1.00xw:0.752xh;0,0.202xh&resize=1200:*");
+  width: 20vw;
+  height: 20vh;
+  margin-top: 1%;
+  border-radius: 3px;
+}
+
+.master-bedroomBackground {
+  background-image: url("https://i.pinimg.com/originals/8a/f7/b0/8af7b0988bf5348cbeb77c9ab9156b30.jpg");
+  width: 20vw;
+  height: 20vh;
+  margin-top: 1%;
+  border-radius: 3px;
+}
+
+.roomName {
   color: white;
-  font-family: "Nunito Sans", sans-serif;
-  font-weight: 700;
-  font-size: 1.25rem;
-}
-
-.purpleRoom {
-  height: 20vh;
-  width: 20vw;
-  background-color: #5f4b66;
-  margin-top: 1%;
-  margin-left: 1%;
-  border-radius: 3px;
-}
-
-.purpleText {
   text-align: center;
   padding-top: 40%;
-  color: white;
   font-family: "Nunito Sans", sans-serif;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 1.25rem;
+  text-shadow: 3px 2px 3px black;
 }
 
-.homeRoom {
-  height: 20vh;
-  width: 20vw;
-  margin-top: 1%;
-  margin-left: 1%;
-  border-radius: 3px;
-  border: 2px solid #8e734c;
+@media (max-width: 600px) {
+  .roomName {
+    font-size: 0.75rem;
+    max-width: 20vw;
+  }
+  .grottoBackground {
+    width: 22vw;
+    height: 15vh;
+    margin-top: 10%;
+  }
+  .pool-houseBackground {
+    width: 22vw;
+    height: 15vh;
+    margin-top: 10%;
+  }
+  .libraryBackground {
+    width: 22vw;
+    height: 15vh;
+    margin-top: 10%;
+  }
+  .kitchenBackground {
+    width: 22vw;
+    height: 15vh;
+    margin-top: 10%;
+  }
+  .basementBackground {
+    width: 22vw;
+    height: 15vh;
+    margin-top: 10%;
+  }
+  .wine-cellarBackground {
+    width: 22vw;
+    height: 15vh;
+    margin-top: 10%;
+  }
+  .foyerBackground {
+    width: 22vw;
+    height: 15vh;
+    margin-top: 10%;
+  }
+  .gardenBackground {
+    width: 22vw;
+    height: 15vh;
+    margin-top: 10%;
+  }
+  .master-bedroomBackground {
+    width: 22vw;
+    height: 15vh;
+    margin-top: 10%;
+  }
 }
 
-.homeText {
+.dice-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100px;
+  background: #e3f6f5;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.dice-container .dice-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 0;
+}
+
+.dice-container .die-1 {
+  color: #272343;
+  font-size: 40px;
+  -webkit-animation: shake 1s 1;
+          animation: shake 1s 1;
+}
+
+.dice-container .die-2 {
+  color: #272343;
+  font-size: 40px;
+  -webkit-animation: shake 1s 1;
+          animation: shake 1s 1;
+}
+
+.dice-container .roll {
+  width: 40px;
+  height: 25px;
+  background: #ffd803;
+  -webkit-box-shadow: 0px 2px 3px #6e8898;
+          box-shadow: 0px 2px 3px #6e8898;
+  border: none;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.dice-container .roll:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+@-webkit-keyframes shake {
+  25% {
+    -webkit-transform: rotate(20deg);
+            transform: rotate(20deg);
+  }
+  50% {
+    -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+  }
+  75% {
+    -webkit-transform: rotate(5deg);
+            transform: rotate(5deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
+@keyframes shake {
+  25% {
+    -webkit-transform: rotate(20deg);
+            transform: rotate(20deg);
+  }
+  50% {
+    -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+  }
+  75% {
+    -webkit-transform: rotate(5deg);
+            transform: rotate(5deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
+.lobby {
+  background-color: #bae8e8;
+>>>>>>> master
   text-align: center;
-  padding-top: 40%;
-  color: #8e734c;
+}
+
+.lobby h1 {
+  color: #ffd803;
+}
+
+.greenToken {
+  width: 25px;
+  height: 25px;
+  background-color: green;
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-top: 25%;
+}
+
+.playerName {
   font-family: "Nunito Sans", sans-serif;
-  font-weight: 700;
-  font-size: 1.25rem;
-}
-
-.yellowRoom {
-  height: 20vh;
-  width: 20vw;
-  margin-top: 1%;
-  margin-left: 1%;
-  border-radius: 3px;
-  background-color: #ffd803;
-}
-
-.yellowText {
   text-align: center;
-  padding-top: 40%;
-  color: black;
-  font-family: "Nunito Sans", sans-serif;
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: larger;
 }
 
-.orangeRoom {
-  height: 20vh;
-  width: 20vw;
-  margin-top: 1%;
-  margin-left: 1%;
-  border-radius: 3px;
-  background-color: #ecad5f;
-}
-
-.orangeText {
-  text-align: center;
-  padding-top: 40%;
-  color: black;
-  font-family: "Nunito Sans", sans-serif;
-  font-weight: 700;
-  font-size: 1.25rem;
+@media (max-width: 600px) {
+  .greenToken {
+    margin-top: 45%;
+  }
+  .playerName {
+    font-size: medium;
+  }
 }
 
 .dice-container {

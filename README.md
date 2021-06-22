@@ -1,3 +1,14 @@
+# Getting Started with Sockets IO
+
+Should already be in package.json so just need to run npm install and should install dependencies. However, if that doesn't work, install
+`npm install socket.io` and `npm install socket.io-client`
+
+# Getting Started with Server
+
+Be sure to run and install `npm install dotenv express`. From here you should be able to run `nodemon` since proxy and main have been established and should function correctly.
+
+## NOTE: I used SERVER_PORT 3333 in the package.json here, when making .env file, be sure that is your server port as well.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
