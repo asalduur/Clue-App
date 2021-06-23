@@ -1,13 +1,20 @@
 import { useEffect, useState } from 'react'
 import Modal from 'react-modal'
+import Accuse from './Accuse'
 
 const Suggestion = (props) => {
-    const {suggest, setSuggest, selectedSuspect, selectedRoom, selectedWeapon} = props
-    const [proof, setProof] = useState('')
+    const {suggest, setSuggest, accuse, setAccuse, selectedSuspect, selectedRoom, selectedWeapon} = props
     const [show, setShow] = useState(``)
+
+    const proof = ''
     
     const handleEndTurn = () => {
         setSuggest(false)
+        // setActive(false)
+    }
+
+    const handleAccuse = () => {
+        setAccuse(true)
     }
     
     useEffect(() => {
@@ -25,8 +32,11 @@ const Suggestion = (props) => {
             {show}
 
             <div>
-            <button onclick={handleEndTurn}> end turn </button>
-            <button> accuse </button>
+            <Accuse accuse={accuse} setAccuse={setAccuse} selectedSuspect={selectedSuspect} selectedRoom={selectedRoom} selectedWeapon={selectedWeapon}/>
+            <button onClick={handleEndTurn}> End Turn </button>
+            <button onClick={handleAccuse}> Accuse </button>
+           
+            
             </div>
         </Modal>
     )
