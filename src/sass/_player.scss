@@ -1,10 +1,26 @@
+.redToken {
+  @include playerToken;
+  background-color: $color-tRed;
+}
 .greenToken {
-  width: 25px;
-  height: 25px;
-  background-color: green;
-  border-radius: 50%;
-  margin: 0 auto;
-  margin-top: 25%;
+  @include playerToken;
+  background-color: $color-tGreen;
+}
+.purpleToken {
+  @include playerToken;
+  background-color: $color-tPurple;
+}
+.orangeToken {
+  @include playerToken;
+  background-color: $color-tOrange;
+}
+.yellowToken {
+  @include playerToken;
+  background-color: $color-tYellow;
+}
+.blueToken {
+  @include playerToken;
+  background-color: $color-tBlue;
 }
 
 .playerName {
@@ -15,8 +31,23 @@
 }
 
 @media (max-width: 600px) {
+  .redToken {
+    @include playerTokenMobile;
+  }
   .greenToken {
-    margin-top: 45%;
+    @include playerTokenMobile;
+  }
+  .purpleToken {
+    @include playerTokenMobile;
+  }
+  .orangeToken {
+    @include playerTokenMobile;
+  }
+  .yellowToken {
+    @include playerTokenMobile;
+  }
+  .blueToken {
+    @include playerTokenMobile;
   }
 
   .playerName {

@@ -474,13 +474,70 @@
   color: #ffd803;
 }
 
-.greenToken {
+.redToken {
   width: 25px;
   height: 25px;
-  background-color: green;
   border-radius: 50%;
   margin: 0 auto;
   margin-top: 25%;
+  -webkit-box-shadow: 2px 2px 5px black;
+          box-shadow: 2px 2px 5px black;
+  background-color: #ff4f58;
+}
+
+.greenToken {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-top: 25%;
+  -webkit-box-shadow: 2px 2px 5px black;
+          box-shadow: 2px 2px 5px black;
+  background-color: #3b9465;
+}
+
+.purpleToken {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-top: 25%;
+  -webkit-box-shadow: 2px 2px 5px black;
+          box-shadow: 2px 2px 5px black;
+  background-color: #5f4b66;
+}
+
+.orangeToken {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-top: 25%;
+  -webkit-box-shadow: 2px 2px 5px black;
+          box-shadow: 2px 2px 5px black;
+  background-color: #ecad5f;
+}
+
+.yellowToken {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-top: 25%;
+  -webkit-box-shadow: 2px 2px 5px black;
+          box-shadow: 2px 2px 5px black;
+  background-color: #ffd803;
+}
+
+.blueToken {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-top: 25%;
+  -webkit-box-shadow: 2px 2px 5px black;
+          box-shadow: 2px 2px 5px black;
+  background-color: #6e8898;
 }
 
 .playerName {
@@ -491,7 +548,22 @@
 }
 
 @media (max-width: 600px) {
+  .redToken {
+    margin-top: 45%;
+  }
   .greenToken {
+    margin-top: 45%;
+  }
+  .purpleToken {
+    margin-top: 45%;
+  }
+  .orangeToken {
+    margin-top: 45%;
+  }
+  .yellowToken {
+    margin-top: 45%;
+  }
+  .blueToken {
     margin-top: 45%;
   }
   .playerName {
