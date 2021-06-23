@@ -16,12 +16,12 @@ const AccuseSuggest = ({ suggestAccuse, setSuggestAccuse }) => {
   };
 
   const handleSuggest = () => {
-      setSuggest(true);
-  }
+    setSuggest(true);
+  };
 
   const handleSetWeapon = (e) => {
-      setSelectedWeapon(e.target.value);
-  }
+    setSelectedWeapon(e.target.value);
+  };
 
   const handleCloseModal = () => {
     setSuggestAccuse(false);
@@ -89,17 +89,19 @@ const AccuseSuggest = ({ suggestAccuse, setSuggestAccuse }) => {
             selectedRoom={selectedRoom}
             selectedWeapon={selectedWeapon}
           />
-          <Suggestion 
-            suggest={suggest} 
-            setSuggest={setSuggest} 
-            accuse={accuse} 
-            setAccuse={setAccuse} 
-            selectedSuspect={selectedSuspect} 
-            selectedRoom={selectedRoom} 
+          <Suggestion
+            suggest={suggest}
+            setSuggest={setSuggest}
+            accuse={accuse}
+            setAccuse={setAccuse}
+            selectedSuspect={selectedSuspect}
+            selectedRoom={selectedRoom}
             selectedWeapon={selectedWeapon}
           />
           <div className="flexBtns">
-            <button className="btnSuggest"> Suggest </button>
+            <button className="btnSuggest" onClick={handleSuggest}>
+              Suggest
+            </button>
             <button className="btnAccuse" onClick={handleAccuse}>
               Accuse
             </button>
