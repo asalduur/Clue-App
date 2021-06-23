@@ -1,0 +1,42 @@
+.winModal {
+  @include modalStyling;
+  width: 30vw;
+  height: 12.5vh;
+  left: 30vw;
+  top: 26vh;
+}
+
+.winText {
+  @include modalHeaderText;
+}
+
+.playAgainBtn {
+  background-color: $color-pop;
+  @include accuseSuggestBtns;
+}
+
+@media (max-width: 600px) {
+  .winModal {
+    @include modalMobileStyle;
+    width: 45vw;
+    height: 20vh;
+    left: 22.5vw;
+    top: 28.5vh;
+  }
+  .winText {
+    font-size: larger;
+  }
+  .playAgainBtn {
+    @include accuseSuggestMobileBtns;
+  }
+}
+
+@media (max-width: 850px) {
+  .winModal {
+    @include modalMobileStyle;
+    top: 30vh;
+  }
+  .playAgainBtn {
+    @include accuseSuggestMobileBtns;
+  }
+}

@@ -28,9 +28,10 @@
     border: none;
     border-radius: 10px;
     margin: 10px 0;
-    
+    font-family: $font-secondary;
+    font-weight: 600;
     &:hover {
-      transform: scale(1.1)
+      transform: scale(1.1);
     }
   }
 }
@@ -49,4 +50,3 @@
     transform: rotate(0deg);
   }
 }
-

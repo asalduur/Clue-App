@@ -39,3 +39,74 @@
   margin-top: 1%;
   border-radius: 3px;
 }
+
+@mixin accuseSuggestBtns {
+  border: none;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  font-family: $font-secondary;
+  font-weight: 800;
+  box-shadow: 0px 2px 3px $color-darkest;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+@mixin accuseSuggestMobileBtns {
+  margin-top: 5%;
+}
+
+@mixin modalStyling {
+  background-color: white;
+  border: 1px solid $color-dark;
+  border-radius: 5px;
+  position: absolute;
+  top: 25vh;
+  left: 25vw;
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin modalMobileStyle {
+  height: fit-content;
+  padding: 5%;
+}
+
+@mixin closeModalBtn {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: $color-darkest;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@mixin selectStyling {
+  margin-bottom: 5%;
+  width: 32vw;
+}
+
+@mixin modalHeaderText {
+  font-size: 24px;
+  margin-bottom: 5%;
+  text-align: center;
+  font-family: $font-secondary;
+  font-weight: 700;
+}
+
+@mixin modalBodyText {
+  font-size: 18px;
+  margin-bottom: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  text-align: center;
+  font-family: $font-main;
+}
+
+@mixin selectedTextStyle {
+  font-weight: 600;
+  color: $color-dark;
+}

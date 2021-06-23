@@ -7,6 +7,24 @@
   text-shadow: 2px 1px 5px #545454;
 }
 
+.suggestAccuseBtns {
+  text-align: center;
+  margin-bottom: 2%;
+}
+
+.modalBtnStyling {
+  background-color: $color-pop;
+  height: 25px;
+  box-shadow: 0px 2px 3px $color-dark;
+  border: none;
+  border-radius: 10px;
+  font-family: $font-secondary;
+  font-weight: 600;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
 .flexGameboard {
   display: flex;
   justify-content: space-evenly;
