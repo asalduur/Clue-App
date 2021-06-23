@@ -1,6 +1,7 @@
 import Modal from "react-modal";
 import { useState } from "react";
 import Accuse from "./Accuse";
+import Suggestion from "./Suggestion";
 
 Modal.setAppElement("#root");
 const AccuseSuggest = ({ suggestAccuse, setSuggestAccuse }) => {
@@ -8,14 +9,19 @@ const AccuseSuggest = ({ suggestAccuse, setSuggestAccuse }) => {
   const [selectedRoom, setSelectedRoom] = useState("");
   const [selectedSuspect, setSelectedSuspect] = useState("");
   const [accuse, setAccuse] = useState(false);
+  const [suggest, setSuggest] = useState(false);
 
   const handleAccuse = () => {
     setAccuse(true);
   };
 
+  const handleSuggest = () => {
+      setSuggest(true);
+  }
+
   const handleSetWeapon = (e) => {
-    setSelectedWeapon(e.target.value);
-  };
+      setSelectedWeapon(e.target.value);
+  }
 
   const handleCloseModal = () => {
     setSuggestAccuse(false);
@@ -81,6 +87,15 @@ const AccuseSuggest = ({ suggestAccuse, setSuggestAccuse }) => {
             setAccuse={setAccuse}
             selectedSuspect={selectedSuspect}
             selectedRoom={selectedRoom}
+            selectedWeapon={selectedWeapon}
+          />
+          <Suggestion 
+            suggest={suggest} 
+            setSuggest={setSuggest} 
+            accuse={accuse} 
+            setAccuse={setAccuse} 
+            selectedSuspect={selectedSuspect} 
+            selectedRoom={selectedRoom} 
             selectedWeapon={selectedWeapon}
           />
           <div className="flexBtns">
