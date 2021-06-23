@@ -1,0 +1,85 @@
+.accuseSuggestModal {
+  @include modalStyling;
+  width: 35vw;
+  height: 12.5vh;
+}
+
+.closeModal {
+  @include closeModalBtn;
+}
+
+.modal_display {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-top: 5%;
+}
+
+.suspectSelect {
+  margin-right: 5%;
+  @include selectStyling;
+}
+
+.roomSelect {
+  margin-right: 5%;
+  @include selectStyling;
+}
+
+.weaponSelect {
+  @include selectStyling;
+}
+
+.flexBtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  .btnSuggest {
+    background-color: $color-dark;
+    color: white;
+    @include accuseSuggestBtns;
+  }
+
+  .btnAccuse {
+    background-color: $color-pop;
+    @include accuseSuggestBtns;
+  }
+}
+
+@media (max-width: 600px) {
+  .accuseSuggestModal {
+    @include modalMobileStyle;
+  }
+  .modal_display {
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  .flexBtns {
+    flex-direction: column;
+    justify-content: center;
+    .btnAccuse {
+      @include accuseSuggestMobileBtns;
+    }
+    .btnSuggest {
+      @include accuseSuggestMobileBtns;
+    }
+  }
+}
+
+@media (max-width: 850px) {
+  .accuseSuggestModal {
+    @include modalMobileStyle;
+    width: 50vw;
+    left: 20vw;
+  }
+  .flexBtns {
+    flex-direction: column;
+    justify-content: center;
+    .btnAccuse {
+      @include accuseSuggestMobileBtns;
+    }
+    .btnSuggest {
+      @include accuseSuggestMobileBtns;
+    }
+  }
+}

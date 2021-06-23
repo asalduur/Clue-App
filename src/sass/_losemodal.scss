@@ -1,0 +1,66 @@
+.loseModal {
+  @include modalStyling;
+  width: 30vw;
+  height: 12.5vh;
+  left: 30vw;
+  top: 26vh;
+}
+
+.loseText {
+  @include modalHeaderText;
+}
+
+.flexBtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  .continueBtn {
+    background-color: $color-dark;
+    color: white;
+    @include accuseSuggestBtns;
+  }
+  .leaveBtn {
+    background-color: $color-pop;
+    @include accuseSuggestBtns;
+  }
+}
+
+@media (max-width: 600px) {
+  .loseModal {
+    @include modalMobileStyle;
+    width: 45vw;
+    height: 20vh;
+    left: 22.5vw;
+    top: 28.5vh;
+  }
+  .loseText {
+    font-size: larger;
+  }
+  .flexBtns {
+    flex-direction: column;
+    justify-content: center;
+    .continueBtn {
+      @include accuseSuggestMobileBtns;
+    }
+    .leaveBtn {
+      @include accuseSuggestMobileBtns;
+    }
+  }
+}
+
+@media (max-width: 850px) {
+  .loseModal {
+    @include modalMobileStyle;
+    top: 30vh;
+  }
+  .flexBtns {
+    flex-direction: column;
+    justify-content: center;
+    .continueBtn {
+      @include accuseSuggestMobileBtns;
+    }
+    .leaveBtn {
+      @include accuseSuggestMobileBtns;
+    }
+  }
+}
