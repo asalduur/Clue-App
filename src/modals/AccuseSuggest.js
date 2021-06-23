@@ -65,6 +65,8 @@ const AccuseSuggest = () => {
 
                 <div>
                     <Accuse accuse={accuse} setAccuse={setAccuse} selectedSuspect={selectedSuspect} selectedRoom={selectedRoom} selectedWeapon={selectedWeapon}/>
+                    <Suggestion suggest={suggest} setSuggest={setSuggest} selectedSuspect={selectedSuspect} selectedRoom={selectedRoom} selectedWeapon={selectedWeapon}/>
+
                     <button> Suggest </button>
                     <button onClick={handleAccuse}> Accuse </button>
                 </div>
