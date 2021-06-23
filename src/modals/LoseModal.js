@@ -1,22 +1,25 @@
-import Modal from 'react-modal'
+import Modal from "react-modal";
 
 const LoseModal = (props) => {
-    const {lose, setLose, accuse, setAccuse} = props
+  const { lose, setLose, accuse, setAccuse } = props;
 
-    const handleWatch = () => {
-        setLose(false)
-        setAccuse(false)
-        // setActive(false)
-    }
+  const handleWatch = () => {
+    setLose(false);
+    setAccuse(false);
+    // setActive(false)
+  };
 
-    return (
-        <Modal isOpen={lose}>
-            <h1> You Lost!! </h1>
+  return (
+    <Modal isOpen={lose} className="loseModal">
+      <h1 className="loseText"> You Lost!! </h1>
+      <div className="flexBtns">
+        <button className="continueBtn" onClick={handleWatch}>
+          Continue Watching
+        </button>
+        <button className="leaveBtn"> Leave Game </button>
+      </div>
+    </Modal>
+  );
+};
 
-            <button onClick={handleWatch}> Continue Watching </button>
-            <button> Leave Game </button>
-        </Modal>
-    )
-}
-
-export default LoseModal
+export default LoseModal;

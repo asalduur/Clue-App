@@ -1,0 +1,74 @@
+.accuseModal {
+  @include modalStyling;
+  width: 40vw;
+  height: 15vh;
+}
+
+.accuseText {
+  @include modalHeaderText;
+}
+
+.accusationText {
+  @include modalBodyText;
+}
+
+.selectedText {
+  @include selectedTextStyle;
+}
+
+.flexBtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  .backBtn {
+    background-color: $color-dark;
+    color: white;
+    @include accuseSuggestBtns;
+  }
+  .confirmBtn {
+    background-color: $color-pop;
+    @include accuseSuggestBtns;
+  }
+}
+
+@media (max-width: 600px) {
+  .accuseModal {
+    @include modalMobileStyle;
+    width: 50vw;
+    left: 20vw;
+  }
+  .accuseText {
+    font-size: larger;
+  }
+  .accusationText {
+    font-size: medium;
+    padding-bottom: 5%;
+    text-align: left;
+  }
+  .flexBtns {
+    flex-direction: column;
+    justify-content: center;
+    .backBtn {
+      @include accuseSuggestMobileBtns;
+    }
+    .confirmBtn {
+      @include accuseSuggestMobileBtns;
+    }
+  }
+}
+
+@media (max-width: 850px) {
+  .accuseModal {
+    @include modalMobileStyle;
+  }
+  .flexBtns {
+    flex-direction: column;
+    justify-content: center;
+    .backBtn {
+      @include accuseSuggestMobileBtns;
+    }
+    .confirmBtn {
+      @include accuseSuggestMobileBtns;
+    }
+  }
+}
