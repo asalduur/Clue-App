@@ -22,7 +22,7 @@ footer {
       cursor: pointer;
     }
   }
-  
+
   .notebook-container {
     display: flex;
     justify-content: space-evenly;
@@ -33,51 +33,52 @@ footer {
       overflow: hidden;
       table.suspects {
         @include table;
-        
-      
-        td, th {
+
+        td,
+        th {
           @include table-td-th;
         }
-      
+
         thead {
           @include table-thead;
-    
-        th {
+
+          th {
             @include table-thead-th;
           }
         }
       }
       table.weapons {
         @include table;
-      
-        td, th {
+
+        td,
+        th {
           @include table-td-th;
         }
-      
+
         thead {
           @include table-thead;
-    
-        th {
+
+          th {
             @include table-thead-th;
           }
         }
       }
       table.locations {
         @include table;
-      
-        td, th {
+
+        td,
+        th {
           @include table-td-th;
         }
-      
+
         thead {
           @include table-thead;
-    
-        th {
+
+          th {
             @include table-thead-th;
           }
         }
       }
-  
     }
     .close {
       height: 0px;
@@ -85,4 +86,19 @@ footer {
   }
 }
 
-
+@media (max-width: 600px) {
+  footer {
+    .notebook-container {
+      flex-direction: column;
+      .openNotebook {
+        flex-direction: column;
+        table.suspects {
+          margin-bottom: 5%;
+        }
+        table.weapons {
+          margin-bottom: 5%;
+        }
+      }
+    }
+  }
+}
