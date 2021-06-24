@@ -88,6 +88,7 @@ const AccuseSuggest = ({ suggestAccuse, setSuggestAccuse }) => {
             selectedSuspect={selectedSuspect}
             selectedRoom={selectedRoom}
             selectedWeapon={selectedWeapon}
+            setSuggestAccuse={setSuggestAccuse}
           />
           <Suggestion
             suggest={suggest}
@@ -97,6 +98,7 @@ const AccuseSuggest = ({ suggestAccuse, setSuggestAccuse }) => {
             selectedSuspect={selectedSuspect}
             selectedRoom={selectedRoom}
             selectedWeapon={selectedWeapon}
+            setSuggestAccuse={setSuggestAccuse}
           />
           <div className="flexBtns">
             <button className="btnSuggest" onClick={handleSuggest}>

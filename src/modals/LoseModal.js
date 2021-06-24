@@ -1,11 +1,12 @@
 import Modal from "react-modal";
 
 const LoseModal = (props) => {
-  const { lose, setLose, accuse, setAccuse } = props;
+  const { lose, setLose, accuse, setAccuse, setSuggestAccuse } = props;
 
   const handleWatch = () => {
     setLose(false);
     setAccuse(false);
+    setSuggestAccuse(false)
     // setActive(false)
   };
 

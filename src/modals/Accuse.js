@@ -10,6 +10,7 @@ const Accuse = (props) => {
     selectedSuspect,
     selectedRoom,
     selectedWeapon,
+    setSuggestAccuse,
   } = props;
   const [win, setWin] = useState(false);
   const [lose, setLose] = useState(false);
@@ -59,6 +60,7 @@ const Accuse = (props) => {
           setLose={setLose}
           accuse={accuse}
           setAccuse={setAccuse}
+          setSuggestAccuse={setSuggestAccuse}
         />
       </Modal>
     </div>

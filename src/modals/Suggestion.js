@@ -3,7 +3,7 @@ import Modal from 'react-modal'
 import Accuse from './Accuse'
 
 const Suggestion = (props) => {
-    const {suggest, setSuggest, accuse, setAccuse, selectedSuspect, selectedRoom, selectedWeapon} = props
+    const {suggest, setSuggest, accuse, setAccuse, selectedSuspect, selectedRoom, selectedWeapon, setSuggestAccuse} = props
     const [show, setShow] = useState(``)
 
     const proof = ''
@@ -32,7 +32,7 @@ const Suggestion = (props) => {
             {show}
 
             <div>
-            <Accuse accuse={accuse} setAccuse={setAccuse} selectedSuspect={selectedSuspect} selectedRoom={selectedRoom} selectedWeapon={selectedWeapon}/>
+            <Accuse accuse={accuse} setAccuse={setAccuse} selectedSuspect={selectedSuspect} selectedRoom={selectedRoom} selectedWeapon={selectedWeapon} setSuggestAccuse={setSuggestAccuse}/>
             <button onClick={handleEndTurn}> End Turn </button>
             <button onClick={handleAccuse}> Accuse </button>
            
