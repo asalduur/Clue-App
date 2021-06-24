@@ -170,7 +170,7 @@ io.on('connection', (socket) => {
       }
     }
     io.emit('update-players', players);
-    io.emit('case-file', case_file)
+    io.emit('case-file', case_file);
     io.emit('player-start', playercopy[playerturn]);
   } else {
     io.emit('more-players'); // FINISH THIS HERE
