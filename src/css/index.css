@@ -111,7 +111,7 @@
             flex-direction: row;
     -ms-flex-pack: distribute;
         justify-content: space-around;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
   }
 }
 
@@ -1162,6 +1162,9 @@ footer .notebook-container .close {
 }
 
 @media (max-width: 600px) {
+  footer {
+    position: relative;
+  }
   footer .notebook-container {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
