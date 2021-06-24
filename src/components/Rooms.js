@@ -25,22 +25,20 @@ const Rooms = ({ roomNames, player }) => {
     <>
       {roomNames.map((room, index) => {
         return (
-          <>
-            <div
-              key={index}
-              className={`${room.room}Background`}
-              onClick={() => changeRoom(room.room)}
-            >
-              <div className="flexTokens">
-                {currentRoom === room.room ? (
-                  <div className={`${player.token}Current`}></div>
-                ) : (
-                  <div className="filler"></div>
-                )}
-              </div>
-              <h2 className="roomName">{room.room.toUpperCase()}</h2>
+          <div
+            key={index}
+            className={`${room.room}Background`}
+            onClick={() => changeRoom(room.room)}
+          >
+            <div className="flexTokens">
+              {currentRoom === room.room ? (
+                <div className={`${player.token}Current`}></div>
+              ) : (
+                <div className="filler"></div>
+              )}
             </div>
-          </>
+            <h2 className="roomName">{room.room.toUpperCase()}</h2>
+          </div>
         );
       })}
     </>
