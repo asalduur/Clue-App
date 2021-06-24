@@ -74,6 +74,7 @@ io.on('connection', (socket) => {
       socket.emit('Max players reached.');
       socket.disconnect();
   }
+  io.emit('update-players', players);
   socket.on('disconnect', (body) => {
     console.log(`Socket ${socket.id} disconnected.`);
 
@@ -87,7 +88,7 @@ io.on('connection', (socket) => {
       const orderedplayers = [...firstplayers, ...lastplayers];
       console.log(orderedplayers);
       players.splice(index, 1);
-
+      console.log('PLAYERSFROMINDEX:', players);
       io.emit('update-players', players);
       io.emit('player-start', orderedplayers[0]);
     } else if (body.lost) {
@@ -172,7 +173,7 @@ io.on('connection', (socket) => {
     io.emit('case-file', case_file)
     io.emit('player-start', playercopy[playerturn]);
   } else {
-    io.emit('more-players');
+    io.emit('more-players'); // FINISH THIS HERE
   }
 
   });
