@@ -1,5 +1,7 @@
 import Modal from 'react-modal'
 import Lobby from './Lobby'
+import {Link} from 'react-router-dom'
+
 
 Modal.setAppElement('#root')
 
@@ -13,7 +15,8 @@ const CreateGame = (props) => {
     }
     const handleStartGame = () => {
         // setActiveGame(true)
-        props.history.push('/Game')
+        // props.history.push('/Game')
+        <Link to='/Game'> </Link>
     }
 
     return (
@@ -24,7 +27,7 @@ const CreateGame = (props) => {
             <h2> Players in Game </h2>
             <div>
             </div>
-            <button onClick={handleStartGame}> Start Game </button>
+            <button onClick={handleStartGame}> <Link to='/Game'> Start Game </Link> </button>
         </Modal>
     )
 }
