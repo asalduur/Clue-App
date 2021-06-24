@@ -72,10 +72,10 @@ const AccuseSuggest = ({ suggestAccuse, setSuggestAccuse }) => {
             onChange={(e) => setSelectedWeapon(e.target.value)}
           >
             <option value=""> </option>
-            <option value="IcePick"> IcePick </option>
+            <option value="Poisoned Cocktail"> Poisoned Cocktail </option>
             <option value="Shank"> Shank </option>
             <option value="Coat Hanger"> Coat Hanger </option>
-            <option value="Arsenic"> Arsenic </option>
+            <option value="Chainsaw"> Chainsaw </option>
             <option value="Blowtorch"> Blowtorch </option>
             <option value="Ninja Star"> Ninja Star </option>
           </select>
