@@ -5,7 +5,6 @@ export const SocketContext = createContext();
 
 export const SocketProvider = (props) => {
 
-  const [currentRoom, setCurrentRoom] = useState('');
   const [socket, setSocket] = useState(null);
   const [messages, setMessages] =useState([]);
   const [player, setPlayer] = useState(null);
