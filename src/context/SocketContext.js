@@ -1,5 +1,6 @@
 import {createContext, useState, useEffect, useRef} from 'react';
 import io from 'socket.io-client';
+import {useHistory} from 'react-router-dom';
 
 export const SocketContext = createContext();
 
@@ -9,6 +10,7 @@ export const SocketProvider = (props) => {
   const [socket, setSocket] = useState(null);
   const [messages, setMessages] =useState([]);
   const [player, setPlayer] = useState(null);
+  const [players, setPlayers] = useState([]);
   const [active, setActive] = useState(false);
   const [activeRoll, setActiveRoll] = useState(false);
   const [activeRoom, setActiveRoom] = useState(false);
@@ -29,6 +31,7 @@ export const SocketProvider = (props) => {
   id: 'O09aIvQ6mAvYpasGAAAH', location: 'home', roll: 0, token: 'green', cards: []});
 
   const playerRef = useRef(player);
+  const history = useHistory();
 
   useEffect(() => {
     playerRef.current = player;
@@ -59,18 +62,35 @@ export const SocketProvider = (props) => {
       });
 
       socket.on('update-players', (players) => {
-        setPlayer(null);
-        players.forEach((p, i) => {
+        console.log('UPDATE PLAYERS - PLAYERS:', players);
+        console.log('UPDATE PLAYERS SOCKET ID:', socket.id);
+        setPlayers(players);
+        const fplayer = players.find((p, i) => {
           if (p.id === socket.id) {
             console.log('P:', p);
-            setPlayer(p);
+            return p;
           }
-        })
+        });
+        console.log('FPLAYER:', fplayer);
+        setPlayer(fplayer);
+        // setPlayer(() => {
+        //   players.forEach((p, i) => {
+        //     if (p.id === socket.id) {
+        //       console.log('P:', p);
+        //       return p;
+        //     }
+        //   });
+          
+        // });
+
+
+        
       })
       socket.on('case-file', (casefile) => {
         setCaseFile(casefile);
       });
       socket.on('player-start', (start_player) => {
+        history.push('/game');
         setLossMsg(null);
         if (start_player.id === socket.id) {
           setActive(true);
@@ -174,7 +194,7 @@ export const SocketProvider = (props) => {
     socket.emit('send-message', {message})
   }
 
-  const testFunction = () => {
+  const gameStart = () => {
     socket.emit('game-start');
   }
 
@@ -208,15 +228,13 @@ export const SocketProvider = (props) => {
     socket.emit('end-turn', {id: socket.id});
   }
 
-  console.log(vplayer);
-
   return (
     <SocketContext.Provider
       value={{
         sayHi,
         sendMessage,
         messages,
-        testFunction,
+        gameStart,
         sendRoll,
         player,
         active,
@@ -231,7 +249,8 @@ export const SocketProvider = (props) => {
         lossmsg,
         winmsg,
         suggestion,
-        proofmsg
+        proofmsg,
+        players
       }}>
       {props.children}
     </SocketContext.Provider>  
