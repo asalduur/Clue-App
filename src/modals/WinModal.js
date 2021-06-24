@@ -5,7 +5,7 @@ import {SocketContext} from "../context/SocketContext"
 
 
 const WinModal = (props) => {
-  const {playerwin, winmsg} = useContext(SocketContext)
+  const {winmsg} = useContext(SocketContext)
 
   const { win } = props;
 

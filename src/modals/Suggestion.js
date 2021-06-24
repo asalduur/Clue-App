@@ -5,11 +5,9 @@ import {SocketContext} from "../context/SocketContext"
 
 
 const Suggestion = (props) => {
-    const {endTurn, currentRoom} = useContext(SocketContext)
+    const {endTurn, currentRoom, active, proofmessage} = useContext(SocketContext)
     const {suggest, setSuggest, accuse, setAccuse, selectedSuspect, selectedRoom, selectedWeapon, setSuggestAccuse} = props
-    const [show, setShow] = useState(``)
-
-    const proof = ''
+    // const [show, setShow] = useState(``)
     
     const handleEndTurn = () => {
         setSuggest(false)
@@ -21,24 +19,25 @@ const Suggestion = (props) => {
         setAccuse(true)
     }
     
-    useEffect(() => {
-            if (proof === '') {
-                setShow(`Your suggestion of ${selectedSuspect}, ${currentRoom}, and ${selectedWeapon} could not be proved false`) 
-            }
+    // useEffect(() => {
+    //         if (proof === '') {
+    //             setShow(`Your suggestion of ${selectedSuspect}, ${currentRoom}, and ${selectedWeapon} could not be proved false`) 
+    //         }
     
-            else {
-                setShow(`Your suggestion of ${selectedSuspect}, ${selectedRoom}, and ${selectedWeapon} could be proved false with ${proof}`)
-            }
-        }, [selectedSuspect, selectedRoom, selectedWeapon])
+    //         else {
+    //             setShow(`Your suggestion of ${selectedSuspect}, ${selectedRoom}, and ${selectedWeapon} could be proved false with ${proof}`)
+    //         }
+    //     }, [selectedSuspect, selectedRoom, selectedWeapon])
 
     return (
         <Modal isOpen={suggest}>
-            {show}
+            {/* {show} */}
 
             <div>
-            <Accuse accuse={accuse} setAccuse={setAccuse} selectedSuspect={selectedSuspect} selectedRoom={selectedRoom} selectedWeapon={selectedWeapon} setSuggestAccuse={setSuggestAccuse}/>
+            {active && proofmessage ? proofmessage : null}
             <button onClick={handleEndTurn}> End Turn </button>
             <button onClick={handleAccuse}> Accuse </button>
+            <Accuse accuse={accuse} setAccuse={setAccuse} selectedSuspect={selectedSuspect} selectedRoom={selectedRoom} selectedWeapon={selectedWeapon} setSuggestAccuse={setSuggestAccuse}/>
            
             
             </div>
