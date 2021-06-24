@@ -13,6 +13,8 @@ const JoinGame = (props) => {
         }
     }
 
+    console.log(code)
+
 
     return (
         <Modal isOpen={joinGame} onRequestClose={() => setJoinGame(false)}>
