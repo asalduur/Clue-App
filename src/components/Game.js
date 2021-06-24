@@ -5,11 +5,12 @@ import Player from "./Player";
 import DiceRoll from "./DiceRoll";
 import AccuseSuggest from "../modals/AccuseSuggest";
 import Notebook from "./Notebook";
+import RollNotification from "../modals/RollNotification";
 
 //import rooms, weapons, and people from sockets here
 
 const Game = () => {
-  const { fakeplayer } = useContext(SocketContext);
+
   const [suggestAccuse, setSuggestAccuse] = useState(false);
 
   const handleOpenSuggestAccuse = () => {
@@ -32,10 +33,11 @@ const Game = () => {
         <GameBoard />
         <div className="sideBar">
           <DiceRoll />
-          <Player playerInfo={fakeplayer} />
+          <Player />
         </div>
       </div>
       <Notebook />
+      {/* <RollNotification /> */}
     </>
   );
 };

@@ -75,7 +75,6 @@ export const SocketProvider = (props) => {
             return p;
           }
         });
-        console.log('FPLAYER:', fplayer);
         setPlayer(fplayer);
         // setPlayer(() => {
         //   players.forEach((p, i) => {
@@ -94,9 +93,9 @@ export const SocketProvider = (props) => {
         setCaseFile(casefile);
       });
       socket.on('player-start', (start_player) => {
-        history.push('/game');
         setLossMsg(null);
         if (start_player.id === socket.id) {
+          console.log('PLAYER START STARTPLAYER:', start_player);
           setActive(true);
           setActiveRoll(true);
         } else {
@@ -104,6 +103,7 @@ export const SocketProvider = (props) => {
           setActiveRoll(false);
           setInactiveMsg(`Player ${start_player.player} is currently rolling.`);
         }
+        history.push('/game');
       });
       socket.on("room-choose", (a_player) => {
         console.log(a_player);
@@ -212,7 +212,6 @@ export const SocketProvider = (props) => {
     socket.emit("send-message", { message });
   };
 
-
   const gameStart = () => {
     socket.emit('game-start');
   }
@@ -257,6 +256,7 @@ export const SocketProvider = (props) => {
         sendRoll,
         player,
         active,
+        activeRoll,
         fakeplayer,
         currentRoom,
         setCurrentRoom,
@@ -269,7 +269,7 @@ export const SocketProvider = (props) => {
         winmsg,
         suggestion,
         proofmsg,
-        players
+        players,
       }}>
       {props.children}
     </SocketContext.Provider>  

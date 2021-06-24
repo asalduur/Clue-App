@@ -14,15 +14,16 @@ const DiceRoll = () => {
   let [secondDieValue, setSecondDieValue] = useState(1)
   let [diceTotal, setDiceTotal] = useState(0)
 
-  const {activeRoll} = useContext(SocketContext)
+  const {active, activeRoll, sendRoll} = useContext(SocketContext)
 
   const handleRoll = async () => {
     await setFirstDieValue(0)
     await setSecondDieValue(0)
-    if(activeRoll) {
+    if(active && activeRoll) {
       setFirstDieValue(Math.floor(Math.random() * 6) +1)
       setSecondDieValue(Math.floor(Math.random() * 6) +1)
       setDiceTotal((prevTotal) => prevTotal + firstDieValue + secondDieValue)
+      sendRoll(firstDieValue + secondDieValue);
     }
   }
 
