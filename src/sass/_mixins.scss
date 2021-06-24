@@ -123,3 +123,27 @@
 @mixin playerTokenMobile {
   margin-top: 45%;
 }
+@mixin table {
+  border: 1px solid darken($color-darkest, 10);
+  background: $color-light;
+  // width: calc(100% - 90%/3);
+  // max-height: fit-content;
+  margin: 0 20px;
+  text-align: center;
+  box-shadow: 2px 2px 2px $color-darkest;
+}
+
+@mixin table-td-th {
+  border: 1px solid $color-dark;
+  padding: 2px 2px;
+}
+
+@mixin table-thead {
+  background: $color-dark;
+}
+
+@mixin table-thead-th {
+  font-weight: 600;
+  color: #000;
+  text-align: center;
+}

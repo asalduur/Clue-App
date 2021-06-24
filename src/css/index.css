@@ -1027,4 +1027,134 @@
     margin-top: 5%;
   }
 }
+
+footer {
+  position: absolute;
+  bottom: 0;
+  background: #aab9c2;
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding-bottom: 10px;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+footer .notebtn {
+  width: 150px;
+  height: 20px;
+  background: #ffd803;
+  -webkit-box-shadow: 0px 2px 3px #6e8898;
+          box-shadow: 0px 2px 3px #6e8898;
+  border: none;
+  border-radius: 10px;
+  margin: 10px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
+}
+
+footer .notebtn:hover {
+  -webkit-transform: scale(1.01);
+          transform: scale(1.01);
+  cursor: pointer;
+}
+
+footer .notebook-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+footer .notebook-container .openNotebook {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  overflow: hidden;
+}
+
+footer .notebook-container .openNotebook table.suspects {
+  border: 1px solid #141222;
+  background: #e3f6f5;
+  margin: 0 20px;
+  text-align: center;
+  -webkit-box-shadow: 2px 2px 2px #272343;
+          box-shadow: 2px 2px 2px #272343;
+}
+
+footer .notebook-container .openNotebook table.suspects td, footer .notebook-container .openNotebook table.suspects th {
+  border: 1px solid #6e8898;
+  padding: 2px 2px;
+}
+
+footer .notebook-container .openNotebook table.suspects thead {
+  background: #6e8898;
+}
+
+footer .notebook-container .openNotebook table.suspects thead th {
+  font-weight: 600;
+  color: #000;
+  text-align: center;
+}
+
+footer .notebook-container .openNotebook table.weapons {
+  border: 1px solid #141222;
+  background: #e3f6f5;
+  margin: 0 20px;
+  text-align: center;
+  -webkit-box-shadow: 2px 2px 2px #272343;
+          box-shadow: 2px 2px 2px #272343;
+}
+
+footer .notebook-container .openNotebook table.weapons td, footer .notebook-container .openNotebook table.weapons th {
+  border: 1px solid #6e8898;
+  padding: 2px 2px;
+}
+
+footer .notebook-container .openNotebook table.weapons thead {
+  background: #6e8898;
+}
+
+footer .notebook-container .openNotebook table.weapons thead th {
+  font-weight: 600;
+  color: #000;
+  text-align: center;
+}
+
+footer .notebook-container .openNotebook table.locations {
+  border: 1px solid #141222;
+  background: #e3f6f5;
+  margin: 0 20px;
+  text-align: center;
+  -webkit-box-shadow: 2px 2px 2px #272343;
+          box-shadow: 2px 2px 2px #272343;
+}
+
+footer .notebook-container .openNotebook table.locations td, footer .notebook-container .openNotebook table.locations th {
+  border: 1px solid #6e8898;
+  padding: 2px 2px;
+}
+
+footer .notebook-container .openNotebook table.locations thead {
+  background: #6e8898;
+}
+
+footer .notebook-container .openNotebook table.locations thead th {
+  font-weight: 600;
+  color: #000;
+  text-align: center;
+}
+
+footer .notebook-container .close {
+  height: 0px;
+}
 /*# sourceMappingURL=index.css.map */
