@@ -249,6 +249,6 @@ export const SocketProvider = (props) => {
       }}
     >
       {props.children}
-    </SocketContext.Provider>
-  );
-};
+    </SocketContext.Provider>  
+  )
+}
