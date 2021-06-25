@@ -24,6 +24,9 @@ const DiceRoll = () => {
       setSecondDieValue(Math.floor(Math.random() * 6) +1)
       setDiceTotal((prevTotal) => prevTotal + firstDieValue + secondDieValue)
       sendRoll(firstDieValue + secondDieValue);
+      if(diceTotal > 20) {
+        setDiceTotal(0)
+      }
     }
   }
 
