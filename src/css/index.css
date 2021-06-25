@@ -1281,4 +1281,33 @@ footer .notebook-container .close {
   font-family: "Nunito Sans", sans-serif;
   font-weight: 800;
 }
+
+.waitingModal {
+  background-color: white;
+  border: 1px solid #6e8898;
+  border-radius: 5px;
+  position: absolute;
+  top: 25vh;
+  left: 25vw;
+  padding: 2%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 35vw;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.waitingModal {
+  font-size: 24px;
+  margin-bottom: 5%;
+  text-align: center;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 700;
+}
 /*# sourceMappingURL=index.css.map */

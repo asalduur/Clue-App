@@ -1,17 +1,15 @@
 import Modal from "react-modal";
 import { useContext } from "react";
-import {SocketContext} from "../context/SocketContext"
+import { SocketContext } from "../context/SocketContext";
 
 const LoseModal = (props) => {
-
-  const {lossmsg, playerlost} = useContext(SocketContext)
+  const { lossmsg, playerlost } = useContext(SocketContext);
   const { lose, setLose, accuse, setAccuse, setSuggestAccuse } = props;
 
   const handleWatch = () => {
     setLose(false);
     setAccuse(false);
-    setSuggestAccuse(false)
-    // setActive(false)
+    setSuggestAccuse(false);
   };
 
   return (

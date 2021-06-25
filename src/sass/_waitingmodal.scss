@@ -1,0 +1,8 @@
+.waitingModal {
+  @include modalStyling;
+  width: 35vw;
+  height: fit-content;
+}
+.waitingModal {
+  @include modalHeaderText;
+}

@@ -11,7 +11,6 @@ const Player = ({ playerInfo }) => {
     active,
   } = useContext(SocketContext);
 
-  console.log(playerInfo);
   return (
     <>
       <div className="playerInfo">
