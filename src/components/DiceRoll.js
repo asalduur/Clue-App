@@ -12,7 +12,6 @@ import { SocketContext } from '../context/SocketContext'
 const DiceRoll = () => {
   let [firstDieValue, setFirstDieValue] = useState(1)
   let [secondDieValue, setSecondDieValue] = useState(1)
-  let [diceTotal, setDiceTotal] = useState(0)
 
   const {active, activeRoll, sendRoll} = useContext(SocketContext)
 
@@ -22,7 +21,6 @@ const DiceRoll = () => {
       await setSecondDieValue(0)
       setFirstDieValue(Math.floor(Math.random() * 6) +1)
       setSecondDieValue(Math.floor(Math.random() * 6) +1)
-      setDiceTotal((prevTotal) => prevTotal + firstDieValue + secondDieValue)
       sendRoll(firstDieValue + secondDieValue);
       if(diceTotal > 20) {
         setDiceTotal(0)
@@ -51,7 +49,7 @@ const DiceRoll = () => {
         { secondDieValue === 6 ? <FaDiceSix className='die-2'/> : null }
       </div>
 
-      <span className='dice-count'> total: {diceTotal}</span>
+      <span className='dice-count'> total: {}</span>
 
       <button 
         className="roll"
