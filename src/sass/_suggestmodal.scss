@@ -1,0 +1,24 @@
+.suggestModal {
+  @include modalStyling;
+  width: 35vw;
+  height: 12.5vh;
+  left: 25vw;
+  top: 26vh;
+}
+
+.suggestText {
+  @include modalBodyText;
+}
+
+@media (max-width: 600px) {
+  .suggestModal {
+    @include modalMobileStyle;
+    width: 50vw;
+    height: 25vh;
+    left: 20vw;
+    top: 26.5vh;
+  }
+  .suggestText {
+    font-size: large;
+  }
+}
