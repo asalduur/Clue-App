@@ -1,10 +1,13 @@
 import Modal from "react-modal";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Accuse from "./Accuse";
 import Suggestion from "./Suggestion";
+import {SocketContext} from "../context/SocketContext"
 
 Modal.setAppElement("#root");
 const AccuseSuggest = ({ suggestAccuse, setSuggestAccuse }) => {
+  const {sendSuggest, currentRoom} = useContext(SocketContext)
+
   const [selectedWeapon, setSelectedWeapon] = useState("");
   const [selectedRoom, setSelectedRoom] = useState("");
   const [selectedSuspect, setSelectedSuspect] = useState("");
@@ -16,6 +19,7 @@ const AccuseSuggest = ({ suggestAccuse, setSuggestAccuse }) => {
   };
 
   const handleSuggest = () => {
+    sendSuggest(currentRoom, selectedWeapon, selectedSuspect)
     setSuggest(true);
   };
 
@@ -51,7 +55,7 @@ const AccuseSuggest = ({ suggestAccuse, setSuggestAccuse }) => {
             <option value="Baby"> Baby </option>
           </select>
 
-          <select
+          {/* <select
             className="roomSelect"
             onChange={(e) => setSelectedRoom(e.target.value)}
           >
@@ -65,7 +69,7 @@ const AccuseSuggest = ({ suggestAccuse, setSuggestAccuse }) => {
             <option value="Foyer"> Foyer </option>
             <option value="Garden"> Garden </option>
             <option value="Master Bedroom"> Master Bedroom </option>
-          </select>
+          </select> */}
 
           <select
             className="weaponSelect"
