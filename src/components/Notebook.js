@@ -50,10 +50,10 @@ const Notebook = () => {
             <thead>
               <tr>
                 <th>Suspects</th>
-                <th>P1</th>
-                <th>P2</th>
+                {/* <th>P1</th> */}
+                {/* <th>P2</th>
                 <th>P3</th>
-                <th>P4</th>
+                <th>P4</th> */}
               </tr>
             </thead>
             <tbody>
@@ -64,7 +64,7 @@ const Notebook = () => {
                     <td>
                       <input type="checkbox" />
                     </td>
-                    <td>
+                    {/* <td>
                       <input type="checkbox" />
                     </td>
                     <td>
@@ -72,7 +72,7 @@ const Notebook = () => {
                     </td>
                     <td>
                       <input type="checkbox" />
-                    </td>
+                    </td> */}
                   </tr>
                 );
               })}
@@ -82,10 +82,10 @@ const Notebook = () => {
             <thead>
               <tr>
                 <th>Weapons</th>
-                <th>P1</th>
-                <th>P2</th>
+                {/* <th>P1</th> */}
+                {/* <th>P2</th>
                 <th>P3</th>
-                <th>P4</th>
+                <th>P4</th> */}
               </tr>
             </thead>
             <tbody>
@@ -96,7 +96,7 @@ const Notebook = () => {
                     <td>
                       <input type="checkbox" />
                     </td>
-                    <td>
+                    {/* <td>
                       <input type="checkbox" />
                     </td>
                     <td>
@@ -104,7 +104,7 @@ const Notebook = () => {
                     </td>
                     <td>
                       <input type="checkbox" />
-                    </td>
+                    </td> */}
                   </tr>
                 );
               })}
@@ -114,10 +114,10 @@ const Notebook = () => {
             <thead>
               <tr>
                 <th>Locations</th>
-                <th>P1</th>
-                <th>P2</th>
+                {/* <th>P1</th> */}
+                {/* <th>P2</th>
                 <th>P3</th>
-                <th>P4</th>
+                <th>P4</th> */}
               </tr>
             </thead>
             <tbody>
@@ -125,7 +125,7 @@ const Notebook = () => {
                 return (
                   <tr key={id}>
                     <td>{room}</td>
-                    <td>
+                    {/* <td>
                       <input type="checkbox" />
                     </td>
                     <td>
@@ -133,7 +133,7 @@ const Notebook = () => {
                     </td>
                     <td>
                       <input type="checkbox" />
-                    </td>
+                    </td> */}
                     <td>
                       <input type="checkbox" />
                     </td>

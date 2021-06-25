@@ -3,10 +3,12 @@ import { useState, useContext } from "react";
 import Accuse from "./Accuse";
 import Suggestion from "./Suggestion";
 import {SocketContext} from "../context/SocketContext"
+import Waiting from "./Waiting"
+
 
 Modal.setAppElement("#root");
 const AccuseSuggest = ({ suggestAccuse, setSuggestAccuse }) => {
-  const {sendSuggest, currentRoom, active, activeSA} = useContext(SocketContext)
+  const {sendSuggest, currentRoom, active, activeSA, waiting, setWaiting} = useContext(SocketContext)
 
   const [selectedWeapon, setSelectedWeapon] = useState("");
   const [selectedRoom, setSelectedRoom] = useState("");
@@ -19,6 +21,8 @@ const AccuseSuggest = ({ suggestAccuse, setSuggestAccuse }) => {
   };
 
   const handleSuggest = () => {
+
+    setWaiting(true)
     sendSuggest(currentRoom, selectedWeapon, selectedSuspect)
     setModalOpen(false);
   };
@@ -102,6 +106,7 @@ const AccuseSuggest = ({ suggestAccuse, setSuggestAccuse }) => {
             selectedWeapon={selectedWeapon}
             setSuggestAccuse={setSuggestAccuse}
           /> */}
+
           <div className="flexBtns">
             <button className="btnSuggest" onClick={handleSuggest}>
               Suggest
@@ -109,9 +114,11 @@ const AccuseSuggest = ({ suggestAccuse, setSuggestAccuse }) => {
             <button className="btnAccuse" onClick={handleAccuse}>
               Accuse
             </button>
+
           </div>
         </div>
       </Modal>
+    <Waiting waiting={waiting} setWaiting={setWaiting}/>
     </div>
   );
 };

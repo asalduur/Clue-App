@@ -1257,6 +1257,9 @@ footer .notebook-container .close {
   footer .notebook-container .openNotebook table.weapons {
     margin-bottom: 5%;
   }
+  footer .notebook-container .openNotebook table.locations {
+    margin-bottom: 5%;
+  }
 }
 
 .typeTitle {

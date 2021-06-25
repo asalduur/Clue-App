@@ -4,7 +4,7 @@ import Accuse from "./Accuse";
 import { SocketContext } from "../context/SocketContext";
 
 const Suggestion = (props) => {
-  const { endTurn, currentRoom, active, proofmsg, activeAccuse } = useContext(
+  const { endTurn, currentRoom, active, proofmsg, activeAccuse, waiting, setWaiting } = useContext(
     SocketContext
   );
   const {
@@ -17,9 +17,10 @@ const Suggestion = (props) => {
     selectedWeapon,
     setSuggestAccuse,
   } = props;
-  // const [show, setShow] = useState(``)
+
 
   const handleEndTurn = () => {
+    setWaiting(false)
     setSuggest(false);
     setSuggestAccuse(false);
     endTurn();
