@@ -17,13 +17,16 @@ const DiceRoll = () => {
   const {active, activeRoll, sendRoll} = useContext(SocketContext)
 
   const handleRoll = async () => {
-    await setFirstDieValue(0)
-    await setSecondDieValue(0)
     if(active && activeRoll) {
+      await setFirstDieValue(0)
+      await setSecondDieValue(0)
       setFirstDieValue(Math.floor(Math.random() * 6) +1)
       setSecondDieValue(Math.floor(Math.random() * 6) +1)
       setDiceTotal((prevTotal) => prevTotal + firstDieValue + secondDieValue)
       sendRoll(firstDieValue + secondDieValue);
+      if(diceTotal > 20) {
+        setDiceTotal(0)
+      }
     }
   }
 
