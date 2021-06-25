@@ -29,6 +29,8 @@ export const SocketProvider = (props) => {
   const [inactiveRoll, setInactiveRoll] = useState(true);
   const [inactiveMsg, setInactiveMsg] = useState("");
   const [rolltotal, setRollTotal] = useState(0);
+  //Waiting added
+  const [waiting, setWaiting] = useState(false)
   const [fakeplayer, setFakePlayer] = useState({
     player: "Player 1",
     id: "O09aIvQ6mAvYpasGAAAH",
@@ -146,6 +148,7 @@ export const SocketProvider = (props) => {
         }
         setTimeout(() => {
           setProofMsg(null);
+          setWaiting(false)
           socket.emit("end-turn", aplayer);
         }, 7000);
       });
@@ -292,7 +295,9 @@ export const SocketProvider = (props) => {
         suggestion,
         proofmsg,
         players,
-        rolltotal
+        rolltotal,
+        waiting,
+        setWaiting
       }}>
       {props.children}
     </SocketContext.Provider>  
