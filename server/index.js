@@ -182,14 +182,16 @@ io.on('connection', (socket) => {
     players.forEach((p, i) => {
       if (p.id === body.id) {
         p.roll += body.rollvalue;
+        io.emit('send-roll-total', p);
       }
     });
     io.emit('update-players', players);
     players.forEach((p, i) => {
       if (p.id === body.id) {
-        if (p.roll >= 20) {
+        if (p.roll >= 2) {
           io.emit('room-choose', p);
           p.roll = 0;
+          socket.emit('send-roll-total', p);
         } else {
           const orderedplayers = getOtherPlayers(body);
           io.emit('player-start', orderedplayers[0]);
@@ -200,6 +202,7 @@ io.on('connection', (socket) => {
 
   socket.on('send-location', (body) => {
     const activeplayer = getActivePlayer(body);
+    //ADD CODE TO UPDATE PLAYER LOCATION ON BACKEND.
     io.emit('update-players', players);
     io.emit('accuse-suggest', activeplayer);
   });
@@ -248,7 +251,7 @@ io.on('connection', (socket) => {
     if (body.room === case_file.room && 
         body.weapon === case_file.weapon && 
         body.suspect === case_file.suspect) {
-          io.emit('game-win', {body, player: activeplayer.player})
+          io.emit('game-win', {body, player: activeplayer.player});
         } else {
           io.emit('player-lost', {body, player: activeplayer.player});
         }

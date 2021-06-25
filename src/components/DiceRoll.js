@@ -13,15 +13,19 @@ const DiceRoll = () => {
   let [firstDieValue, setFirstDieValue] = useState(1)
   let [secondDieValue, setSecondDieValue] = useState(1)
 
-  const {active, activeRoll, sendRoll} = useContext(SocketContext)
+  const {active, activeRoll, sendRoll, rolltotal} = useContext(SocketContext)
 
+  console.log(rolltotal);
+  
   const handleRoll = async () => {
     if(active && activeRoll) {
       await setFirstDieValue(0)
       await setSecondDieValue(0)
-      setFirstDieValue(Math.floor(Math.random() * 6) +1)
-      setSecondDieValue(Math.floor(Math.random() * 6) +1)
-      sendRoll(firstDieValue + secondDieValue);
+      let roll1 = Math.floor(Math.random() * 6) +1;
+      setFirstDieValue(roll1);
+      let roll2 = Math.floor(Math.random() * 6) +1;
+      setSecondDieValue(roll2);
+      sendRoll(roll1 + roll2);
     }
   }
 
@@ -46,7 +50,7 @@ const DiceRoll = () => {
         { secondDieValue === 6 ? <FaDiceSix className='die-2'/> : null }
       </div>
 
-      <span className='dice-count'> total: {}</span>
+      <span className='dice-count'> total: {rolltotal}</span>
 
       <button 
         className="roll"

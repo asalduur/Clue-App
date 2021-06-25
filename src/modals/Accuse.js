@@ -6,7 +6,7 @@ import {SocketContext} from "../context/SocketContext"
 
 const Accuse = (props) => {
 
-  const {currentRoom, sendAccusation, active, activeSA, activeAccuse} = useContext(SocketContext)
+  const {currentRoom, sendAccusation, active, activeSA, activeAccuse, playerlost} = useContext(SocketContext)
 
   const {
     accuse,
@@ -27,8 +27,9 @@ const Accuse = (props) => {
     if ((active && activeSA) || (active && activeAccuse)) {
       sendAccusation(currentRoom, selectedWeapon, selectedSuspect)
     }
-    setAccuse(false)
-    setSuggestAccuse(false)
+
+    setAccuse(false);
+    setSuggestAccuse(false);
   };
   console.log(currentRoom)
   return (
@@ -52,13 +53,6 @@ const Accuse = (props) => {
         </div>
 
         <WinModal win={win} />
-        <LoseModal
-          lose={lose}
-          setLose={setLose}
-          accuse={accuse}
-          setAccuse={setAccuse}
-          setSuggestAccuse={setSuggestAccuse}
-        />
       </Modal>
 
     </div>

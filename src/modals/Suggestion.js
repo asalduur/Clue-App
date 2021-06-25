@@ -5,7 +5,7 @@ import {SocketContext} from "../context/SocketContext"
 
 
 const Suggestion = (props) => {
-    const {endTurn, currentRoom, active, proofmessage} = useContext(SocketContext)
+    const {endTurn, currentRoom, active, proofmsg, activeAccuse} = useContext(SocketContext)
     const {suggest, setSuggest, accuse, setAccuse, selectedSuspect, selectedRoom, selectedWeapon, setSuggestAccuse} = props
     // const [show, setShow] = useState(``)
     
@@ -18,25 +18,14 @@ const Suggestion = (props) => {
     const handleAccuse = () => {
         setAccuse(true)
     }
-    
-    // useEffect(() => {
-    //         if (proof === '') {
-    //             setShow(`Your suggestion of ${selectedSuspect}, ${currentRoom}, and ${selectedWeapon} could not be proved false`) 
-    //         }
-    
-    //         else {
-    //             setShow(`Your suggestion of ${selectedSuspect}, ${selectedRoom}, and ${selectedWeapon} could be proved false with ${proof}`)
-    //         }
-    //     }, [selectedSuspect, selectedRoom, selectedWeapon])
 
     return (
-        <Modal isOpen={suggest}>
-            {/* {show} */}
+        <Modal isOpen={activeAccuse || proofmsg ? true : false}>
 
             <div>
-            {active && proofmessage ? proofmessage : null}
-            <button onClick={handleEndTurn}> End Turn </button>
-            <button onClick={handleAccuse}> Accuse </button>
+            <p>{proofmsg ? proofmsg : 'No one could prove your suggestion incorrect. Would you like to accuse?'}</p>
+            {activeAccuse ? <button onClick={handleEndTurn}> End Turn </button> : null}
+            {!proofmsg ? <button onClick={handleAccuse}> Accuse </button> : null}
             <Accuse accuse={accuse} setAccuse={setAccuse} selectedSuspect={selectedSuspect} selectedRoom={selectedRoom} selectedWeapon={selectedWeapon} setSuggestAccuse={setSuggestAccuse}/>
            
             

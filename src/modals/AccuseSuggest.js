@@ -6,13 +6,13 @@ import {SocketContext} from "../context/SocketContext"
 
 Modal.setAppElement("#root");
 const AccuseSuggest = ({ suggestAccuse, setSuggestAccuse }) => {
-  const {sendSuggest, currentRoom} = useContext(SocketContext)
+  const {sendSuggest, currentRoom, active, activeSA} = useContext(SocketContext)
 
   const [selectedWeapon, setSelectedWeapon] = useState("");
   const [selectedRoom, setSelectedRoom] = useState("");
   const [selectedSuspect, setSelectedSuspect] = useState("");
   const [accuse, setAccuse] = useState(false);
-  const [suggest, setSuggest] = useState(false);
+  const [modalOpen, setModalOpen] = useState(true);
 
   const handleAccuse = () => {
     setAccuse(true);
@@ -20,7 +20,7 @@ const AccuseSuggest = ({ suggestAccuse, setSuggestAccuse }) => {
 
   const handleSuggest = () => {
     sendSuggest(currentRoom, selectedWeapon, selectedSuspect)
-    setSuggest(true);
+    setModalOpen(false);
   };
 
   const handleSetWeapon = (e) => {
@@ -37,7 +37,7 @@ const AccuseSuggest = ({ suggestAccuse, setSuggestAccuse }) => {
 
   return (
     <div>
-      <Modal isOpen={suggestAccuse} className="accuseSuggestModal">
+      <Modal isOpen={active && activeSA && modalOpen} className="accuseSuggestModal">
         <button className="closeModal" onClick={handleCloseModal}>
           X
         </button>
@@ -94,16 +94,14 @@ const AccuseSuggest = ({ suggestAccuse, setSuggestAccuse }) => {
             selectedWeapon={selectedWeapon}
             setSuggestAccuse={setSuggestAccuse}
           />
-          <Suggestion
-            suggest={suggest}
-            setSuggest={setSuggest}
+          {/* <Suggestion
             accuse={accuse}
             setAccuse={setAccuse}
             selectedSuspect={selectedSuspect}
             selectedRoom={selectedRoom}
             selectedWeapon={selectedWeapon}
             setSuggestAccuse={setSuggestAccuse}
-          />
+          /> */}
           <div className="flexBtns">
             <button className="btnSuggest" onClick={handleSuggest}>
               Suggest

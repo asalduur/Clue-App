@@ -4,7 +4,7 @@ import {SocketContext} from "../context/SocketContext"
 
 const LoseModal = (props) => {
 
-  const {lossmsg} = useContext(SocketContext)
+  const {lossmsg, playerlost} = useContext(SocketContext)
   const { lose, setLose, accuse, setAccuse, setSuggestAccuse } = props;
 
   const handleWatch = () => {
@@ -15,7 +15,7 @@ const LoseModal = (props) => {
   };
 
   return (
-    <Modal isOpen={true} className="loseModal">
+    <Modal isOpen={lossmsg ? true : false} className="loseModal">
       <h1 className="loseText"> {lossmsg} </h1>
       <div className="flexBtns">
         <button className="continueBtn" onClick={handleWatch}>
