@@ -257,6 +257,7 @@ export const SocketProvider = (props) => {
         player,
         active,
         activeRoll,
+        activeRoom,
         fakeplayer,
         currentRoom,
         setCurrentRoom,

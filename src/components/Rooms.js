@@ -1,26 +1,24 @@
 import { SocketContext } from "../context/SocketContext";
 import { useContext } from "react";
 
-const Rooms = ({ roomNames, player }) => {
+const Rooms = ({ roomNames}) => {
   const {
     currentRoom,
     setCurrentRoom,
     active,
     activeRoom,
     sendRoom,
+    player
   } = useContext(SocketContext);
-  console.log(player);
 
   const changeRoom = (room) => {
-    console.log(room);
-    // Will be using below code to allow for only active user to select room and not allow it all the time.
-    // if (active && activeRoom) {
-    //   setCurrentRoom(room);
-    //   sendRoom(room);
-    // }
-    setCurrentRoom(room);
+    if (active && activeRoom) {
+      setCurrentRoom(room);
+      sendRoom(room);
+    }
   };
-  console.log("current room: ", currentRoom);
+
+  
   return (
     <>
       {roomNames.map((room, index) => {

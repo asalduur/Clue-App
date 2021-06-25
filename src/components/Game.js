@@ -5,7 +5,6 @@ import Player from "./Player";
 import DiceRoll from "./DiceRoll";
 import AccuseSuggest from "../modals/AccuseSuggest";
 import Notebook from "./Notebook";
-import RollNotification from "../modals/RollNotification";
 
 //import rooms, weapons, and people from sockets here
 
@@ -37,7 +36,6 @@ const Game = () => {
         </div>
       </div>
       <Notebook />
-      {/* <RollNotification /> */}
     </>
   );
 };
