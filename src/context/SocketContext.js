@@ -1,8 +1,6 @@
-import {createContext, useState, useEffect, useRef} from 'react';
-import io from 'socket.io-client';
-import {useHistory} from 'react-router-dom';
-
-
+import { createContext, useState, useEffect, useRef } from "react";
+import io from "socket.io-client";
+import { useHistory } from "react-router-dom";
 
 export const SocketContext = createContext();
 
@@ -30,7 +28,7 @@ export const SocketProvider = (props) => {
   const [inactiveMsg, setInactiveMsg] = useState("");
   const [rolltotal, setRollTotal] = useState(0);
   //Waiting added
-  const [waiting, setWaiting] = useState(false)
+  const [waiting, setWaiting] = useState(false);
   const [fakeplayer, setFakePlayer] = useState({
     player: "Player 1",
     id: "O09aIvQ6mAvYpasGAAAH",
@@ -67,14 +65,13 @@ export const SocketProvider = (props) => {
         alert(msg);
       });
 
-
-      socket.on('update-players', (players) => {
-        console.log('UPDATE PLAYERS - PLAYERS:', players);
-        console.log('UPDATE PLAYERS SOCKET ID:', socket.id);
+      socket.on("update-players", (players) => {
+        console.log("UPDATE PLAYERS - PLAYERS:", players);
+        console.log("UPDATE PLAYERS SOCKET ID:", socket.id);
         setPlayers(players);
         const fplayer = players.find((p, i) => {
           if (p.id === socket.id) {
-            console.log('P:', p);
+            console.log("P:", p);
             return p;
           }
         });
@@ -86,19 +83,16 @@ export const SocketProvider = (props) => {
         //       return p;
         //     }
         //   });
-          
+
         // });
-
-
-        
-      })
-      socket.on('case-file', (casefile) => {
+      });
+      socket.on("case-file", (casefile) => {
         setCaseFile(casefile);
       });
-      socket.on('player-start', (start_player) => {
+      socket.on("player-start", (start_player) => {
         setLossMsg(null);
         if (start_player.id === socket.id) {
-          console.log('PLAYER START STARTPLAYER:', start_player);
+          console.log("PLAYER START STARTPLAYER:", start_player);
           setActive(true);
           setActiveRoll(true);
         } else {
@@ -106,7 +100,7 @@ export const SocketProvider = (props) => {
           setActiveRoll(false);
           setInactiveMsg(`Player ${start_player.player} is currently rolling.`);
         }
-        history.push('/game');
+        history.push("/game");
       });
       socket.on("room-choose", (a_player) => {
         console.log(a_player);
@@ -148,7 +142,7 @@ export const SocketProvider = (props) => {
         }
         setTimeout(() => {
           setProofMsg(null);
-          setWaiting(false)
+          setWaiting(false);
           socket.emit("end-turn", aplayer);
         }, 7000);
       });
@@ -216,13 +210,13 @@ export const SocketProvider = (props) => {
       socket.on("update-messages", () => {
         setInactiveMsg(null);
       });
-      socket.on('send-roll-total', (aplayer) => {
-        console.log('PLAYERROLLPLAYER:', aplayer);
-        console.log('PLAYER:', player);
+      socket.on("send-roll-total", (aplayer) => {
+        console.log("PLAYERROLLPLAYER:", aplayer);
+        console.log("PLAYER:", player);
         if (playerRef.current.id === aplayer.id) {
-          setRollTotal(aplayer.roll)
+          setRollTotal(aplayer.roll);
         }
-      })
+      });
     }
   }, [socket]);
 
@@ -235,8 +229,8 @@ export const SocketProvider = (props) => {
   };
 
   const gameStart = () => {
-    socket.emit('game-start');
-  }
+    socket.emit("game-start");
+  };
 
   const sendRoll = (rollvalue) => {
     if (active && activeRoll) {
@@ -267,7 +261,6 @@ export const SocketProvider = (props) => {
     socket.emit("end-turn", { id: socket.id });
   };
 
-
   return (
     <SocketContext.Provider
       value={{
@@ -297,9 +290,10 @@ export const SocketProvider = (props) => {
         players,
         rolltotal,
         waiting,
-        setWaiting
-      }}>
+        setWaiting,
+      }}
+    >
       {props.children}
-    </SocketContext.Provider>  
-  )
-}
+    </SocketContext.Provider>
+  );
+};
