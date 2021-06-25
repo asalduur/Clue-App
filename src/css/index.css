@@ -92,6 +92,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  max-width: 15vw;
 }
 
 @media (max-width: 600px) {
@@ -112,6 +113,7 @@
     -ms-flex-pack: distribute;
         justify-content: space-around;
     margin-bottom: 5%;
+    max-width: 100%;
   }
 }
 
@@ -547,27 +549,53 @@
   font-size: larger;
 }
 
+.infoText {
+  max-width: 20vw;
+  margin-top: 15%;
+}
+
+.playerInfo {
+  max-width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 @media (max-width: 600px) {
   .redToken {
-    margin-top: 45%;
+    margin-top: 15%;
   }
   .greenToken {
-    margin-top: 45%;
+    margin-top: 15%;
   }
   .purpleToken {
-    margin-top: 45%;
+    margin-top: 15%;
   }
   .orangeToken {
-    margin-top: 45%;
+    margin-top: 15%;
   }
   .yellowToken {
-    margin-top: 45%;
+    margin-top: 15%;
   }
   .blueToken {
-    margin-top: 45%;
+    margin-top: 15%;
   }
   .playerName {
     font-size: medium;
+  }
+  .playerInfo {
+    min-width: 50vw;
+  }
+  .infoText {
+    max-width: 35vw;
+    padding-left: 5%;
   }
 }
 
@@ -1028,6 +1056,52 @@
   }
 }
 
+.suggestModal {
+  background-color: white;
+  border: 1px solid #6e8898;
+  border-radius: 5px;
+  position: absolute;
+  top: 25vh;
+  left: 25vw;
+  padding: 2%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 35vw;
+  height: 12.5vh;
+  left: 25vw;
+  top: 26vh;
+}
+
+.suggestText {
+  font-size: 18px;
+  margin-bottom: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  text-align: center;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+@media (max-width: 600px) {
+  .suggestModal {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 5%;
+    width: 50vw;
+    height: 25vh;
+    left: 20vw;
+    top: 26.5vh;
+  }
+  .suggestText {
+    font-size: large;
+  }
+}
+
 footer {
   position: absolute;
   bottom: 0;
@@ -1183,5 +1257,25 @@ footer .notebook-container .close {
   footer .notebook-container .openNotebook table.weapons {
     margin-bottom: 5%;
   }
+}
+
+.typeTitle {
+  font-size: larger;
+  text-align: center;
+  color: #ffd803;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.cards {
+  font-size: medium;
+  text-align: center;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.handText {
+  text-align: center;
+  font-size: x-large;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 800;
 }
 /*# sourceMappingURL=index.css.map */

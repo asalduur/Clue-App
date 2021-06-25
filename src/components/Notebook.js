@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Hand from "./Hand";
 
 const Notebook = () => {
   const [showNotebook, setShowNotebook] = useState(false);
@@ -141,6 +142,7 @@ const Notebook = () => {
               })}
             </tbody>
           </table>
+          <Hand />
         </div>
       </div>
     </footer>
