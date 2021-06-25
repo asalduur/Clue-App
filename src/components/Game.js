@@ -5,11 +5,14 @@ import Player from "./Player";
 import DiceRoll from "./DiceRoll";
 import AccuseSuggest from "../modals/AccuseSuggest";
 import Notebook from "./Notebook";
+import WinModal from "../modals/WinModal";
+import LoseModal from "../modals/LoseModal";
+import RollNotification from "../modals/RollNotification";
 
 //import rooms, weapons, and people from sockets here
 
 const Game = () => {
-
+  const { playerwin, playerlost } = useContext(SocketContext);
   const [suggestAccuse, setSuggestAccuse] = useState(false);
 
   const handleOpenSuggestAccuse = () => {
@@ -36,6 +39,9 @@ const Game = () => {
         </div>
       </div>
       <Notebook />
+      {playerwin ? <WinModal/> : null}
+      {playerlost ? <LoseModal/> : null}
+      {/* <RollNotification /> */}
     </>
   );
 };

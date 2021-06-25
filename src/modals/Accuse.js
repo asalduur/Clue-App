@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Modal from "react-modal";
 import WinModal from "./WinModal";
 import LoseModal from "./LoseModal";
+import {SocketContext} from "../context/SocketContext"
 
 const Accuse = (props) => {
+
+  const {currentRoom, sendAccusation, active, activeSA, activeAccuse} = useContext(SocketContext)
+
   const {
     accuse,
     setAccuse,
@@ -14,26 +18,19 @@ const Accuse = (props) => {
   } = props;
   const [win, setWin] = useState(false);
   const [lose, setLose] = useState(false);
-  const realSuspect = "Butler";
-  const realRoom = "Grotto";
-  const realWeapon = "IcePick";
 
   const handleBack = () => {
     setAccuse(false);
   };
 
   const handleConfirm = () => {
-    if (
-      selectedSuspect === realSuspect &&
-      selectedRoom === realRoom &&
-      selectedWeapon === realWeapon
-    ) {
-      setWin(true);
-    } else {
-      setLose(true);
+    if ((active && activeSA) || (active && activeAccuse)) {
+      sendAccusation(currentRoom, selectedWeapon, selectedSuspect)
     }
+    setAccuse(false)
+    setSuggestAccuse(false)
   };
-
+  console.log(currentRoom)
   return (
     <div>
       <Modal isOpen={accuse} className="accuseModal">
@@ -42,7 +39,7 @@ const Accuse = (props) => {
           {" "}
           Are you sure you want to accuse{" "}
           <span className="selectedText">{selectedSuspect}</span> in the{" "}
-          <span className="selectedText">{selectedRoom}</span> with the{" "}
+          <span className="selectedText">{currentRoom}</span> with the{" "}
           <span className="selectedText">{selectedWeapon}</span>.
         </h2>
         <div className="flexBtns">
@@ -63,6 +60,7 @@ const Accuse = (props) => {
           setSuggestAccuse={setSuggestAccuse}
         />
       </Modal>
+
     </div>
   );
 };
