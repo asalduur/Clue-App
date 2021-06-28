@@ -1,7 +1,7 @@
 import { SocketContext } from "../context/SocketContext";
 import { useContext } from "react";
 
-const Rooms = ({ roomNames}) => {
+const Rooms = ({ roomNames, modalOpen, setModalOpen}) => {
   const {
     currentRoom,
     setCurrentRoom,
@@ -15,6 +15,7 @@ const Rooms = ({ roomNames}) => {
     if (active && activeRoom) {
       setCurrentRoom(room);
       sendRoom(room);
+      setModalOpen(true);
     }
   };
 

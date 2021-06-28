@@ -21,6 +21,8 @@ export const SocketProvider = (props) => {
   const [lossmsg, setLossMsg] = useState(null);
   const [winmsg, setWinMsg] = useState(null);
   const [proofmsg, setProofMsg] = useState(null);
+  const [myProof, setMyProof] = useState(null);
+  const [inactiveProof, setInactiveProof] = useState(null);
   const [resetmsg, setResetMsg] = useState(null);
   const [playerlost, setPlayerLost] = useState(false);
   const [playerwin, setPlayerWin] = useState(false);
@@ -127,20 +129,34 @@ export const SocketProvider = (props) => {
         const { aplayer, player, card } = p;
 
         setSuggestion(null);
+        setWaiting(false);
+        setInactiveProof(`Player ${player.player} proves the suggestion incorrect!`);
+        if (playerRef.current.id === player.id) {
+          setMyProof(`I just proved Player ${aplayer.player}'s suggestion incorrect with the ${card.suspect ? card.suspect : ''}
+          ${card.room ? card.room : ''}${card.weapon ? card.weapon : ''}.`);
+        }
         if (card.suspect) {
+          console.log('SUSPECT PROOF')
           setProofMsg(`Player ${player.player} proves beyond a shadow of doubt 
           the ${card.suspect} wasn't involved!`);
         } else if (card.room) {
+          console.log('ROOM PROOF')
           setProofMsg(`Player ${player.player} proves beyond a shadow of doubt 
           that it didn't happen in the ${card.room}!`);
         } else if (card.weapon) {
+          console.log('WEAPON PROOF')
           setProofMsg(`Player ${player.player} proves beyond a shadow of doubt 
           that a ${card.weapon} couldn't have been the murder weapon!`);
         }
         if (aplayer.id === player.id) {
           setActiveSA(false);
+          // setWaiting(false);
+          
         }
         setTimeout(() => {
+          setInactiveProof(false);
+          setMyProof(null);
+          setInactiveProof(null);
           setProofMsg(null);
           setWaiting(false);
           socket.emit("end-turn", aplayer);
@@ -157,23 +173,30 @@ export const SocketProvider = (props) => {
           );
           setPlayerLost(true);
           setActiveSA(false);
+          setActiveAccuse(false);
         }
         setTimeout(() => {
           if (body.id === socket.id) {
-            // setPlayerLost(true);
+            setLossMsg(null);
             // setActiveSA(false);
             socket.disconnect({ lost: true });
           }
         }, 7000);
       });
       socket.on("game-win", (data) => {
-        const { body } = data;
+        const { body, player } = data;
+        if (playerRef.current.id !== body.id) {
         setInactiveMsg(
-          `Player ${body[1].player} accused ${body[0].suspect} of murdering Mr. Boddy in the ${body[0].room} with a ${body[0].weapon}, and WON!`
+          `Player ${player} accused the ${body.suspect} of murdering Mr. Boddy in the ${body.room} with a ${body.weapon}, and WON!`
         );
+        } else {
+        setActiveSA(false);
+        setActiveAccuse(false);
         setWinMsg(
-          `You accused ${body[0].suspect} of murdering Mr. Boddy in the ${body[0].room} with a ${body[0].weapon}, and WON!`
+          `You accused the ${body.suspect} of murdering Mr. Boddy in the ${body.room} with a ${body.weapon}, and WON!`
         );
+        }
+        
         setTimeout(() => {
           if (body.id !== socket.id) {
             setPlayerLost(true);
@@ -181,8 +204,9 @@ export const SocketProvider = (props) => {
             setPlayerWin(true);
           }
           setResetMsg(
-            `Player ${body[1].player} has won and the game has ended. Please refresh your browser to join a new game.`
+            `Player ${player} has won and the game has ended. Please refresh your browser to join a new game.`
           );
+          setWinMsg(null);
           socket.emit("game-reset");
         }, 7000);
       });
@@ -192,6 +216,8 @@ export const SocketProvider = (props) => {
           setInactiveMsg(
             `Player ${activeplayer.player} is suggesting that the ${body.suspect} killed Mr. Boddy in the ${body.room} with a ${body.weapon}.`
           );
+        } else {
+          setWaiting(true);
         }
         // if (playerRef.current.id === activeplayer.id) {
         //   setActiveSA(false);
@@ -200,6 +226,7 @@ export const SocketProvider = (props) => {
       socket.on("accuse-choice", (player) => {
         if (playerRef.current.id === player.id) {
           setActiveSA(false);
+          setWaiting(false);
           setActiveAccuse(true);
         } else {
           setInactiveMsg(
@@ -211,8 +238,6 @@ export const SocketProvider = (props) => {
         setInactiveMsg(null);
       });
       socket.on("send-roll-total", (aplayer) => {
-        console.log("PLAYERROLLPLAYER:", aplayer);
-        console.log("PLAYER:", player);
         if (playerRef.current.id === aplayer.id) {
           setRollTotal(aplayer.roll);
         }
@@ -291,6 +316,10 @@ export const SocketProvider = (props) => {
         rolltotal,
         waiting,
         setWaiting,
+        resetmsg,
+        inactiveProof,
+        setInactiveProof,
+        myProof
       }}
     >
       {props.children}

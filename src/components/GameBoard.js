@@ -1,16 +1,16 @@
 import Rooms from "./Rooms";
 
-const GameBoard = () => {
+const GameBoard = ({modalOpen, setModalOpen}) => {
   const roomNames = [
-    { room: "grotto" },
-    { room: "pool-house" },
-    { room: "library" },
-    { room: "kitchen" },
-    { room: "foyer" },
-    { room: "wine-cellar" },
-    { room: "basement" },
-    { room: "garden" },
-    { room: "master-bedroom" },
+    { room: "Grotto" },
+    { room: "Pool-House" },
+    { room: "Library" },
+    { room: "Kitchen" },
+    { room: "Foyer" },
+    { room: "Wine-Cellar" },
+    { room: "Basement" },
+    { room: "Garden" },
+    { room: "Master-Bedroom" },
   ];
 
 
@@ -19,7 +19,7 @@ const GameBoard = () => {
     <>
       <div className="gameBoard">
         <div className="flexBoard">
-          <Rooms roomNames={roomNames}/>
+          <Rooms modalOpen={modalOpen} setModalOpen={setModalOpen} roomNames={roomNames}/>
         </div>
       </div>
     </>

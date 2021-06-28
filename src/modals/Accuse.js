@@ -3,19 +3,13 @@ import Modal from "react-modal";
 import WinModal from "./WinModal";
 import LoseModal from "./LoseModal";
 import {SocketContext} from "../context/SocketContext"
+import { GameContext } from "../context/GameContext";
 
 const Accuse = (props) => {
 
   const {currentRoom, sendAccusation, active, activeSA, activeAccuse, playerlost} = useContext(SocketContext)
+  const {accuse, setAccuse, selectedSuspect, selectedRoom, selectedWeapon,} = useContext(GameContext);
 
-  const {
-    accuse,
-    setAccuse,
-    selectedSuspect,
-    selectedRoom,
-    selectedWeapon,
-    setSuggestAccuse,
-  } = props;
   const [win, setWin] = useState(false);
   const [lose, setLose] = useState(false);
 
@@ -27,11 +21,9 @@ const Accuse = (props) => {
     if ((active && activeSA) || (active && activeAccuse)) {
       sendAccusation(currentRoom, selectedWeapon, selectedSuspect)
     }
-
     setAccuse(false);
-    setSuggestAccuse(false);
   };
-  console.log(currentRoom)
+
   return (
     <div>
       <Modal isOpen={accuse} className="accuseModal">
@@ -44,10 +36,10 @@ const Accuse = (props) => {
           <span className="selectedText">{selectedWeapon}</span>.
         </h2>
         <div className="flexBtns">
-          <button className="backBtn" onClick={handleBack}>
+          <button className="backBtn" onClick={() => handleBack()}>
             Back
           </button>
-          <button className="confirmBtn" onClick={handleConfirm}>
+          <button className="confirmBtn" onClick={() => handleConfirm()}>
             Confirm
           </button>
         </div>

@@ -23,10 +23,10 @@ const cards = [
     { room: "Library" },
     { room: "Kitchen" },
     { room: "Basement" },
-    { room: "Wine Cellar" },
+    { room: "Wine-Cellar" },
     { room: "Foyer" },
     { room: "Garden" },
-    { room: "Master Bedroom" },
+    { room: "Master-Bedroom" },
   ],
   [
     { suspect: "Butler" },
@@ -199,6 +199,7 @@ io.on("connection", (socket) => {
         1
       );
       case_file = { ...murder_weapon, ...murder_perp, ...murder_room };
+      console.log('CASE_FILE:', case_file);
       let cardArray = [...weaponArr, ...roomArr, ...peopleArr];
 
       cardArray.sort(function () {
@@ -304,6 +305,8 @@ io.on("connection", (socket) => {
   socket.on("send-accusation", (body) => {
     const activeplayer = getActivePlayer(body);
     const otherplayers = getOtherPlayers(body);
+    console.log('ACCUSATION-BODY:', body);
+    console.log('ACCUSATION CASE_FILE:', case_file);
     if (
       body.room === case_file.room &&
       body.weapon === case_file.weapon &&
