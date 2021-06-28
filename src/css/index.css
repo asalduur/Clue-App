@@ -118,7 +118,7 @@
 }
 
 .GrottoBackground {
-  background-image: url("https://i.natgeofe.com/n/f3500942-4eb9-4dfa-b6c9-53cd5510cd46/47789.jpg?w=636&h=464");
+  background-image: url("../assets/grotto.jpg");
   width: 20vw;
   height: 20vh;
   margin-top: 1%;
@@ -126,7 +126,7 @@
 }
 
 .Pool-HouseBackground {
-  background-image: url("https://camblab.info/wp-content/uploads/2017/02/pool-water.jpg");
+  background-image: url("../assets/pool-house.jpg");
   width: 20vw;
   height: 20vh;
   margin-top: 1%;
@@ -134,7 +134,7 @@
 }
 
 .LibraryBackground {
-  background-image: url("https://media-exp1.licdn.com/dms/image/C4D12AQHhqwC7hIgJAw/article-cover_image-shrink_720_1280/0/1588327869583?e=1628726400&v=beta&t=VY855dPQZ2AYQDXgYhPGGUtfZZr-LXUSnqbT0LixfGc");
+  background-image: url("../assets/library.jpg");
   width: 20vw;
   height: 20vh;
   margin-top: 1%;
@@ -142,7 +142,7 @@
 }
 
 .KitchenBackground {
-  background-image: url("https://media.istockphoto.com/photos/bowls-and-spoons-for-a-measurement-picture-id1168852146?k=6&m=1168852146&s=612x612&w=0&h=NOkDNBdZPUuZzQ4Ap_WH82xyYAUUIS3lhCrJoV-bBpI=");
+  background-image: url("../assets/kitchen.jpg");
   width: 20vw;
   height: 20vh;
   margin-top: 1%;
@@ -150,7 +150,7 @@
 }
 
 .BasementBackground {
-  background-image: url("https://static.tvtropes.org/pmwiki/pub/images/basement_1558.jpg");
+  background-image: url("../assets/basement.jpg");
   width: 20vw;
   height: 20vh;
   margin-top: 1%;
@@ -158,7 +158,7 @@
 }
 
 .Wine-CellarBackground {
-  background-image: url("https://images.unsplash.com/photo-1611575189074-9dfbbceb258a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8d2luZSUyMGNlbGxhcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80");
+  background-image: url("../assets/wine-cellar.jpg");
   width: 20vw;
   height: 20vh;
   margin-top: 1%;
@@ -166,7 +166,7 @@
 }
 
 .FoyerBackground {
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTOSgyRybcjvuKwH9DWOHAjYE8ymdfsU87GA&usqp=CAU");
+  background-image: url("../assets/foyer.jpg");
   width: 20vw;
   height: 20vh;
   margin-top: 1%;
@@ -174,7 +174,7 @@
 }
 
 .GardenBackground {
-  background-image: url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-gardening-tools-amazon-1520283471.jpg?crop=1.00xw:0.752xh;0,0.202xh&resize=1200:*");
+  background-image: url("../assets/garden.jpg");
   width: 20vw;
   height: 20vh;
   margin-top: 1%;
@@ -182,7 +182,7 @@
 }
 
 .Master-BedroomBackground {
-  background-image: url("https://i.pinimg.com/originals/8a/f7/b0/8af7b0988bf5348cbeb77c9ab9156b30.jpg");
+  background-image: url("../assets/master-bedroom.jpg");
   width: 20vw;
   height: 20vh;
   margin-top: 1%;
