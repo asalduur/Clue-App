@@ -1,0 +1,64 @@
+.ruleModal {
+  @include modalStyling;
+  width: 45vw;
+  height: fit-content;
+}
+
+.largeText {
+  font-family: $font-secondary;
+  font-size: x-large;
+  color: $color-darker;
+  padding-bottom: 3%;
+}
+
+.subheader {
+  font-family: $font-secondary;
+  font-size: large;
+  color: $color-darker;
+  padding-bottom: 2%;
+}
+
+.listText {
+  font-family: $font-main;
+  font-size: medium;
+  padding-bottom: 2%;
+}
+
+.closeBtn {
+  @include closeModalBtn;
+}
+
+@media (max-width: 850px) {
+  .ruleModal {
+    @include modalMobileStyle;
+    top: 3vh;
+  }
+  .largeText {
+    font-size: medium;
+  }
+  .subheader {
+    font-size: small;
+  }
+  .listText {
+    font-size: smaller;
+  }
+}
+
+@media (max-width: 600px) {
+  .ruleModal {
+    @include modalMobileStyle;
+    padding: 2%;
+    width: 75vw;
+    top: 15vh;
+    left: 10vw;
+  }
+  .largeText {
+    font-size: larger;
+  }
+  .subheader {
+    font-size: medium;
+  }
+  .listText {
+    font-size: small;
+  }
+}
