@@ -7,13 +7,9 @@ import {SocketContext} from "../context/SocketContext"
 const WinModal = (props) => {
   const {winmsg} = useContext(SocketContext)
 
-  const { win } = props;
-
   return (
     <Modal className="winModal" isOpen={winmsg ? true : false}>
       <h1 className="winText"> {winmsg} </h1>
-
-      <button className="playAgainBtn"> Play Again </button>
     </Modal>
   );
 };

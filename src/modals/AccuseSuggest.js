@@ -4,45 +4,51 @@ import Accuse from "./Accuse";
 import Suggestion from "./Suggestion";
 import {SocketContext} from "../context/SocketContext"
 import Waiting from "./Waiting"
+import { GameContext } from "../context/GameContext";
 
 
 Modal.setAppElement("#root");
-const AccuseSuggest = ({ suggestAccuse, setSuggestAccuse }) => {
-  const {sendSuggest, currentRoom, active, activeSA, waiting, setWaiting} = useContext(SocketContext)
+const AccuseSuggest = ({ modalOpen, setModalOpen }) => {
+  const {sendSuggest, currentRoom, active, activeSA, waiting, setWaiting} = useContext(SocketContext);
+  const {accuse, setAccuse, selectedWeapon, setSelectedWeapon, 
+        selectedSuspect, setSelectedSuspect, selectedRoom, setSelectedRoom} = useContext(GameContext);
 
-  const [selectedWeapon, setSelectedWeapon] = useState("");
-  const [selectedRoom, setSelectedRoom] = useState("");
-  const [selectedSuspect, setSelectedSuspect] = useState("");
-  const [accuse, setAccuse] = useState(false);
-  const [modalOpen, setModalOpen] = useState(true);
+
+  // const [modalOpen, setModalOpen] = useState(true);
 
   const handleAccuse = () => {
+    if (currentRoom && selectedWeapon && selectedSuspect) {
     setAccuse(true);
+    } else {
+      alert('Please select a weapon and suspect!');
+    }
   };
 
   const handleSuggest = () => {
-
-    setWaiting(true)
-    sendSuggest(currentRoom, selectedWeapon, selectedSuspect)
+    if (currentRoom && selectedWeapon && selectedSuspect) {
+    sendSuggest(currentRoom, selectedWeapon, selectedSuspect);
+    setWaiting(true);
     setModalOpen(false);
+    } else {
+      alert('Please select a weapon and suspect!');
+    }
   };
 
   const handleSetWeapon = (e) => {
     setSelectedWeapon(e.target.value);
   };
 
-  const handleCloseModal = () => {
-    setSuggestAccuse(false);
-  };
+  // const handleCloseModal = () => {
+  //   setSuggestAccuse(false);
+  //   setModalOpen(false);
 
-  console.log(selectedWeapon);
-  console.log(selectedRoom);
-  console.log(selectedSuspect);
+  // };
+
 
   return (
     <div>
       <Modal isOpen={active && activeSA && modalOpen} className="accuseSuggestModal">
-        <button className="closeModal" onClick={handleCloseModal}>
+        <button className="closeModal" onClick={() => setModalOpen(!modalOpen)}>
           X
         </button>
         <div className="modal_display">
@@ -90,28 +96,14 @@ const AccuseSuggest = ({ suggestAccuse, setSuggestAccuse }) => {
         </div>
 
         <div>
-          <Accuse
-            accuse={accuse}
-            setAccuse={setAccuse}
-            selectedSuspect={selectedSuspect}
-            selectedRoom={selectedRoom}
-            selectedWeapon={selectedWeapon}
-            setSuggestAccuse={setSuggestAccuse}
-          />
-          {/* <Suggestion
-            accuse={accuse}
-            setAccuse={setAccuse}
-            selectedSuspect={selectedSuspect}
-            selectedRoom={selectedRoom}
-            selectedWeapon={selectedWeapon}
-            setSuggestAccuse={setSuggestAccuse}
-          /> */}
+          <Accuse />
+          <Suggestion />
 
           <div className="flexBtns">
-            <button className="btnSuggest" onClick={handleSuggest}>
+            <button className="btnSuggest" onClick={() => handleSuggest()}>
               Suggest
             </button>
-            <button className="btnAccuse" onClick={handleAccuse}>
+            <button className="btnAccuse" onClick={() => handleAccuse()}>
               Accuse
             </button>
 
