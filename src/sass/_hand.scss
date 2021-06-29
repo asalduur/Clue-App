@@ -1,19 +1,29 @@
-.typeTitle {
-  font-size: larger;
-  text-align: center;
-  color: $color-pop;
-  font-family: $font-secondary;
-}
+.handBox {
+  @include table;
+  border: none;
 
-.cards {
-  font-size: medium;
-  text-align: center;
-  font-family: $font-main;
-}
+  .handText {
+    @include table-thead;
+    @include table-thead-th;
+  }
+  .typeTitle {
+    // font-size: larger;
+    // text-align: center;
+    // color: $color-pop;
+    // font-family: $font-secondary;
+    @include table-thead;
+    // border: 1px solid $color-darkest;
+    background: $color-pop;
+  }
+  .cards {
+    font-size: medium;
+    text-align: center;
+    font-family: $font-main;
+  }
 
-.handText {
-  text-align: center;
-  font-size: x-large;
-  font-family: $font-secondary;
-  font-weight: 800;
+  .noCards {
+    color: red;
+    font-style: italic;
+  }
+
 }

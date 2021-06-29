@@ -1763,24 +1763,37 @@ footer .notebook-container .close {
   }
 }
 
-.typeTitle {
-  font-size: larger;
+.handBox {
+  border: 1px solid #141222;
+  background: #e3f6f5;
+  margin: 0 20px;
   text-align: center;
-  color: #ffd803;
-  font-family: "Nunito Sans", sans-serif;
+  -webkit-box-shadow: 2px 2px 2px #272343;
+          box-shadow: 2px 2px 2px #272343;
+  border: none;
 }
 
-.cards {
+.handBox .handText {
+  background: #6e8898;
+  font-weight: 600;
+  color: #000;
+  text-align: center;
+}
+
+.handBox .typeTitle {
+  background: #6e8898;
+  background: #ffd803;
+}
+
+.handBox .cards {
   font-size: medium;
   text-align: center;
   font-family: "Roboto Condensed", sans-serif;
 }
 
-.handText {
-  text-align: center;
-  font-size: x-large;
-  font-family: "Nunito Sans", sans-serif;
-  font-weight: 800;
+.handBox .noCards {
+  color: red;
+  font-style: italic;
 }
 
 .waitingModal {
