@@ -3,34 +3,66 @@ import { SocketContext } from "../context/SocketContext";
 
 const Hand = () => {
   const { player } = useContext(SocketContext);
-  const cardType = ["Weapons", "Suspects", "room"];
+  let weaponArr = [];
+  let suspectArr = [];
+  let roomArr = [];
+  for (let i = 0; i < player.cards.length; i++) {
+    if (player.cards[i].weapon) {
+      weaponArr.push(player.cards[i].weapon);
+    } else if (player.cards[i].room) {
+      roomArr.push(player.cards[i].room);
+    } else {
+      suspectArr.push(player.cards[i].suspect);
+    }
+  }
+  console.log(weaponArr);
+  console.log(suspectArr);
+  console.log(roomArr);
   return (
-    <div>
+    <div className='handBox'>
       <h2 className="handText">Your Hand</h2>
       <h2 className="typeTitle">Weapons</h2>
-      {player.cards.map((weapon, index) => {
-        return (
-          <p key={index} className="cards">
-            {weapon.weapon}
-          </p>
-        );
-      })}
+      {weaponArr.length > 0 ? (
+        <div>
+          {weaponArr.map((weapon, index) => {
+            return (
+              <p key={index} className="cards">
+                {weapon}
+              </p>
+            );
+          })}
+        </div>
+      ) : (
+        <p className="noCards">No cards</p>
+      )}
       <h2 className="typeTitle">Suspects</h2>
-      {player.cards.map((suspect, index) => {
-        return (
-          <p key={index} className="cards">
-            {suspect.suspect}
-          </p>
-        );
-      })}
+      {suspectArr.length > 0 ? (
+        <div>
+          {suspectArr.map((suspect, index) => {
+            return (
+              <p key={index} className="cards">
+                {suspect}
+              </p>
+            );
+          })}
+        </div>
+      ) : (
+        <p className="noCards">No cards</p>
+      )}
       <h2 className="typeTitle">Rooms</h2>
-      {player.cards.map((room, index) => {
-        return (
-          <p key={index} className="cards">
-            {room.room}
-          </p>
-        );
-      })}
+      {roomArr.length > 0 ? (
+        <div>
+          {roomArr.map((room, index) => {
+            return (
+              <p key={index} className="cards">
+                {room}
+              </p>
+            );
+          })}
+        </div>
+      ) : (
+        <p className="noCards">No cards</p>
+      )}
     </div>
   );
 };
