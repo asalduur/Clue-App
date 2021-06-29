@@ -4,7 +4,7 @@
   border: 6px solid $color-dark;
   border-radius: 3px;
   box-shadow: 2px 0px 5px #545454;
-  margin-left: 5%;
+  margin-left: 1%;
   margin-bottom: 5%;
   background-color: $color-light;
   .flexBoard {
@@ -14,8 +14,18 @@
   }
 }
 
+@media (max-width: 850px) {
+  .gameBoard {
+    height: fit-content;
+  }
+}
+
 @media (max-width: 600px) {
   .gameBoard {
+    width: fit-content;
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-right: 5%;
     padding-left: 5vw;
     padding-right: 5vw;
     .flexBoard {

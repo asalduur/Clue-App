@@ -1,0 +1,34 @@
+.resetModal {
+    @include modalStyling;
+    width: 35vw;
+    height: 8vh;
+    left: 25vw;
+    top: 26vh;
+}
+
+.resetText {
+  @include modalBodyText;
+}
+
+@media (max-width: 600px) {
+    .resetModal {
+      @include modalMobileStyle;
+      width: 45vw;
+      height: 20vh;
+      left: 22.5vw;
+      top: 28.5vh;
+    }
+    .resetText {
+      font-size: larger;
+    }
+}
+
+@media (max-width: 850px) {
+    .resetModal {
+      @include modalMobileStyle;
+      top: 30vh;
+    }
+    .resetText {
+        font-size: larger;
+    }
+}
