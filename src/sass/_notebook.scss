@@ -79,6 +79,13 @@ footer {
           }
         }
       }
+
+      input[type='checkbox']:hover{
+        // width: 200px;
+        border: 10px solid yellowgreen;
+        box-shadow: 2px 2px 5px $color-darkest;
+      }
+
     }
     .close {
       height: 0px;

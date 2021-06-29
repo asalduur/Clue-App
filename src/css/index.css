@@ -1729,6 +1729,12 @@ footer .notebook-container .openNotebook table.locations thead th {
   text-align: center;
 }
 
+footer .notebook-container .openNotebook input[type='checkbox']:hover {
+  border: 10px solid yellowgreen;
+  -webkit-box-shadow: 2px 2px 5px #272343;
+          box-shadow: 2px 2px 5px #272343;
+}
+
 footer .notebook-container .close {
   height: 0px;
 }
