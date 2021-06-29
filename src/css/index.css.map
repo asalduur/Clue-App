@@ -14,12 +14,15 @@
         "../sass/_player.scss",
         "../sass/_accusesuggest.scss",
         "../sass/_accusemodal.scss",
+        "../sass/_suggestmodal.scss",
+        "../sass/_winmodal.scss",
         "../sass/_losemodal.scss",
         "../sass/_suggestmodal.scss",
         "../sass/_notebook.scss",
         "../sass/_hand.scss",
         "../sass/_waitingmodal.scss",
-        "../sass/_rules.scss"
+        "../sass/_rules.scss",
+        "../sass/_resetgamemodal.scss"
     ],
     "names": [],
     "file": "index.css"

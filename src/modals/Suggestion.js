@@ -22,15 +22,17 @@ const Suggestion = (props) => {
   };
 
   return (
-    <Modal isOpen={activeAccuse || proofmsg ? true : false}>
+    <Modal isOpen={activeAccuse || proofmsg ? true : false} className="suggestModal">
       <div>
         <p className="suggestText">
           {proofmsg && active ? proofmsg : proofmsg && myProof ? myProof : proofmsg && inactiveProof ? inactiveProof : "No one could prove your suggestion incorrect. Would you like to accuse?"}
         </p>
-        {activeAccuse ? (
-          <button onClick={() => handleEndTurn()}> End Turn </button>
-        ) : null}
-        {!proofmsg ? <button onClick={() => handleAccuse()}> Accuse </button> : null}
+        <div className="flexBtns">
+          {activeAccuse ? (
+            <button className="btnEndTurn" onClick={() => handleEndTurn()}> End Turn </button>
+            ) : null}
+          {!proofmsg ? <button className="btnAccuse" onClick={() => handleAccuse()}> Accuse </button> : null}
+        </div>
         <Accuse />
       </div>
     </Modal>

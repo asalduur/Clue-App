@@ -6,8 +6,8 @@ const ResetGame = () => {
   const { resetmsg } = useContext(SocketContext);
 
   return (
-    <Modal isOpen={resetmsg ? true : false} className="">
-      <h1 className=""> {resetmsg} </h1>
+    <Modal isOpen={resetmsg ? true : false} className="resetModal">
+      <h1 className="resetText"> {resetmsg} </h1>
     </Modal>
   );
 };
