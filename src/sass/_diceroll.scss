@@ -52,3 +52,18 @@
     transform: rotate(0deg);
   }
 }
+
+@media (max-width: 850px) {
+  .dice-container {
+    box-shadow: none;
+    margin-bottom: 10%;
+    .die-1 {
+      width: 30px;
+      height: 30px;
+    }
+    .die-2 {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}

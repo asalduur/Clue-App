@@ -1,45 +1,99 @@
 .GrottoBackground {
-  background-image: url('../assets/grotto.jpg');
+  background: linear-gradient(
+      rgba(39, 35, 67, 0.45),
+      rgba(75, 95, 107, 0.45),
+      rgba(110, 136, 152, 0.45),
+      rgba(227, 246, 245, 0.45)
+    ),
+    url("../assets/grotto.jpg");
   @include roomBg;
 }
 
 .Pool-HouseBackground {
-  background-image: url('../assets/pool-house.jpg');
+  background: linear-gradient(
+      rgba(39, 35, 67, 0.45),
+      rgba(75, 95, 107, 0.45),
+      rgba(110, 136, 152, 0.45),
+      rgba(227, 246, 245, 0.45)
+    ),
+    url("../assets/pool-house.jpg");
   @include roomBg;
 }
 
 .LibraryBackground {
-  background-image: url('../assets/library.jpg');
+  background: linear-gradient(
+      rgba(39, 35, 67, 0.35),
+      rgba(75, 95, 107, 0.35),
+      rgba(110, 136, 152, 0.35),
+      rgba(227, 246, 245, 0.35)
+    ),
+    url("../assets/library.jpg");
   @include roomBg;
 }
 
 .KitchenBackground {
-  background-image: url('../assets/kitchen.jpg');
+  background: linear-gradient(
+      rgba(39, 35, 67, 0.35),
+      rgba(75, 95, 107, 0.35),
+      rgba(110, 136, 152, 0.35),
+      rgba(227, 246, 245, 0.35)
+    ),
+    url("../assets/kitchen.jpg");
   @include roomBg;
 }
 
 .BasementBackground {
-  background-image: url('../assets/basement.jpg');
+  background: linear-gradient(
+      rgba(39, 35, 67, 0.45),
+      rgba(75, 95, 107, 0.45),
+      rgba(110, 136, 152, 0.45),
+      rgba(227, 246, 245, 0.45)
+    ),
+    url("../assets/basement.jpg");
   @include roomBg;
 }
 
 .Wine-CellarBackground {
-  background-image: url('../assets/wine-cellar.jpg');
+  background: linear-gradient(
+      rgba(39, 35, 67, 0.45),
+      rgba(75, 95, 107, 0.45),
+      rgba(110, 136, 152, 0.45),
+      rgba(227, 246, 245, 0.45)
+    ),
+    url("../assets/wine-cellar.jpg");
   @include roomBg;
 }
 
 .FoyerBackground {
-  background-image: url('../assets/foyer.jpg');
+  background: linear-gradient(
+      rgba(39, 35, 67, 0.45),
+      rgba(75, 95, 107, 0.45),
+      rgba(110, 136, 152, 0.45),
+      rgba(227, 246, 245, 0.45)
+    ),
+    url("../assets/foyer.jpg");
   @include roomBg;
 }
 
 .GardenBackground {
-  background-image: url('../assets/garden.jpg');
+  background: linear-gradient(
+      rgba(39, 35, 67, 0.45),
+      rgba(75, 95, 107, 0.45),
+      rgba(110, 136, 152, 0.45),
+      rgba(227, 246, 245, 0.45)
+    ),
+    url("../assets/garden.jpg");
   @include roomBg;
 }
 
 .Master-BedroomBackground {
-  background-image: url('../assets/master-bedroom.jpg');
+  background: linear-gradient(
+      rgba(39, 35, 67, 0.45),
+      rgba(75, 95, 107, 0.45),
+      rgba(110, 136, 152, 0.45),
+      rgba(227, 246, 245, 0.45)
+    ),
+    url("../assets/master-bedroom.jpg");
   @include roomBg;
 }
 
@@ -93,6 +147,63 @@
   font-weight: 800;
   font-size: 1.25rem;
   text-shadow: 3px 2px 3px black;
+}
+
+@media (max-width: 850px) {
+  .roomName {
+    font-size: 0.75rem;
+    max-width: 20vw;
+    margin: 0 auto;
+    padding-top: 5%;
+  }
+  .GrottoBackground {
+    @include tabletRoomBg;
+  }
+  .Pool-HouseBackground {
+    @include tabletRoomBg;
+  }
+  .LibraryBackground {
+    @include tabletRoomBg;
+  }
+  .KitchenBackground {
+    @include tabletRoomBg;
+  }
+  .BasementBackground {
+    @include tabletRoomBg;
+  }
+  .Wine-CellarBackground {
+    @include tabletRoomBg;
+  }
+  .FoyerBackground {
+    @include tabletRoomBg;
+  }
+  .GardenBackground {
+    @include tabletRoomBg;
+  }
+  .Master-BedroomBackground {
+    @include tabletRoomBg;
+  }
+  .redCurrent {
+    @include tokenMobileStyle;
+  }
+  .greenCurrent {
+    @include tokenMobileStyle;
+  }
+  .purpleCurrent {
+    @include tokenMobileStyle;
+  }
+  .orangeCurrent {
+    @include tokenMobileStyle;
+  }
+  .yellowCurrent {
+    @include tokenMobileStyle;
+  }
+  .blueCurrent {
+    @include tokenMobileStyle;
+  }
+  .filler {
+    height: 15px;
+  }
 }
 
 @media (max-width: 600px) {
