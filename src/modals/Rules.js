@@ -1,12 +1,12 @@
 import Modal from "react-modal";
 
-const Rules = () => {
+const Rules = ({ ruleModalOpen, setRuleModalOpen }) => {
   const closeModal = () => {
-    // setRules(false);
+    setRuleModalOpen(false);
   };
   return (
     <>
-      <Modal isOpen={true} className="ruleModal" preventScroll={false}>
+      <Modal isOpen={ruleModalOpen} className="ruleModal" preventScroll={false}>
         <button className="closeModal" onClick={closeModal}>
           X
         </button>
@@ -50,7 +50,6 @@ const Rules = () => {
           </li>
         </ul>
       </Modal>
-      ;
     </>
   );
 };

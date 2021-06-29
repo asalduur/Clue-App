@@ -4,6 +4,8 @@
   background: $color-light;
   flex-direction: column;
   font-family: $font-main;
+  box-shadow: 2px 2px 5px $color-darkest;
+  border-radius: 3px;
 
   .dice-wrapper {
     @include flex-center-center;

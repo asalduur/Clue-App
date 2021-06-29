@@ -31,14 +31,7 @@ export const SocketProvider = (props) => {
   const [rolltotal, setRollTotal] = useState(0);
   //Waiting added
   const [waiting, setWaiting] = useState(false);
-  const [fakeplayer, setFakePlayer] = useState({
-    player: "Player 1",
-    id: "O09aIvQ6mAvYpasGAAAH",
-    location: "home",
-    roll: 0,
-    token: "green",
-    cards: [],
-  });
+  const [roomId, setRoomId] = useState('');
 
   const playerRef = useRef(player);
   const history = useHistory();
@@ -93,6 +86,8 @@ export const SocketProvider = (props) => {
       });
       socket.on("player-start", (start_player) => {
         setLossMsg(null);
+        setProofMsg(null);
+        setActiveAccuse(false);
         if (start_player.id === socket.id) {
           console.log("PLAYER START STARTPLAYER:", start_player);
           setActive(true);
@@ -282,6 +277,10 @@ export const SocketProvider = (props) => {
     }
   };
 
+  const joinRoom = () => {
+    socket.emit('join-room', {roomId, playerId: socket.id});
+  }
+
   const endTurn = () => {
     socket.emit("end-turn", { id: socket.id });
   };
@@ -300,7 +299,6 @@ export const SocketProvider = (props) => {
         activeAccuse,
         activeRoll,
         activeRoom,
-        fakeplayer,
         currentRoom,
         setCurrentRoom,
         inactiveMsg,
