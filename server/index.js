@@ -9,6 +9,7 @@ let playerturn = 0;
 let case_file = {};
 let gamerooms = [{roomId: '32hd72grf3g', roomPlayers: []}, 
                  {roomId: '98hf43jhf48', roomPlayers: []}];
+let playerscards = [];
 
 const cards = [
   [
@@ -260,6 +261,7 @@ io.on("connection", (socket) => {
         }
       }
       console.log('PLAYERSAFTERCARDSDEALT:', players);
+      playerscards = [...players];
       io.emit("update-players", players);
       io.emit("case-file", case_file);
       io.emit("player-start", playercopy[playerturn]);
@@ -301,7 +303,15 @@ io.on("connection", (socket) => {
   socket.on("send-suggestion", (body) => {
     const activeplayer = getActivePlayer(body);
     io.emit("suggest-message", { activeplayer, body });
-    const orderedplayers = getOtherPlayers(body);
+    // const orderedplayers = getOtherPlayers(body);
+
+    let index = playerscards.findIndex((p, i) => {
+      return p.id === body.id;
+    });
+    const firstplayers = [...players.slice(index + 1)];
+    const lastplayers = [...players.slice(0, index)];
+    const orderedplayers = [...firstplayers, ...lastplayers];
+    
     let othercards = [];
     orderedplayers.forEach((player, i) => {
       player.cards.forEach((card, i) => {
