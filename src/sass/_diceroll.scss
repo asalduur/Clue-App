@@ -1,11 +1,9 @@
 .dice-container {
   @include flex-center-center;
-  width: 100px;
-  background: $color-light;
   flex-direction: column;
   font-family: $font-main;
-  box-shadow: 2px 2px 5px $color-darkest;
   border-radius: 3px;
+  margin-bottom: 20%;
 
   .dice-wrapper {
     @include flex-center-center;
