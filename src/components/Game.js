@@ -39,8 +39,10 @@ const Game = () => {
           >
             Rules
           </button>
-          <DiceRoll />
-          <Player />
+          <div className="mobileFlex">
+            <DiceRoll />
+            <Player />
+          </div>
         </div>
       </div>
       <Notebook />

@@ -86,9 +86,14 @@ footer {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 850px) {
   footer {
     position: relative;
+  }
+}
+
+@media (max-width: 600px) {
+  footer {
     .notebook-container {
       flex-direction: column;
       .openNotebook {
