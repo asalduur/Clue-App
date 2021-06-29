@@ -10,6 +10,22 @@
   @include modalBodyText;
 }
 
+.flexBtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  .btnEndTurn {
+    background-color: $color-dark;
+    color: white;
+    @include accuseSuggestBtns;
+  }
+
+  .btnAccuse {
+    background-color: $color-pop;
+    @include accuseSuggestBtns;
+  }
+}
+
 @media (max-width: 600px) {
   .suggestModal {
     @include modalMobileStyle;

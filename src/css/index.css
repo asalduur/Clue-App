@@ -921,6 +921,181 @@
   }
 }
 
+.suggestModal {
+  background-color: white;
+  border: 1px solid #6e8898;
+  border-radius: 5px;
+  position: absolute;
+  top: 25vh;
+  left: 25vw;
+  padding: 2%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 35vw;
+  height: 12.5vh;
+  left: 25vw;
+  top: 26vh;
+}
+
+.suggestText {
+  font-size: 18px;
+  margin-bottom: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  text-align: center;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.flexBtns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.flexBtns .btnEndTurn {
+  background-color: #6e8898;
+  color: white;
+  border: none;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 800;
+  -webkit-box-shadow: 0px 2px 3px #272343;
+          box-shadow: 0px 2px 3px #272343;
+}
+
+.flexBtns .btnEndTurn:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.flexBtns .btnAccuse {
+  background-color: #ffd803;
+  border: none;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 800;
+  -webkit-box-shadow: 0px 2px 3px #272343;
+          box-shadow: 0px 2px 3px #272343;
+}
+
+.flexBtns .btnAccuse:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+@media (max-width: 600px) {
+  .suggestModal {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 5%;
+    width: 50vw;
+    height: 25vh;
+    left: 20vw;
+    top: 26.5vh;
+  }
+  .suggestText {
+    font-size: large;
+  }
+}
+
+.winModal {
+  background-color: white;
+  border: 1px solid #6e8898;
+  border-radius: 5px;
+  position: absolute;
+  top: 25vh;
+  left: 25vw;
+  padding: 2%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 30vw;
+  height: 12.5vh;
+  left: 30vw;
+  top: 26vh;
+}
+
+.winText {
+  font-size: 24px;
+  margin-bottom: 5%;
+  text-align: center;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 700;
+}
+
+.playAgainBtn {
+  background-color: #ffd803;
+  border: none;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 800;
+  -webkit-box-shadow: 0px 2px 3px #272343;
+          box-shadow: 0px 2px 3px #272343;
+}
+
+.playAgainBtn:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+@media (max-width: 600px) {
+  .winModal {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 5%;
+    width: 45vw;
+    height: 20vh;
+    left: 22.5vw;
+    top: 28.5vh;
+  }
+  .winText {
+    font-size: larger;
+  }
+  .playAgainBtn {
+    margin-top: 5%;
+  }
+}
+
+@media (max-width: 850px) {
+  .winModal {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 5%;
+    top: 30vh;
+  }
+  .playAgainBtn {
+    margin-top: 5%;
+  }
+}
+
 .loseModal {
   background-color: white;
   border: 1px solid #6e8898;
@@ -1084,6 +1259,56 @@
   padding-right: 5%;
   text-align: center;
   font-family: "Roboto Condensed", sans-serif;
+}
+
+.flexBtns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.flexBtns .btnEndTurn {
+  background-color: #6e8898;
+  color: white;
+  border: none;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 800;
+  -webkit-box-shadow: 0px 2px 3px #272343;
+          box-shadow: 0px 2px 3px #272343;
+}
+
+.flexBtns .btnEndTurn:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.flexBtns .btnAccuse {
+  background-color: #ffd803;
+  border: none;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 800;
+  -webkit-box-shadow: 0px 2px 3px #272343;
+          box-shadow: 0px 2px 3px #272343;
+}
+
+.flexBtns .btnAccuse:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 @media (max-width: 600px) {
@@ -1403,6 +1628,65 @@ footer .notebook-container .close {
   }
   .listText {
     font-size: small;
+  }
+}
+
+.resetModal {
+  background-color: white;
+  border: 1px solid #6e8898;
+  border-radius: 5px;
+  position: absolute;
+  top: 25vh;
+  left: 25vw;
+  padding: 2%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 35vw;
+  height: 8vh;
+  left: 25vw;
+  top: 26vh;
+}
+
+.resetText {
+  font-size: 18px;
+  margin-bottom: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  text-align: center;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+@media (max-width: 600px) {
+  .resetModal {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 5%;
+    width: 45vw;
+    height: 20vh;
+    left: 22.5vw;
+    top: 28.5vh;
+  }
+  .resetText {
+    font-size: larger;
+  }
+}
+
+@media (max-width: 850px) {
+  .resetModal {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 5%;
+    top: 30vh;
+  }
+  .resetText {
+    font-size: larger;
   }
 }
 /*# sourceMappingURL=index.css.map */
