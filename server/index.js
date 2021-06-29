@@ -4,9 +4,11 @@ const app = express();
 const { SERVER_PORT } = process.env;
 
 let players = [];
-let tokens = ["blue", "red", "green", "yellow"];
+let tokens = ["blue", "red", "green", "yellow", 'purple', 'orange'];
 let playerturn = 0;
 let case_file = {};
+let gamerooms = [{roomId: '32hd72grf3g', roomPlayers: []}, 
+                 {roomId: '98hf43jhf48', roomPlayers: []}];
 
 const cards = [
   [
@@ -82,7 +84,6 @@ io.on("connection", (socket) => {
         roll: 0,
         token: tokens.splice(0, 1),
       });
-      console.log(players);
       break;
     case 1:
       players.push({
@@ -92,7 +93,6 @@ io.on("connection", (socket) => {
         roll: 0,
         token: tokens.splice(0, 1),
       });
-      console.log(players);
       break;
     case 2:
       players.push({
@@ -102,7 +102,6 @@ io.on("connection", (socket) => {
         roll: 0,
         token: tokens.splice(0, 1),
       });
-      console.log(players);
       break;
     case 3:
       players.push({
@@ -112,8 +111,25 @@ io.on("connection", (socket) => {
         roll: 0,
         token: tokens.splice(0, 1),
       });
-      console.log(players);
       break;
+      case 4:
+        players.push({
+          player: 5,
+          id: socket.id,
+          location: "home",
+          roll: 0,
+          token: tokens.splice(0, 1),
+        });
+        break;
+        case 5:
+          players.push({
+            player: 6,
+            id: socket.id,
+            location: "home",
+            roll: 0,
+            token: tokens.splice(0, 1),
+          });
+          break;
     default:
       socket.emit("Max players reached.");
       socket.disconnect();
@@ -138,7 +154,7 @@ io.on("connection", (socket) => {
       io.emit("This game has ended. Please refresh to start a new game!");
       io.disconnectSockets();
       players = [];
-      tokens = ["blue", "red", "green", "yellow"];
+      tokens = ["blue", "red", "green", "yellow", 'purple', 'orange'];
     } else {
       io.emit(
         "player-disconnected",
@@ -146,13 +162,13 @@ io.on("connection", (socket) => {
       );
       io.disconnectSockets();
       players = [];
-      tokens = ["blue", "red", "green", "yellow"];
+      tokens = ["blue", "red", "green", "yellow", 'purple', 'orange'];
     }
   });
   socket.on("game reset", () => {
     io.disconnectSockets();
     players = [];
-    tokens = ["blue", "red", "green", "yellow"];
+    tokens = ["blue", "red", "green", "yellow", 'purple', 'orange'];
   });
   socket.on("send-message", (body) => {
     console.log(body);
@@ -173,6 +189,12 @@ io.on("connection", (socket) => {
             break;
           case 3:
             players[3].cards = [];
+            break;
+          case 4:
+            players[4].cards = [];
+            break;
+          case 5:
+            players[5].cards = [];
             break;
           default:
             null;
@@ -201,6 +223,7 @@ io.on("connection", (socket) => {
       case_file = { ...murder_weapon, ...murder_perp, ...murder_room };
       console.log('CASE_FILE:', case_file);
       let cardArray = [...weaponArr, ...roomArr, ...peopleArr];
+      console.log('CARDARRAY:', cardArray);
 
       cardArray.sort(function () {
         return 0.5 - Math.random();
@@ -208,6 +231,8 @@ io.on("connection", (socket) => {
       while (cardArray.length > 0) {
         for (let i = 0; i < players.length; i++) {
           let card = cardArray.splice(0, 1);
+          console.log('CARDBEINGDEALT:', card[0]);
+          if (card[0]) {
           switch (i) {
             case 0:
               players[0].cards.push(card[0]);
@@ -221,17 +246,26 @@ io.on("connection", (socket) => {
             case 3:
               players[3].cards.push(card[0]);
               break;
+            case 4:
+              players[4].cards.push(card[0]);
+              break;
+            case 5:
+              players[5].cards.push(card[0]);
+              break;
             default:
               null;
               break;
           }
         }
+        }
       }
+      console.log('PLAYERSAFTERCARDSDEALT:', players);
       io.emit("update-players", players);
       io.emit("case-file", case_file);
       io.emit("player-start", playercopy[playerturn]);
     } else {
-      io.emit("more-players"); // FINISH THIS HERE
+      io.emit("more-players"); // FINISH THIS HERE -- currently handled on front end --
+      // start button only shows if there are enough players.
     }
   });
 
@@ -304,8 +338,7 @@ io.on("connection", (socket) => {
 
   socket.on("send-accusation", (body) => {
     const activeplayer = getActivePlayer(body);
-    const otherplayers = getOtherPlayers(body);
-    console.log('ACCUSATION-BODY:', body);
+    // const otherplayers = getOtherPlayers(body);
     console.log('ACCUSATION CASE_FILE:', case_file);
     if (
       body.room === case_file.room &&
@@ -322,4 +355,13 @@ io.on("connection", (socket) => {
     const orderedplayers = getOtherPlayers(body);
     io.emit("player-start", orderedplayers[0]);
   });
+
+  socket.on('join-room', (body) => {
+    gamerooms.forEach((room, i) => {
+      if (room.Id === body.roomId) {
+        room.roomPlayers.push(body.playerId);
+      }
+    })
+    socket.join(body.roomId);
+  })
 });
