@@ -1,15 +1,15 @@
 import { SocketContext } from "../context/SocketContext";
 import { useContext } from "react";
 
-const Rooms = ({ roomNames, modalOpen, setModalOpen}) => {
+const Rooms = ({ roomNames, modalOpen, setModalOpen }) => {
   const {
     currentRoom,
     setCurrentRoom,
     active,
     activeRoom,
     sendRoom,
-    player, 
-    players
+    player,
+    players,
   } = useContext(SocketContext);
 
   const changeRoom = (room) => {
@@ -26,13 +26,12 @@ const Rooms = ({ roomNames, modalOpen, setModalOpen}) => {
     if (p.id !== player.id) {
       opponentpieces.push(p);
     }
-  })
+  });
 
-  console.log("opponentpieces:", opponentpieces)
+  console.log("opponentpieces:", opponentpieces);
 
-  console.log('ROOMPLAYERS:', players);
+  console.log("ROOMPLAYERS:", players);
 
-  
   return (
     <>
       {roomNames.map((room, index) => {
@@ -52,11 +51,7 @@ const Rooms = ({ roomNames, modalOpen, setModalOpen}) => {
             <div className="flexTokens">
               {opponentpieces.map((o, i) => {
                 if (o.location === room.room) {
-                  return (
-                    <div>
-                      {o.token}
-                    </div>
-                  )
+                  return <div className={`${o.token}Current`}></div>;
                 }
               })}
             </div>
