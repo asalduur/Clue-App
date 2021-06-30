@@ -167,10 +167,16 @@ io.on("connection", (socket) => {
   io.to(gameroom).emit("update-players", players);
   socket.on("disconnect", (body) => {
     console.log(`Socket ${socket.id} disconnected.`);
+    // console.log(socket.rooms.values().next().value);
+    // const [pgameroom] = Array.from(socket.rooms);
+    // console.log(pgameroom);
+
 
     let roomindex = gamerooms.findIndex((r, i) => {
       return r.roomId === gameroom;
     });
+    console.log('DISCONNECTGAMEROOM:', gameroom);
+    console.log('DISCONNECTROOMINDEX:', roomindex)
 
     if (gamerooms[roomindex].roomPlayers.length >= 3) {
       let index = gamerooms[roomindex].roomPlayers.findIndex((p, i) => {
