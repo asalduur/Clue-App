@@ -1,6 +1,6 @@
 import GameBoard from "./GameBoard";
 import { useContext, useState } from "react";
-// import { SocketContext } from "../context/SocketContext";
+import { SocketContext } from "../context/SocketContext";
 import Player from "./Player";
 import DiceRoll from "./DiceRoll";
 import AccuseSuggest from "../modals/AccuseSuggest";
@@ -10,11 +10,18 @@ import WinModal from "../modals/WinModal";
 import LoseModal from "../modals/LoseModal";
 import ResetGame from "../modals/ResetGame";
 import Rules from "../modals/Rules";
+import { useHistory } from 'react-router-dom';
 
 const Game = () => {
-  // const { playerwin, playerlost, active, activeAccuse, activeSA, proofmsg } = useContext(SocketContext);
+  const { roomId } = useContext(SocketContext);
   const [modalOpen, setModalOpen] = useState(false);
   const [ruleModalOpen, setRuleModalOpen] = useState(false);
+
+  const history = useHistory()
+
+  if (!roomId) {
+    history.push('/');
+  }
 
   return (
     <>

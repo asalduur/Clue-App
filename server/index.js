@@ -249,16 +249,28 @@ io.on("connection", (socket) => {
     let roomindex = gamerooms.findIndex((r, i) => {
       return r.roomId === gameroom;
     });
-    let playerindex = gamerooms[roomindex].roomPlayers.findIndex((p, i) => {
-      return p.id === socket.id;
-    });
+    // let playerindex = gamerooms[roomindex].roomPlayers.findIndex((p, i) => {
+    //   return p.id === socket.id;
+    // });
 
-    gamerooms[roomindex].roomPlayers.splice(playerindex, 1);
+    // if (gamerooms[roomindex].roomPlayers >= 2) {
+
+    // gamerooms[roomindex].roomPlayers.splice(playerindex, 1);
+
+
+    // } else {
+    //   gamerooms[roomindex].roomPlayers.splice(0, 1);
+    // }
+    gamerooms[roomindex].roomPlayers = [];
     gamerooms[roomindex].active = false;
     gamerooms[roomindex].roomCards = [];
 
+
+
     io.to(gameroom).emit('player-disconnect');
     io.emit('room-join-info', gamerooms);
+    console.log("PLAYERWINGAMEROOMS:", gamerooms);
+
 
     // io.to(gameroom).disconnectSockets();
     // players = [];
