@@ -32,13 +32,16 @@ export const SocketProvider = (props) => {
   //Waiting added
   const [waiting, setWaiting] = useState(false);
   const [roomId, setRoomId] = useState('');
+  const [gameRooms, setGameRooms] = useState(null);
 
   const playerRef = useRef(player);
+  const playersRef = useRef(players);
   const history = useHistory();
 
   useEffect(() => {
     playerRef.current = player;
-  }, [player]);
+    playersRef.current = players;
+  }, [player, players]);
 
   useEffect(() => {
     if (!socket) {
@@ -82,14 +85,17 @@ export const SocketProvider = (props) => {
         // });
       });
       socket.on("case-file", (casefile) => {
+        console.log('CASEFILE:', casefile);
         setCaseFile(casefile);
+      });
+      socket.on('game-start', (body) => {
+        console.log(body);
       });
       socket.on("player-start", (start_player) => {
         setLossMsg(null);
         setProofMsg(null);
         setActiveAccuse(false);
         if (start_player.id === socket.id) {
-          console.log("PLAYER START STARTPLAYER:", start_player);
           setActive(true);
           setActiveRoll(true);
         } else {
@@ -100,7 +106,6 @@ export const SocketProvider = (props) => {
         history.push("/game");
       });
       socket.on("room-choose", (a_player) => {
-        console.log(a_player);
         if (playerRef.current.id === a_player.id) {
           setActiveRoll(false);
           setActiveRoom(true);
@@ -174,7 +179,7 @@ export const SocketProvider = (props) => {
           if (body.id === socket.id) {
             setLossMsg(null);
             // setActiveSA(false);
-            socket.disconnect({ lost: true });
+            socket.disconnect({ lost: true, win: false });
           }
         }, 7000);
       });
@@ -202,7 +207,9 @@ export const SocketProvider = (props) => {
             `Player ${player} has won and the game has ended. Please refresh your browser to join a new game.`
           );
           setWinMsg(null);
-          socket.emit("game-reset");
+          socket.emit("game-win-reset");
+          // socket.disconnect({ lost: false, won: true });
+          setTimeout(() => {history.push('/')}, 1000)
         }, 7000);
       });
       socket.on("suggest-message", (data) => {
@@ -237,6 +244,13 @@ export const SocketProvider = (props) => {
           setRollTotal(aplayer.roll);
         }
       });
+      socket.on('room-join-info', (body) => {
+        setGameRooms(body);
+        // console.log('GAMEROOMS:', body);
+      });
+      socket.on('player-disconnect', () => {
+        socket.disconnect();
+      })
     }
   }, [socket]);
 
@@ -254,7 +268,7 @@ export const SocketProvider = (props) => {
 
   const sendRoll = (rollvalue) => {
     if (active && activeRoll) {
-      socket.emit("send-roll", { id: socket.id, rollvalue: rollvalue });
+      socket.emit("send-roll", {id: socket.id, rollvalue: rollvalue });
     }
   };
 
@@ -277,8 +291,11 @@ export const SocketProvider = (props) => {
     }
   };
 
-  const joinRoom = () => {
-    socket.emit('join-room', {roomId, playerId: socket.id});
+  const joinRoom = (roomid) => {
+    // if (!roomId) {
+    setRoomId(roomid);
+    socket.emit('join-room', {roomid, id: socket.id});
+    
   }
 
   const endTurn = () => {
@@ -317,7 +334,10 @@ export const SocketProvider = (props) => {
         resetmsg,
         inactiveProof,
         setInactiveProof,
-        myProof
+        myProof,
+        gameRooms,
+        joinRoom,
+        roomId
       }}
     >
       {props.children}
