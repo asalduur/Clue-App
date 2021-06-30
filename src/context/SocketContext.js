@@ -179,7 +179,7 @@ export const SocketProvider = (props) => {
           if (body.id === socket.id) {
             setLossMsg(null);
             // setActiveSA(false);
-            socket.disconnect({ lost: true });
+            socket.disconnect({ lost: true, win: false });
           }
         }, 7000);
       });
@@ -207,7 +207,9 @@ export const SocketProvider = (props) => {
             `Player ${player} has won and the game has ended. Please refresh your browser to join a new game.`
           );
           setWinMsg(null);
-          socket.emit("game-reset");
+          socket.emit("game-win-reset");
+          // socket.disconnect({ lost: false, won: true });
+          setTimeout(() => {history.push('/')}, 1000)
         }, 7000);
       });
       socket.on("suggest-message", (data) => {
@@ -244,7 +246,10 @@ export const SocketProvider = (props) => {
       });
       socket.on('room-join-info', (body) => {
         setGameRooms(body);
-        console.log('GAMEROOMS:', body);
+        // console.log('GAMEROOMS:', body);
+      });
+      socket.on('player-disconnect', () => {
+        socket.disconnect();
       })
     }
   }, [socket]);

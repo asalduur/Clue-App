@@ -99,6 +99,7 @@ io.on("connection", (socket) => {
     player: 0,
     id: socket.id,
     roll: 0,
+    location: 'home',
     cards: []
   });
   // tokens.sort(function () {
@@ -167,47 +168,101 @@ io.on("connection", (socket) => {
   io.to(gameroom).emit("update-players", players);
   socket.on("disconnect", (body) => {
     console.log(`Socket ${socket.id} disconnected.`);
+
+    if (gameroom) {
+      let roomindex = gamerooms.findIndex((r, i) => {
+        return r.roomId === gameroom;
+      });
+      let playerindex = gamerooms[roomindex].roomPlayers.findIndex((p, i) => {
+        return p.id === socket.id;
+      })
+
+      const firstplayers = [...gamerooms[roomindex].roomPlayers.slice(playerindex + 1)];
+      const lastplayers = [...gamerooms[roomindex].roomPlayers.slice(0, playerindex)];
+      const orderedplayers = [...firstplayers, ...lastplayers];
+      gamerooms[roomindex].roomPlayers.splice(playerindex, 1);
+
+      console.log('BODYWON:', body);
+      console.log('BODYLOST:', body.lost);
+      if (body.won) {
+        console.log('BODYWONGAMEROOM:', gamerooms[roomindex]);
+        gamerooms[roomindex].active = false;
+        gamerooms[roomindex].roomCards = [];
+      }
+
+      // if (gamerooms[roomindex].roomPlayers.length < 1) {
+      //   gamerooms[roomindex].active = false;
+      // }
+
+      // if (gamerooms[roomindex].roomPlayers.length < 2 && body.lost) {
+      //   io.emit('last-man-standing', {playerlost: socket.id})
+      // } else if (gamerooms[roomindex].roomPlayers.length < 2 && !body.lost) {
+      //   io.emit
+      // }
+      // if (!body.lost) {
+      //   io.emit('player-disconnected', {player: socket.id});
+
+      //   let roomindex = gamerooms.findIndex((r, i) => {
+      //     return r.roomId === gameroom;
+      //   });
+
+      // }
+      io.emit('room-join-info', gamerooms);
+    }
+
     // console.log(socket.rooms.values().next().value);
     // const [pgameroom] = Array.from(socket.rooms);
     // console.log(pgameroom);
 
 
+    // let roomindex = gamerooms.findIndex((r, i) => {
+    //   return r.roomId === gameroom;
+    // });
+    // console.log('DISCONNECTGAMEROOM:', gameroom);
+    // console.log('DISCONNECTROOMINDEX:', roomindex)
+
+    // if (gamerooms[roomindex].roomPlayers.length >= 3) {
+    //   let index = gamerooms[roomindex].roomPlayers.findIndex((p, i) => {
+    //     return p.id === socket.id;
+    //   });
+    //   const firstplayers = [...gamerooms[roomindex].roomPlayers.slice(index + 1)];
+    //   const lastplayers = [...gamerooms[roomindex].roomPlayers.slice(0, index)];
+    //   const orderedplayers = [...firstplayers, ...lastplayers];
+    //   gamerooms[roomindex].roomPlayers.splice(index, 1);
+    //   console.log("PLAYERSFROMINDEX:", gamerooms[roomindex].roomPlayers);
+    //   io.to(gameroom).emit("update-players", players);
+    //   io.to(gameroom).emit("player-start", orderedplayers[0]);
+    // } else if (body.lost) {
+    //   io.to(gameroom).emit("This game has ended. Please refresh to start a new game!");
+    //   io.to(gameroom).disconnectSockets();
+
+    // } else {
+    //   io.to(gameroom).emit(
+    //     "player-disconnected",
+    //     "A player disconnected and the game has ended. Please refresh to start a new game."
+    //   );
+    //   io.to(gameroom).disconnectSockets();
+
+    // }
+  });
+  socket.on("game-win-reset", (body) => {
     let roomindex = gamerooms.findIndex((r, i) => {
       return r.roomId === gameroom;
     });
-    console.log('DISCONNECTGAMEROOM:', gameroom);
-    console.log('DISCONNECTROOMINDEX:', roomindex)
+    let playerindex = gamerooms[roomindex].roomPlayers.findIndex((p, i) => {
+      return p.id === socket.id;
+    });
 
-    if (gamerooms[roomindex].roomPlayers.length >= 3) {
-      let index = gamerooms[roomindex].roomPlayers.findIndex((p, i) => {
-        return p.id === socket.id;
-      });
-      const firstplayers = [...gamerooms[roomindex].roomPlayers.slice(index + 1)];
-      const lastplayers = [...gamerooms[roomindex].roomPlayers.slice(0, index)];
-      const orderedplayers = [...firstplayers, ...lastplayers];
-      gamerooms[roomindex].roomPlayers.splice(index, 1);
-      console.log("PLAYERSFROMINDEX:", gamerooms[roomindex].roomPlayers);
-      io.to(gameroom).emit("update-players", players);
-      io.to(gameroom).emit("player-start", orderedplayers[0]);
-    } else if (body.lost) {
-      io.to(gameroom).emit("This game has ended. Please refresh to start a new game!");
-      io.to(gameroom).disconnectSockets();
-      // players = [];
-      // tokens = ["blue", "red", "green", "yellow", 'purple', 'orange'];
-    } else {
-      io.to(gameroom).emit(
-        "player-disconnected",
-        "A player disconnected and the game has ended. Please refresh to start a new game."
-      );
-      io.to(gameroom).disconnectSockets();
-      // players = [];
-      // tokens = ["blue", "red", "green", "yellow", 'purple', 'orange'];
-    }
-  });
-  socket.on("game reset", () => {
-    io.to(gameroom).disconnectSockets();
-    players = [];
-    tokens = ["blue", "red", "green", "yellow", 'purple', 'orange'];
+    gamerooms[roomindex].roomPlayers.splice(playerindex, 1);
+    gamerooms[roomindex].active = false;
+    gamerooms[roomindex].roomCards = [];
+
+    io.to(gameroom).emit('player-disconnect');
+    io.emit('room-join-info', gamerooms);
+
+    // io.to(gameroom).disconnectSockets();
+    // players = [];
+    // tokens = ["blue", "red", "green", "yellow", 'purple', 'orange'];
   });
   socket.on("send-message", (body) => {
     console.log(body);
@@ -325,6 +380,7 @@ io.on("connection", (socket) => {
       }
       console.log('PLAYERSAFTERCARDSDEALT:', gamerooms[roomindex].roomPlayers);
       gamerooms[roomindex].roomCards = [...gamerooms[roomindex].roomPlayers]; // will need to be fixed per room.
+      io.emit('room-join-info', gamerooms);
       io.to(gameroom).emit("update-players", gamerooms[roomindex].roomPlayers);
       io.to(gameroom).emit("case-file", case_file);
       io.to(gameroom).emit("player-start", playercopy[playerturn]);
@@ -363,7 +419,16 @@ io.on("connection", (socket) => {
   socket.on("send-location", (body) => {
     const activeplayer = getActivePlayer(body, gameroom);
     //ADD CODE TO UPDATE PLAYER LOCATION ON BACKEND.
-    // io.to(gameroom).emit("update-players", players);
+    let roomindex = gamerooms.findIndex((r, i) => {
+      return r.roomId === gameroom;
+    });
+    gamerooms[roomindex].roomPlayers.forEach((p, i) => {
+      if (body.id === p.id) {
+        p.location = body.location;
+      }
+    });
+    console.log('PLAYERROOMUPDATE:', gamerooms[roomindex].roomPlayers);
+    io.to(gameroom).emit("update-players", gamerooms[roomindex].roomPlayers);
     io.to(gameroom).emit("accuse-suggest", activeplayer);
   });
 
