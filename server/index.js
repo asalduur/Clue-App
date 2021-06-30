@@ -267,8 +267,9 @@ io.on("connection", (socket) => {
 
 
 
-    io.to(gameroom).emit('player-disconnect');
+
     io.emit('room-join-info', gamerooms);
+    io.to(gameroom).emit('player-disconnect', {gamewon: true});
     console.log("PLAYERWINGAMEROOMS:", gamerooms);
 
 
@@ -276,6 +277,49 @@ io.on("connection", (socket) => {
     // players = [];
     // tokens = ["blue", "red", "green", "yellow", 'purple', 'orange'];
   });
+  socket.on('player-lose', (data) => {
+
+
+
+    if (gameroom) {
+      let roomindex = gamerooms.findIndex((r, i) => {
+        return r.roomId === gameroom;
+      });
+      console.log(roomindex);
+      let playerindex = gamerooms[roomindex].roomPlayers.findIndex((p, i) => {
+        console.log('PLAYERLOSEPID:', p.id);
+        return p.id === data.body.id;
+      });
+      console.log(playerindex);
+
+      if (gamerooms[roomindex].roomPlayers.length > 2) {
+        const firstplayers = [...gamerooms[roomindex].roomPlayers.slice(playerindex + 1)];
+        const lastplayers = [...gamerooms[roomindex].roomPlayers.slice(0, playerindex)];
+        const orderedplayers = [...firstplayers, ...lastplayers];
+        gamerooms[roomindex].roomPlayers.splice(playerindex, 1);
+
+        console.log('ORDEREDPLAYERSLOSE:', orderedplayers[0] )
+        // console.log("PLAYERSFROMINDEX:", gamerooms[roomindex].roomPlayers);
+        io.to(gameroom).emit('player-disconnect', data.body);
+
+        io.to(gameroom).emit("update-players", gamerooms[roomindex].roomPlayers);
+        console.log('GAMEROOMSPLAYERSAFTERSpLICE:', gamerooms[roomindex].roomPlayers );
+        io.to(gameroom).emit("player-start", orderedplayers[0]);
+        console.log(gamerooms);
+        io.emit('room-join-info', gamerooms);
+
+      } else {
+        io.to(gameroom).emit('last-man-standing', data.body);
+        setTimeout(() => {
+          gamerooms[roomindex].roomPlayers = [];
+          gamerooms[roomindex].active = false;
+          gamerooms[roomindex].roomCards = [];
+          io.emit('room-join-info', gamerooms);
+          io.to(gameroom).emit('playerdisconnect', {gamewon: true});
+        }, 5000)
+      }
+    }
+  })
   socket.on("send-message", (body) => {
     console.log(body);
     io.to(gameroom).emit("relay-message", body);
@@ -510,6 +554,8 @@ io.on("connection", (socket) => {
   socket.on("end-turn", (body) => {
     io.to(gameroom).emit("update-messages");
     const orderedplayers = getOtherPlayers(body, gameroom);
+    console.log('ENDTURNPLAYERSTART:', orderedplayers[0]);
+    console.log(body);
     io.to(gameroom).emit("player-start", orderedplayers[0]);
   });
 

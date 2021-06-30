@@ -23,7 +23,7 @@ const Game = () => {
     history.push('/');
   }
 
-  return (
+  return roomId ? (
     <>
       <div className="headerBar">
         <h2 className="headerText">Hunch</h2>
@@ -62,7 +62,7 @@ const Game = () => {
       <Suggestion />
       <ResetGame />
     </>
-  );
+  ) : <div></div>;
 };
 
 export default Game;
