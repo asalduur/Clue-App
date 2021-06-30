@@ -33,15 +33,18 @@ export const SocketProvider = (props) => {
   const [waiting, setWaiting] = useState(false);
   const [roomId, setRoomId] = useState('');
   const [gameRooms, setGameRooms] = useState(null);
+  const [lastMan, setLastMan] = useState(false);
 
   const playerRef = useRef(player);
   const playersRef = useRef(players);
+  const roomIdRef = useRef(roomId);
   const history = useHistory();
 
   useEffect(() => {
     playerRef.current = player;
     playersRef.current = players;
-  }, [player, players]);
+    roomIdRef.current = roomId;
+  }, [player, players, roomId]);
 
   useEffect(() => {
     if (!socket) {
@@ -179,7 +182,10 @@ export const SocketProvider = (props) => {
           if (body.id === socket.id) {
             setLossMsg(null);
             // setActiveSA(false);
-            socket.disconnect({ lost: true, win: false });
+
+            socket.emit('player-lose', data);
+
+            // socket.disconnect({ lost: true, win: false });
           }
         }, 7000);
       });
@@ -236,6 +242,11 @@ export const SocketProvider = (props) => {
           );
         }
       });
+      socket.on('last-man-standing', (body) => {
+        if (body.id !== playerRef.current.id) {
+          setLastMan(true);
+        }
+      })
       socket.on("update-messages", () => {
         setInactiveMsg(null);
       });
@@ -245,11 +256,26 @@ export const SocketProvider = (props) => {
         }
       });
       socket.on('room-join-info', (body) => {
+        console.log('ROOMJOININFOBODY:', body);
         setGameRooms(body);
         // console.log('GAMEROOMS:', body);
       });
-      socket.on('player-disconnect', () => {
+      socket.on('test', (body) => {
+        console.log('TEST:', body);
+      });
+      socket.on('player-disconnect', (body) => {
+        if (body.id) {
+        if (playerRef.current.id === body.id) {
+            socket.disconnect();
+            setRoomId('');
+            socket.connect();
+          }
+        }
+        if (body.gamewon) {
         socket.disconnect();
+        setRoomId('');
+        socket.connect();
+        }
       })
     }
   }, [socket]);
