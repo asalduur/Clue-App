@@ -37,12 +37,14 @@ export const SocketProvider = (props) => {
 
   const playerRef = useRef(player);
   const playersRef = useRef(players);
+  const roomIdRef = useRef(roomId);
   const history = useHistory();
 
   useEffect(() => {
     playerRef.current = player;
     playersRef.current = players;
-  }, [player, players]);
+    roomIdRef.current = roomId;
+  }, [player, players, roomId]);
 
   useEffect(() => {
     if (!socket) {
@@ -258,10 +260,12 @@ export const SocketProvider = (props) => {
         setGameRooms(body);
         // console.log('GAMEROOMS:', body);
       });
+      socket.on('test', (body) => {
+        console.log('TEST:', body);
+      });
       socket.on('player-disconnect', (body) => {
         if (body.id) {
         if (playerRef.current.id === body.id) {
-            history.push('/');
             socket.disconnect();
             setRoomId('');
             socket.connect();

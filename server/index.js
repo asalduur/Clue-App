@@ -166,29 +166,29 @@ io.on("connection", (socket) => {
   //     socket.disconnect();
   // }
   io.to(gameroom).emit("update-players", players);
-  socket.on("disconnect", (body) => {
+  socket.on("disconnect", () => {
     console.log(`Socket ${socket.id} disconnected.`);
 
-    if (gameroom) {
-      let roomindex = gamerooms.findIndex((r, i) => {
-        return r.roomId === gameroom;
-      });
-      let playerindex = gamerooms[roomindex].roomPlayers.findIndex((p, i) => {
-        return p.id === socket.id;
-      })
+    // if (gameroom) {
+    //   let roomindex = gamerooms.findIndex((r, i) => {
+    //     return r.roomId === gameroom;
+    //   });
+    //   let playerindex = gamerooms[roomindex].roomPlayers.findIndex((p, i) => {
+    //     return p.id === socket.id;
+    //   })
 
-      const firstplayers = [...gamerooms[roomindex].roomPlayers.slice(playerindex + 1)];
-      const lastplayers = [...gamerooms[roomindex].roomPlayers.slice(0, playerindex)];
-      const orderedplayers = [...firstplayers, ...lastplayers];
-      gamerooms[roomindex].roomPlayers.splice(playerindex, 1);
+    //   const firstplayers = [...gamerooms[roomindex].roomPlayers.slice(playerindex + 1)];
+    //   const lastplayers = [...gamerooms[roomindex].roomPlayers.slice(0, playerindex)];
+    //   const orderedplayers = [...firstplayers, ...lastplayers];
+    //   gamerooms[roomindex].roomPlayers.splice(playerindex, 1);
 
-      console.log('BODYWON:', body);
-      console.log('BODYLOST:', body.lost);
-      if (body.won) {
-        console.log('BODYWONGAMEROOM:', gamerooms[roomindex]);
-        gamerooms[roomindex].active = false;
-        gamerooms[roomindex].roomCards = [];
-      }
+    //   console.log('BODYWON:', body);
+    //   console.log('BODYLOST:', body.lost);
+    //   if (body.won) {
+    //     console.log('BODYWONGAMEROOM:', gamerooms[roomindex]);
+    //     gamerooms[roomindex].active = false;
+    //     gamerooms[roomindex].roomCards = [];
+    //   }
 
       // if (gamerooms[roomindex].roomPlayers.length < 1) {
       //   gamerooms[roomindex].active = false;
@@ -207,8 +207,8 @@ io.on("connection", (socket) => {
       //   });
 
       // }
-      io.emit('room-join-info', gamerooms);
-    }
+      // io.emit('room-join-info', gamerooms);
+    // }
 
     // console.log(socket.rooms.values().next().value);
     // const [pgameroom] = Array.from(socket.rooms);
@@ -296,17 +296,21 @@ io.on("connection", (socket) => {
         const firstplayers = [...gamerooms[roomindex].roomPlayers.slice(playerindex + 1)];
         const lastplayers = [...gamerooms[roomindex].roomPlayers.slice(0, playerindex)];
         const orderedplayers = [...firstplayers, ...lastplayers];
+        
         gamerooms[roomindex].roomPlayers.splice(playerindex, 1);
 
         console.log('ORDEREDPLAYERSLOSE:', orderedplayers[0] )
         // console.log("PLAYERSFROMINDEX:", gamerooms[roomindex].roomPlayers);
+        
         io.to(gameroom).emit('player-disconnect', data.body);
-
         io.to(gameroom).emit("update-players", gamerooms[roomindex].roomPlayers);
         console.log('GAMEROOMSPLAYERSAFTERSpLICE:', gamerooms[roomindex].roomPlayers );
         io.to(gameroom).emit("player-start", orderedplayers[0]);
         console.log(gamerooms);
+
         io.emit('room-join-info', gamerooms);
+        io.emit('test', gamerooms);
+
 
       } else {
         io.to(gameroom).emit('last-man-standing', data.body);

@@ -8,7 +8,8 @@ const Rooms = ({ roomNames, modalOpen, setModalOpen}) => {
     active,
     activeRoom,
     sendRoom,
-    player
+    player, 
+    players
   } = useContext(SocketContext);
 
   const changeRoom = (room) => {
@@ -18,6 +19,18 @@ const Rooms = ({ roomNames, modalOpen, setModalOpen}) => {
       setModalOpen(true);
     }
   };
+
+  let opponentpieces = [];
+
+  players.forEach((p, i) => {
+    if (p.id !== player.id) {
+      opponentpieces.push(p);
+    }
+  })
+
+  console.log("opponentpieces:", opponentpieces)
+
+  console.log('ROOMPLAYERS:', players);
 
   
   return (
@@ -35,6 +48,17 @@ const Rooms = ({ roomNames, modalOpen, setModalOpen}) => {
               ) : (
                 <div className="filler"></div>
               )}
+            </div>
+            <div className="flexTokens">
+              {opponentpieces.map((o, i) => {
+                if (o.location === room.room) {
+                  return (
+                    <div>
+                      {o.token}
+                    </div>
+                  )
+                }
+              })}
             </div>
             <h2 className="roomName">{room.room.toUpperCase()}</h2>
           </div>
