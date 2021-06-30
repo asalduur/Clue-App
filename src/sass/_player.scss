@@ -42,6 +42,34 @@
   align-items: center;
 }
 
+@media (max-width: 850px) {
+  .redToken {
+    @include playerTokenTablet;
+  }
+  .greenToken {
+    @include playerTokenTablet;
+  }
+  .purpleToken {
+    @include playerTokenTablet;
+  }
+  .orangeToken {
+    @include playerTokenTablet;
+  }
+  .yellowToken {
+    @include playerTokenTablet;
+  }
+  .blueToken {
+    @include playerTokenTablet;
+  }
+  .playerName {
+    font-size: small;
+    margin-top: 5%;
+  }
+  .infoText {
+    font-size: smaller;
+  }
+}
+
 @media (max-width: 600px) {
   .redToken {
     @include playerTokenMobile;

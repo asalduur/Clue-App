@@ -1,7 +1,7 @@
 .gameBoard {
   height: 65vh;
   width: 75vw;
-  border: 6px solid #6e8898;
+  border: 4px solid #6e8898;
   border-radius: 3px;
   -webkit-box-shadow: 2px 0px 5px #545454;
           box-shadow: 2px 0px 5px #545454;
@@ -21,8 +21,22 @@
       flex-wrap: wrap;
 }
 
+@media (max-width: 850px) {
+  .gameBoard {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+}
+
 @media (max-width: 600px) {
   .gameBoard {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-right: 5%;
     padding-left: 5vw;
     padding-right: 5vw;
   }
@@ -40,7 +54,7 @@
 
 .headerText {
   font-family: "Righteous", cursive;
-  color: #6e8898;
+  color: #ffd803;
   text-align: center;
   font-size: 5rem;
   padding-bottom: 2%;
@@ -132,13 +146,62 @@
   max-width: 15vw;
   height: 60vh;
   border: 4px solid #6e8898;
-  padding: 2.5%;
+  padding: 1%;
   margin-left: 1%;
   margin-right: 1%;
   border-radius: 3px;
   background-color: #e3f6f5;
   -webkit-box-shadow: 2px 0px 5px #545454;
           box-shadow: 2px 0px 5px #545454;
+}
+
+@media (max-width: 850px) {
+  .headerText {
+    font-size: 3rem;
+  }
+  .flexGameboard {
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .flexGameboard .sideBar {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-bottom: 2%;
+    margin-right: 2%;
+    margin-left: 2%;
+    max-width: 100%;
+    height: 72.5vh;
+  }
+  .flexGameboard .sideBar .ruleBtn {
+    margin-bottom: 10%;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  .flexGameboard .sideBar .mobileFlex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
 }
 
 @media (max-width: 600px) {
@@ -149,6 +212,27 @@
     display: inline-block;
   }
   .flexGameboard .sideBar {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-bottom: 5%;
+    margin-right: 5%;
+    margin-left: 5%;
+    max-width: 100%;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .flexGameboard .sideBar .ruleBtn {
+    margin-bottom: 10%;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  .flexGameboard .sideBar .mobileFlex {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -156,15 +240,13 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-    margin-bottom: 5%;
-    max-width: 100%;
+    margin-bottom: 10%;
   }
 }
 
 .GrottoBackground {
-  background-image: url("../assets/grotto.jpg");
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(39, 35, 67, 0.45)), color-stop(rgba(75, 95, 107, 0.45)), color-stop(rgba(110, 136, 152, 0.45)), to(rgba(227, 246, 245, 0.45))), url("../assets/grotto.jpg");
+  background: linear-gradient(rgba(39, 35, 67, 0.45), rgba(75, 95, 107, 0.45), rgba(110, 136, 152, 0.45), rgba(227, 246, 245, 0.45)), url("../assets/grotto.jpg");
   width: 20vw;
   height: 20vh;
   margin-top: 1%;
@@ -172,7 +254,8 @@
 }
 
 .Pool-HouseBackground {
-  background-image: url("../assets/pool-house.jpg");
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(39, 35, 67, 0.45)), color-stop(rgba(75, 95, 107, 0.45)), color-stop(rgba(110, 136, 152, 0.45)), to(rgba(227, 246, 245, 0.45))), url("../assets/pool-house.jpg");
+  background: linear-gradient(rgba(39, 35, 67, 0.45), rgba(75, 95, 107, 0.45), rgba(110, 136, 152, 0.45), rgba(227, 246, 245, 0.45)), url("../assets/pool-house.jpg");
   width: 20vw;
   height: 20vh;
   margin-top: 1%;
@@ -180,7 +263,8 @@
 }
 
 .LibraryBackground {
-  background-image: url("../assets/library.jpg");
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(39, 35, 67, 0.35)), color-stop(rgba(75, 95, 107, 0.35)), color-stop(rgba(110, 136, 152, 0.35)), to(rgba(227, 246, 245, 0.35))), url("../assets/library.jpg");
+  background: linear-gradient(rgba(39, 35, 67, 0.35), rgba(75, 95, 107, 0.35), rgba(110, 136, 152, 0.35), rgba(227, 246, 245, 0.35)), url("../assets/library.jpg");
   width: 20vw;
   height: 20vh;
   margin-top: 1%;
@@ -188,7 +272,8 @@
 }
 
 .KitchenBackground {
-  background-image: url("../assets/kitchen.jpg");
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(39, 35, 67, 0.35)), color-stop(rgba(75, 95, 107, 0.35)), color-stop(rgba(110, 136, 152, 0.35)), to(rgba(227, 246, 245, 0.35))), url("../assets/kitchen.jpg");
+  background: linear-gradient(rgba(39, 35, 67, 0.35), rgba(75, 95, 107, 0.35), rgba(110, 136, 152, 0.35), rgba(227, 246, 245, 0.35)), url("../assets/kitchen.jpg");
   width: 20vw;
   height: 20vh;
   margin-top: 1%;
@@ -196,7 +281,8 @@
 }
 
 .BasementBackground {
-  background-image: url("../assets/basement.jpg");
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(39, 35, 67, 0.45)), color-stop(rgba(75, 95, 107, 0.45)), color-stop(rgba(110, 136, 152, 0.45)), to(rgba(227, 246, 245, 0.45))), url("../assets/basement.jpg");
+  background: linear-gradient(rgba(39, 35, 67, 0.45), rgba(75, 95, 107, 0.45), rgba(110, 136, 152, 0.45), rgba(227, 246, 245, 0.45)), url("../assets/basement.jpg");
   width: 20vw;
   height: 20vh;
   margin-top: 1%;
@@ -204,7 +290,8 @@
 }
 
 .Wine-CellarBackground {
-  background-image: url("../assets/wine-cellar.jpg");
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(39, 35, 67, 0.45)), color-stop(rgba(75, 95, 107, 0.45)), color-stop(rgba(110, 136, 152, 0.45)), to(rgba(227, 246, 245, 0.45))), url("../assets/wine-cellar.jpg");
+  background: linear-gradient(rgba(39, 35, 67, 0.45), rgba(75, 95, 107, 0.45), rgba(110, 136, 152, 0.45), rgba(227, 246, 245, 0.45)), url("../assets/wine-cellar.jpg");
   width: 20vw;
   height: 20vh;
   margin-top: 1%;
@@ -212,7 +299,8 @@
 }
 
 .FoyerBackground {
-  background-image: url("../assets/foyer.jpg");
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(39, 35, 67, 0.45)), color-stop(rgba(75, 95, 107, 0.45)), color-stop(rgba(110, 136, 152, 0.45)), to(rgba(227, 246, 245, 0.45))), url("../assets/foyer.jpg");
+  background: linear-gradient(rgba(39, 35, 67, 0.45), rgba(75, 95, 107, 0.45), rgba(110, 136, 152, 0.45), rgba(227, 246, 245, 0.45)), url("../assets/foyer.jpg");
   width: 20vw;
   height: 20vh;
   margin-top: 1%;
@@ -220,7 +308,8 @@
 }
 
 .GardenBackground {
-  background-image: url("../assets/garden.jpg");
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(39, 35, 67, 0.45)), color-stop(rgba(75, 95, 107, 0.45)), color-stop(rgba(110, 136, 152, 0.45)), to(rgba(227, 246, 245, 0.45))), url("../assets/garden.jpg");
+  background: linear-gradient(rgba(39, 35, 67, 0.45), rgba(75, 95, 107, 0.45), rgba(110, 136, 152, 0.45), rgba(227, 246, 245, 0.45)), url("../assets/garden.jpg");
   width: 20vw;
   height: 20vh;
   margin-top: 1%;
@@ -228,7 +317,8 @@
 }
 
 .Master-BedroomBackground {
-  background-image: url("../assets/master-bedroom.jpg");
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(39, 35, 67, 0.45)), color-stop(rgba(75, 95, 107, 0.45)), color-stop(rgba(110, 136, 152, 0.45)), to(rgba(227, 246, 245, 0.45))), url("../assets/master-bedroom.jpg");
+  background: linear-gradient(rgba(39, 35, 67, 0.45), rgba(75, 95, 107, 0.45), rgba(110, 136, 152, 0.45), rgba(227, 246, 245, 0.45)), url("../assets/master-bedroom.jpg");
   width: 20vw;
   height: 20vh;
   margin-top: 1%;
@@ -331,6 +421,96 @@
   text-shadow: 3px 2px 3px black;
 }
 
+@media (max-width: 850px) {
+  .roomName {
+    font-size: 0.75rem;
+    max-width: 20vw;
+    margin: 0 auto;
+    padding-top: 5%;
+  }
+  .GrottoBackground {
+    width: 20vw;
+    height: 22vh;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+  .Pool-HouseBackground {
+    width: 20vw;
+    height: 22vh;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+  .LibraryBackground {
+    width: 20vw;
+    height: 22vh;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+  .KitchenBackground {
+    width: 20vw;
+    height: 22vh;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+  .BasementBackground {
+    width: 20vw;
+    height: 22vh;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+  .Wine-CellarBackground {
+    width: 20vw;
+    height: 22vh;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+  .FoyerBackground {
+    width: 20vw;
+    height: 22vh;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+  .GardenBackground {
+    width: 20vw;
+    height: 22vh;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+  .Master-BedroomBackground {
+    width: 20vw;
+    height: 22vh;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+  .redCurrent {
+    width: 15px;
+    height: 15px;
+  }
+  .greenCurrent {
+    width: 15px;
+    height: 15px;
+  }
+  .purpleCurrent {
+    width: 15px;
+    height: 15px;
+  }
+  .orangeCurrent {
+    width: 15px;
+    height: 15px;
+  }
+  .yellowCurrent {
+    width: 15px;
+    height: 15px;
+  }
+  .blueCurrent {
+    width: 15px;
+    height: 15px;
+  }
+  .filler {
+    height: 15px;
+  }
+}
+
 @media (max-width: 600px) {
   .roomName {
     font-size: 0.75rem;
@@ -421,16 +601,13 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 100px;
-  background: #e3f6f5;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   font-family: "Roboto Condensed", sans-serif;
-  -webkit-box-shadow: 2px 2px 5px #272343;
-          box-shadow: 2px 2px 5px #272343;
   border-radius: 3px;
+  margin-bottom: 20%;
 }
 
 .dice-container .dice-wrapper {
@@ -516,6 +693,22 @@
   }
 }
 
+@media (max-width: 850px) {
+  .dice-container {
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    margin-bottom: 10%;
+  }
+  .dice-container .die-1 {
+    width: 30px;
+    height: 30px;
+  }
+  .dice-container .die-2 {
+    width: 30px;
+    height: 30px;
+  }
+}
+
 .lobby {
   background-color: #bae8e8;
   text-align: center;
@@ -530,7 +723,7 @@
   height: 25px;
   border-radius: 50%;
   margin: 0 auto;
-  margin-top: 25%;
+  margin-top: 15%;
   -webkit-box-shadow: 2px 2px 5px black;
           box-shadow: 2px 2px 5px black;
   background-color: #ff4f58;
@@ -541,7 +734,7 @@
   height: 25px;
   border-radius: 50%;
   margin: 0 auto;
-  margin-top: 25%;
+  margin-top: 15%;
   -webkit-box-shadow: 2px 2px 5px black;
           box-shadow: 2px 2px 5px black;
   background-color: #3b9465;
@@ -552,7 +745,7 @@
   height: 25px;
   border-radius: 50%;
   margin: 0 auto;
-  margin-top: 25%;
+  margin-top: 15%;
   -webkit-box-shadow: 2px 2px 5px black;
           box-shadow: 2px 2px 5px black;
   background-color: #5f4b66;
@@ -563,7 +756,7 @@
   height: 25px;
   border-radius: 50%;
   margin: 0 auto;
-  margin-top: 25%;
+  margin-top: 15%;
   -webkit-box-shadow: 2px 2px 5px black;
           box-shadow: 2px 2px 5px black;
   background-color: #ecad5f;
@@ -574,7 +767,7 @@
   height: 25px;
   border-radius: 50%;
   margin: 0 auto;
-  margin-top: 25%;
+  margin-top: 15%;
   -webkit-box-shadow: 2px 2px 5px black;
           box-shadow: 2px 2px 5px black;
   background-color: #ffd803;
@@ -585,7 +778,7 @@
   height: 25px;
   border-radius: 50%;
   margin: 0 auto;
-  margin-top: 25%;
+  margin-top: 15%;
   -webkit-box-shadow: 2px 2px 5px black;
           box-shadow: 2px 2px 5px black;
   background-color: #6e8898;
@@ -615,6 +808,34 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media (max-width: 850px) {
+  .redToken {
+    margin-top: 5%;
+  }
+  .greenToken {
+    margin-top: 5%;
+  }
+  .purpleToken {
+    margin-top: 5%;
+  }
+  .orangeToken {
+    margin-top: 5%;
+  }
+  .yellowToken {
+    margin-top: 5%;
+  }
+  .blueToken {
+    margin-top: 5%;
+  }
+  .playerName {
+    font-size: small;
+    margin-top: 5%;
+  }
+  .infoText {
+    font-size: smaller;
+  }
 }
 
 @media (max-width: 600px) {
@@ -1505,14 +1726,23 @@ footer .notebook-container .openNotebook table.locations thead th {
   text-align: center;
 }
 
+footer .notebook-container .openNotebook input[type='checkbox']:hover {
+  border: 10px solid yellowgreen;
+  -webkit-box-shadow: 2px 2px 5px #272343;
+          box-shadow: 2px 2px 5px #272343;
+}
+
 footer .notebook-container .close {
   height: 0px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 850px) {
   footer {
     position: relative;
   }
+}
+
+@media (max-width: 600px) {
   footer .notebook-container {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1536,24 +1766,37 @@ footer .notebook-container .close {
   }
 }
 
-.typeTitle {
-  font-size: larger;
+.handBox {
+  border: 1px solid #141222;
+  background: #e3f6f5;
+  margin: 0 20px;
   text-align: center;
-  color: #ffd803;
-  font-family: "Nunito Sans", sans-serif;
+  -webkit-box-shadow: 2px 2px 2px #272343;
+          box-shadow: 2px 2px 2px #272343;
+  border: none;
 }
 
-.cards {
+.handBox .handText {
+  background: #6e8898;
+  font-weight: 600;
+  color: #000;
+  text-align: center;
+}
+
+.handBox .typeTitle {
+  background: #6e8898;
+  background: #ffd803;
+}
+
+.handBox .cards {
   font-size: medium;
   text-align: center;
   font-family: "Roboto Condensed", sans-serif;
 }
 
-.handText {
-  text-align: center;
-  font-size: x-large;
-  font-family: "Nunito Sans", sans-serif;
-  font-weight: 800;
+.handBox .noCards {
+  color: red;
+  font-style: italic;
 }
 
 .waitingModal {
@@ -1737,5 +1980,10 @@ footer .notebook-container .close {
   .resetText {
     font-size: larger;
   }
+}
+
+.App {
+  background: radial-gradient(25% 50% at 50% 0%, rgba(255, 255, 255, 0.6) 20%, rgba(78, 78, 77, 0.75) 80%);
+  background-color: rgba(26, 26, 25, 0.75);
 }
 /*# sourceMappingURL=index.css.map */

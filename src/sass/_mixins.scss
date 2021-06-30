@@ -33,6 +33,13 @@
   margin-top: 10%;
 }
 
+@mixin tabletRoomBg {
+  width: 20vw;
+  height: 22vh;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
 @mixin roomBg {
   width: 20vw;
   height: 20vh;
@@ -116,13 +123,18 @@
   height: 25px;
   border-radius: 50%;
   margin: 0 auto;
-  margin-top: 25%;
+  margin-top: 15%;
   box-shadow: 2px 2px 5px black;
 }
 
 @mixin playerTokenMobile {
   margin-top: 15%;
 }
+
+@mixin playerTokenTablet {
+  margin-top: 5%;
+}
+
 @mixin table {
   border: 1px solid darken($color-darkest, 10);
   background: $color-light;

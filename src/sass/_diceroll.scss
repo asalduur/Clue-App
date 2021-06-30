@@ -1,11 +1,9 @@
 .dice-container {
   @include flex-center-center;
-  width: 100px;
-  background: $color-light;
   flex-direction: column;
   font-family: $font-main;
-  box-shadow: 2px 2px 5px $color-darkest;
   border-radius: 3px;
+  margin-bottom: 20%;
 
   .dice-wrapper {
     @include flex-center-center;
@@ -50,5 +48,20 @@
   }
   100% {
     transform: rotate(0deg);
+  }
+}
+
+@media (max-width: 850px) {
+  .dice-container {
+    box-shadow: none;
+    margin-bottom: 10%;
+    .die-1 {
+      width: 30px;
+      height: 30px;
+    }
+    .die-2 {
+      width: 30px;
+      height: 30px;
+    }
   }
 }
