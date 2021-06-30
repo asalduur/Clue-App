@@ -22,7 +22,7 @@ const Rooms = ({ roomNames, modalOpen, setModalOpen}) => {
 
   let opponentpieces = [];
 
-  players.forEach((p, i) => {
+  players.filter((p, i) => {
     if (p.id !== player.id) {
       opponentpieces.push(p);
     }
