@@ -335,7 +335,6 @@ io.on("connection", (socket) => {
       setTimeout(() => {
         io.to(gameroom).emit("send-proof", othercard);
       }, 7000);
-      // io.emit('send-proof', othercards[0]);
     } else {
       setTimeout(() => {
         io.to(gameroom).emit("accuse-choice", activeplayer);
