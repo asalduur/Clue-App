@@ -228,6 +228,7 @@ export const SocketProvider = (props) => {
         if (body.id) {
         if (playerRef.current.id === body.id) {
             setLossMsg(null);
+            setRollTotal(0);
             setCurrentRoom(null);
             socket.disconnect();
             setRoomId('');
@@ -236,6 +237,7 @@ export const SocketProvider = (props) => {
         }
         if (body.gamewon) {
         setCurrentRoom(null);
+        setRollTotal(0);
         setLossMsg(null);
         setResetMsg(null);
         socket.disconnect();
