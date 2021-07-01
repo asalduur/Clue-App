@@ -180,7 +180,7 @@ export const SocketProvider = (props) => {
         }
         setTimeout(() => {
           if (body.id === socket.id) {
-            setLossMsg(null);
+            // setLossMsg(null);
             // setActiveSA(false);
 
             socket.emit('player-lose', data);
@@ -246,7 +246,7 @@ export const SocketProvider = (props) => {
         if (body.id !== playerRef.current.id) {
           setLastMan(true);
         }
-      })
+      });
       socket.on("update-messages", () => {
         setInactiveMsg(null);
       });
@@ -266,12 +266,16 @@ export const SocketProvider = (props) => {
       socket.on('player-disconnect', (body) => {
         if (body.id) {
         if (playerRef.current.id === body.id) {
+            setLossMsg(null);
+            setCurrentRoom(null);
             socket.disconnect();
             setRoomId('');
             socket.connect();
           }
         }
         if (body.gamewon) {
+        setCurrentRoom(null);
+        setLossMsg(null);
         socket.disconnect();
         setRoomId('');
         socket.connect();
