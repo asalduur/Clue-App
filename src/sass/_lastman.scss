@@ -1,0 +1,12 @@
+.last-man-modal{
+  @include modalStyling;
+  width: 40vw;
+  height: 15vh;
+  left: 30vw;
+  top: 26vh;
+
+  p {
+    @include modalBodyText;
+  }
+
+}

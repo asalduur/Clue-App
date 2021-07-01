@@ -23,6 +23,7 @@
         "../sass/_waitingmodal.scss",
         "../sass/_rules.scss",
         "../sass/_resetgamemodal.scss",
+        "../sass/_lastman.scss",
         "../sass/_app.scss"
     ],
     "names": [],

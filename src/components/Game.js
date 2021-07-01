@@ -8,6 +8,7 @@ import Suggestion from "../modals/Suggestion";
 import Notebook from "./Notebook";
 import WinModal from "../modals/WinModal";
 import LoseModal from "../modals/LoseModal";
+import LastMan from "../modals/LastMan";
 import ResetGame from "../modals/ResetGame";
 import Rules from "../modals/Rules";
 import { useHistory } from 'react-router-dom';
@@ -80,6 +81,7 @@ const Game = () => {
       />
       <WinModal />
       <LoseModal />
+      <LastMan/>
       <Suggestion />
       <ResetGame />
     </>

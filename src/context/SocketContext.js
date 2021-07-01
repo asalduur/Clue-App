@@ -367,7 +367,9 @@ export const SocketProvider = (props) => {
         myProof,
         gameRooms,
         joinRoom,
-        roomId
+        roomId,
+        lastMan,
+        casefile
       }}
     >
       {props.children}
