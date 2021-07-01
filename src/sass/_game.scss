@@ -47,13 +47,7 @@
       }
     }
   }
-
-
 }
-
-
-
-
 
 .modalBtnStyling {
   @include gameboardBtnStyling;
@@ -63,7 +57,6 @@
 }
 
 .headerBar {
-  width: 85vw;
   display: flex;
   justify-content: center;
   align-items: baseline;
@@ -103,6 +96,13 @@
 @media (max-width: 850px) {
   .headerText {
     font-size: 3rem;
+    text-align: center;
+    width: 98vw;
+  }
+  .topbar {
+    width: 90vw;
+    flex-direction: column;
+    align-items: center;
   }
   .flexGameboard {
     justify-content: space-evenly;
