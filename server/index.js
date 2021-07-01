@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
+const path = require('path')
 const { SERVER_PORT } = process.env;
 
 let players = [];
@@ -50,6 +51,12 @@ const cards = [
 ];
 
 app.use(express.json());
+
+app.use(express.static(__dirname + '/../build'))
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'))
+})
 
 const io = require("socket.io")(
   app.listen(SERVER_PORT, () =>
