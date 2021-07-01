@@ -7,12 +7,7 @@
     @include table-thead-th;
   }
   .typeTitle {
-    // font-size: larger;
-    // text-align: center;
-    // color: $color-pop;
-    // font-family: $font-secondary;
     @include table-thead;
-    // border: 1px solid $color-darkest;
     background: $color-pop;
   }
   .cards {

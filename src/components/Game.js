@@ -26,7 +26,7 @@ const Game = () => {
 
   let opponentpieces = [];
 
-  players.filter((p, i) => {
+  players.forEach((p, i) => {
     if (p.id !== player.id) {
       opponentpieces.push(p);
     }
@@ -41,8 +41,7 @@ const Game = () => {
         <div className="suggestAccuseBtns">
           <button
             onClick={() => setModalOpen(!modalOpen)}
-            className="modalBtnStyling"
-          >
+            className="modalBtnStyling">
             Suggest/Accuse
           </button>
           <AccuseSuggest modalOpen={modalOpen} setModalOpen={setModalOpen} />

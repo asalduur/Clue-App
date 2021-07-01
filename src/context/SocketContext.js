@@ -63,8 +63,9 @@ export const SocketProvider = (props) => {
         setPlayers(players);
         const fplayer = players.find((p, i) => {
           if (p.id === socket.id) {
-            console.log("P:", p);
             return p;
+          } else {
+            return null;
           }
         });
         setPlayer(fplayer);
@@ -72,9 +73,6 @@ export const SocketProvider = (props) => {
       socket.on("case-file", (casefile) => {
         setCaseFile(casefile);
       });
-      // socket.on('game-start', (body) => {
-      //   console.log(body);
-      // });
       socket.on("player-start", (start_player) => {
         setLossMsg(null);
         setProofMsg(null);
@@ -131,7 +129,6 @@ export const SocketProvider = (props) => {
         }
         if (aplayer.id === player.id) {
           setActiveSA(false);
-          // setWaiting(false);
           
         }
         setTimeout(() => {

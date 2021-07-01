@@ -1,17 +1,13 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import Modal from "react-modal";
 import WinModal from "./WinModal";
-import LoseModal from "./LoseModal";
 import {SocketContext} from "../context/SocketContext"
 import { GameContext } from "../context/GameContext";
 
 const Accuse = (props) => {
 
-  const {currentRoom, sendAccusation, active, activeSA, activeAccuse, playerlost} = useContext(SocketContext)
-  const {accuse, setAccuse, selectedSuspect, selectedRoom, selectedWeapon,} = useContext(GameContext);
-
-  const [win, setWin] = useState(false);
-  const [lose, setLose] = useState(false);
+  const {currentRoom, sendAccusation, active, activeSA, activeAccuse} = useContext(SocketContext)
+  const {accuse, setAccuse, selectedSuspect, selectedWeapon,} = useContext(GameContext);
 
   const handleBack = () => {
     setAccuse(false);
@@ -44,7 +40,7 @@ const Accuse = (props) => {
           </button>
         </div>
 
-        <WinModal win={win} />
+        <WinModal />
       </Modal>
 
     </div>

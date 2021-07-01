@@ -15,9 +15,7 @@ const Hand = () => {
       suspectArr.push(player.cards[i].suspect);
     }
   }
-  console.log(weaponArr);
-  console.log(suspectArr);
-  console.log(roomArr);
+
   return (
     <div className='handBox'>
       <h2 className="handText">Your Hand</h2>

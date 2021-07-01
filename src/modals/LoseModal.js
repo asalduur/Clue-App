@@ -4,21 +4,10 @@ import { SocketContext } from "../context/SocketContext";
 
 const LoseModal = (props) => {
   const { lossmsg } = useContext(SocketContext);
-  // const { lose, setLose, setSuggestAccuse } = props;
-
-  // const handleWatch = () => {
-  //   setLose(false);
-  // };
 
   return (
     <Modal isOpen={lossmsg ? true : false} className="loseModal">
       <h1 className="loseText"> {lossmsg} </h1>
-      {/* <div className="flexBtns">
-        <button className="continueBtn" onClick={handleWatch}>
-          Continue Watching
-        </button>
-        <button className="leaveBtn"> Leave Game </button>
-      </div> */}
     </Modal>
   );
 };
