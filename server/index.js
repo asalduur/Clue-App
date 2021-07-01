@@ -374,6 +374,15 @@ io.on("connection", (socket) => {
       players.splice(i, 1);
     }
     });
+    if (!currentplayer.player) {
+      gamerooms.forEach((r, j) => {
+       for (let i = 0; i < r.roomPlayers.length;i++) {
+         if (r.roomPlayers[i].id === body.id) {
+           currentplayer = r.roomPlayers[i];
+         }
+       }
+      })
+    };
     currentplayer.gameRoomId = gameroom;
     gamerooms.forEach((room, i) => {
       let index = room.roomPlayers.findIndex((p, i) => {
@@ -382,8 +391,7 @@ io.on("connection", (socket) => {
       if (index !== -1) {
         room.roomPlayers.splice(index, 1);
       }
-    })
-
+    });
 
     gamerooms.forEach((room, i) => {
       if (room.roomId === body.roomid) {
