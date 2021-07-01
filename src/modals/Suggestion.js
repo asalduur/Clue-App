@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useContext } from "react";
 import Modal from "react-modal";
 import Accuse from "./Accuse";
 import { SocketContext } from "../context/SocketContext";
@@ -6,10 +6,10 @@ import { GameContext } from "../context/GameContext";
 
 
 const Suggestion = (props) => {
-  const { endTurn, active, currentRoom, proofmsg, activeAccuse, waiting, setWaiting, myProof, inactiveProof } = useContext(
+  const { endTurn, active, proofmsg, activeAccuse, setWaiting, myProof, inactiveProof } = useContext(
     SocketContext
   );
-  const {setAccuse, selectedSuspect, selectedRoom, selectedWeapon} = useContext(GameContext);
+  const {setAccuse} = useContext(GameContext);
 
 
   const handleEndTurn = () => {

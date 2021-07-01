@@ -1,5 +1,5 @@
 import Modal from "react-modal";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import Accuse from "./Accuse";
 import Suggestion from "./Suggestion";
 import {SocketContext} from "../context/SocketContext"
@@ -10,11 +10,9 @@ import { GameContext } from "../context/GameContext";
 Modal.setAppElement("#root");
 const AccuseSuggest = ({ modalOpen, setModalOpen }) => {
   const {sendSuggest, currentRoom, active, activeSA, waiting, setWaiting} = useContext(SocketContext);
-  const {accuse, setAccuse, selectedWeapon, setSelectedWeapon, 
-        selectedSuspect, setSelectedSuspect, selectedRoom, setSelectedRoom} = useContext(GameContext);
+  const {setAccuse, selectedWeapon, setSelectedWeapon, 
+        selectedSuspect, setSelectedSuspect } = useContext(GameContext);
 
-
-  // const [modalOpen, setModalOpen] = useState(true);
 
   const handleAccuse = () => {
     if (currentRoom && selectedWeapon && selectedSuspect) {
@@ -33,16 +31,6 @@ const AccuseSuggest = ({ modalOpen, setModalOpen }) => {
       alert('Please select a weapon and suspect!');
     }
   };
-
-  const handleSetWeapon = (e) => {
-    setSelectedWeapon(e.target.value);
-  };
-
-  // const handleCloseModal = () => {
-  //   setSuggestAccuse(false);
-  //   setModalOpen(false);
-
-  // };
 
 
   return (
@@ -66,22 +54,6 @@ const AccuseSuggest = ({ modalOpen, setModalOpen }) => {
             <option value="Chef"> Chef </option>
             <option value="Baby"> Baby </option>
           </select>
-
-          {/* <select
-            className="roomSelect"
-            onChange={(e) => setSelectedRoom(e.target.value)}
-          >
-            <option value=""> </option>
-            <option value="Grotto"> Grotto </option>
-            <option value="Pool-House"> Pool-House </option>
-            <option value="Library"> Library </option>
-            <option value="Kitchen"> Kitchen </option>
-            <option value="Basement"> Basement </option>
-            <option value="Wine Cellar"> Wine Cellar </option>
-            <option value="Foyer"> Foyer </option>
-            <option value="Garden"> Garden </option>
-            <option value="Master Bedroom"> Master Bedroom </option>
-          </select> */}
 
           <select
             className="weaponSelect"

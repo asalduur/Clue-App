@@ -22,7 +22,7 @@ const Rooms = ({ roomNames, modalOpen, setModalOpen }) => {
 
   let opponentpieces = [];
 
-  players.filter((p, i) => {
+  players.forEach((p, i) => {
     if (p.id !== player.id) {
       opponentpieces.push(p);
     }
@@ -49,6 +49,8 @@ const Rooms = ({ roomNames, modalOpen, setModalOpen }) => {
               {opponentpieces.map((o, i) => {
                 if (o.location === room.room) {
                   return <div className={`${o.token}Current`}></div>;
+                } else {
+                  return null;
                 }
               })}
             </div>

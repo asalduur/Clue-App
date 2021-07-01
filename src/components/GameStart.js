@@ -1,12 +1,8 @@
 import { useContext } from "react";
-import { useHistory } from "react-router-dom";
 import { SocketContext } from "../context/SocketContext";
 
 const GameStart = () => {
-  const history = useHistory();
   const {
-    player,
-    players,
     gameStart,
     gameRooms,
     joinRoom,

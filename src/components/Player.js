@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { SocketContext } from "../context/SocketContext";
 
 const Player = ({ playerInfo }) => {
