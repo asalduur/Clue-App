@@ -792,10 +792,124 @@
 .lobby {
   background-color: #bae8e8;
   text-align: center;
+  height: 100vh;
+  padding-bottom: 10%;
 }
 
-.lobby h1 {
-  color: #ffd803;
+.lobby .headerText {
+  padding-bottom: 0;
+}
+
+.lobby .roomOption {
+  margin-top: 3%;
+}
+
+.lobby .roomNumText {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: x-large;
+}
+
+.lobby .playerText {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: medium;
+  margin-top: 1%;
+}
+
+.lobby .gameFullText {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: medium;
+  margin-top: 2%;
+  font-style: italic;
+  color: #ff4f58;
+}
+
+.lobby .joinGameBtn {
+  border: none;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 800;
+  -webkit-box-shadow: 0px 2px 3px #272343;
+          box-shadow: 0px 2px 3px #272343;
+  background-color: #4b5f6b;
+  margin-top: 1%;
+  color: white;
+}
+
+.lobby .joinGameBtn:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.lobby .startGameBtn {
+  border: none;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 800;
+  -webkit-box-shadow: 0px 2px 3px #272343;
+          box-shadow: 0px 2px 3px #272343;
+  margin-top: 1%;
+  background-color: #ffd803;
+}
+
+.lobby .startGameBtn:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+@media (max-width: 850px) {
+  .lobby .gameroomslist {
+    margin-top: 5%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .lobby .headerText {
+    font-size: 4rem;
+  }
+  .lobby .joinGameBtn {
+    margin-top: 5%;
+  }
+  .lobby .startGameBtn {
+    margin-top: 5%;
+  }
+}
+
+@media (max-width: 600px) {
+  .lobby {
+    background-color: #bae8e8;
+    height: 100vh;
+  }
+  .lobby .gameroomslist {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .lobby .headerText {
+    padding-top: 2%;
+  }
+  .lobby .roomOption {
+    margin-top: 10%;
+  }
+  .lobby .joinGameBtn {
+    margin-top: 5%;
+    margin-top: 2%;
+  }
+  .lobby .startGameBtn {
+    margin-top: 5%;
+    margin-top: 2%;
+  }
 }
 
 .redToken {

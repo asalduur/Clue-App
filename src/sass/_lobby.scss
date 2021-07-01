@@ -1,10 +1,90 @@
-@import './variables';
+@import "./variables";
 
 .lobby {
-    background-color: $color-primary;
-    text-align: center;
+  background-color: $color-primary;
+  text-align: center;
+  height: 100vh;
+  padding-bottom: 10%;
+  .headerText {
+    padding-bottom: 0;
+  }
+  .roomOption {
+    margin-top: 3%;
+  }
 
-    h1 {
-        color: $color-pop;
+  .roomNumText {
+    font-family: $font-secondary;
+    font-size: x-large;
+  }
+
+  .playerText {
+    font-family: $font-secondary;
+    font-size: medium;
+    margin-top: 1%;
+  }
+
+  .gameFullText {
+    font-family: $font-secondary;
+    font-size: medium;
+    margin-top: 2%;
+    font-style: italic;
+    color: $color-tRed;
+  }
+
+  .joinGameBtn {
+    @include accuseSuggestBtns;
+    background-color: $color-darker;
+    margin-top: 1%;
+    color: white;
+  }
+
+  .startGameBtn {
+    @include accuseSuggestBtns;
+    margin-top: 1%;
+    background-color: $color-pop;
+  }
+}
+
+@media (max-width: 850px) {
+  .lobby {
+    .gameroomslist {
+      margin-top: 5%;
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
     }
+    .headerText {
+      font-size: 4rem;
+    }
+    .joinGameBtn {
+      margin-top: 5%;
+    }
+    .startGameBtn {
+      margin-top: 5%;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .lobby {
+    background-color: $color-primary;
+    height: 100vh;
+    .gameroomslist {
+      flex-direction: column;
+    }
+    .headerText {
+      padding-top: 2%;
+    }
+    .roomOption {
+      margin-top: 10%;
+    }
+    .joinGameBtn {
+      @include accuseSuggestMobileBtns;
+      margin-top: 2%;
+    }
+    .startGameBtn {
+      @include accuseSuggestMobileBtns;
+      margin-top: 2%;
+    }
+  }
 }
