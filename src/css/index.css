@@ -62,9 +62,64 @@
   min-width: 75vw;
 }
 
-.suggestAccuseBtns {
+.topbar {
+  margin-left: 4.2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 75vw;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.topbar .suggestAccuseBtns {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  height: 30px;
   text-align: center;
   margin-bottom: 2%;
+}
+
+.topbar .opponentlegend {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  height: 30px;
+  max-width: 100%;
+}
+
+.topbar .opponentlegend span {
+  background-color: #e3f6f5;
+  min-width: 80px;
+  height: 26px;
+  border: 1px solid #272343;
+  border-radius: 6px;
+  line-height: 26px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 5px 20px;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.topbar .opponentlegend span p {
+  min-width: 40px;
 }
 
 .modalBtnStyling {
@@ -84,6 +139,7 @@
 }
 
 .headerBar {
+  width: 85vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -208,19 +264,43 @@
   .headerText {
     font-size: 3.5rem;
   }
+  .topbar {
+    width: 90vw;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .topbar .suggestAccuseBtns {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .topbar .opponentlegend {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .headerBar {
+    width: 100vw;
+  }
   .flexGameboard {
     display: inline-block;
   }
   .flexGameboard .sideBar {
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    margin-bottom: 5%;
-    margin-right: 5%;
-    margin-left: 5%;
+    margin: auto;
+    margin-bottom: 10px;
     max-width: 100%;
     height: -webkit-fit-content;
     height: -moz-fit-content;
@@ -1743,6 +1823,18 @@ footer .notebook-container .close {
 }
 
 @media (max-width: 600px) {
+  footer {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
   footer .notebook-container {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;

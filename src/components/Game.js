@@ -36,8 +36,8 @@ const Game = () => {
       <div className="headerBar">
         <h2 className="headerText">Hunch</h2>
       </div>
-      <div className='topbar' style={{display: 'flex', width: '100vw', justifyContent: 'center'}}>
-      <div className="suggestAccuseBtns" style={{flex: '1', display: 'flex', justifyContent: 'flex-start', marginLeft: '3.3%', height: '30px'}}>
+      <div className='topbar'>
+      <div className="suggestAccuseBtns">
         <button
           onClick={() => setModalOpen(!modalOpen)}
           className="modalBtnStyling"
@@ -46,13 +46,13 @@ const Game = () => {
         </button>
         <AccuseSuggest modalOpen={modalOpen} setModalOpen={setModalOpen} />
         </div>
-        <div className='opponentlegend' style={{display: 'flex', flex: '3', justifyContent: 'flex-end', marginRight: '21%', height: '30px'}}>
+        <div className='opponentlegend'>
         {opponentpieces.map((o, i) => {
         return (
-          <span style={{display: 'flex', justifyContent: 'space-between', 
-          marginLeft: '10px', marginRight: '10px'}}>
-            <p>Player {o.player}: </p>
-            <p>{o.token}</p>
+          <span>
+            <p>P {o.player}: </p>
+            <div className={`${o.token}Current`} style={{height: '20px', width: '20px', 
+          padding: '0', margin: '0, 0', marginTop: '3px', boxShadow: 'none'}}></div>
           </span>
         )
       })}

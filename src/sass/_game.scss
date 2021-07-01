@@ -8,10 +8,52 @@
   min-width: 75vw;
 }
 
-.suggestAccuseBtns {
-  text-align: center;
-  margin-bottom: 2%;
+.topbar {
+  margin-left: 4.2vw;
+  display: flex;
+  width: 75vw;
+  justify-content: center;
+
+  .suggestAccuseBtns {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    height: 30px;
+    text-align: center;
+    margin-bottom: 2%;
+  }
+
+  .opponentlegend {
+    display: flex;
+    flex: 3;
+    justify-content: flex-end;
+    height: 30px;
+    max-width: 100%;
+
+    span {
+      background-color: $color-light;
+      // width: 120px;
+      min-width: 80px;
+      height: 26px;
+      border: 1px solid $color-darkest;
+      border-radius: 6px;
+      line-height: 26px;
+      display: flex;
+      justify-content: space-around;
+      margin: 5px 20px;
+      font-family: $font-main;
+      p {
+        min-width: 40px;
+      }
+    }
+  }
+
+
 }
+
+
+
+
 
 .modalBtnStyling {
   @include gameboardBtnStyling;
@@ -21,6 +63,7 @@
 }
 
 .headerBar {
+  width: 85vw;
   display: flex;
   justify-content: center;
   align-items: baseline;
@@ -90,14 +133,30 @@
   .headerText {
     font-size: 3.5rem;
   }
+  .topbar {
+    width: 90vw;
+    flex-direction: column;
+    justify-content: center;
+    .suggestAccuseBtns {
+      justify-content: center;
+    }
+    .opponentlegend {
+      flex-wrap: wrap;
+      justify-content: center;
+      span {
+      }
+    }
+  }
+  .headerBar {
+    width: 100vw;
+  }
   .flexGameboard {
     display: inline-block;
     .sideBar {
-      justify-content: flex-start;
+      justify-content: center;
       align-items: center;
-      margin-bottom: 5%;
-      margin-right: 5%;
-      margin-left: 5%;
+      margin: auto;
+      margin-bottom: 10px;
       max-width: 100%;
       height: fit-content;
       .ruleBtn {
