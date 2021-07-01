@@ -139,7 +139,6 @@
 }
 
 .headerBar {
-  width: 85vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -214,6 +213,18 @@
 @media (max-width: 850px) {
   .headerText {
     font-size: 3rem;
+    text-align: center;
+    width: 98vw;
+  }
+  .topbar {
+    width: 90vw;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   .flexGameboard {
     -webkit-box-pack: space-evenly;
@@ -2238,5 +2249,17 @@ footer .notebook-container .close {
 .App {
   background: radial-gradient(25% 50% at 50% 0%, rgba(255, 255, 255, 0.6) 20%, rgba(78, 78, 77, 0.75) 80%);
   background-color: rgba(26, 26, 25, 0.75);
+}
+
+@media (max-width: 850px) {
+  .App {
+    background: radial-gradient(25% 25% at 50% 0%, rgba(255, 255, 255, 0.6) 20%, rgba(78, 78, 77, 0.75) 80%);
+  }
+}
+
+@media (max-width: 600px) {
+  .App {
+    background: radial-gradient(45% 15% at 50% 0%, rgba(255, 255, 255, 0.6) 20%, rgba(78, 78, 77, 0.75) 80%);
+  }
 }
 /*# sourceMappingURL=index.css.map */

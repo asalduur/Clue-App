@@ -11,17 +11,17 @@ import LoseModal from "../modals/LoseModal";
 import LastMan from "../modals/LastMan";
 import ResetGame from "../modals/ResetGame";
 import Rules from "../modals/Rules";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 const Game = () => {
   const { roomId, players, player } = useContext(SocketContext);
   const [modalOpen, setModalOpen] = useState(false);
   const [ruleModalOpen, setRuleModalOpen] = useState(false);
 
-  const history = useHistory()
+  const history = useHistory();
 
   if (!roomId) {
-    history.push('/');
+    history.push("/");
   }
 
   let opponentpieces = [];
@@ -37,26 +37,35 @@ const Game = () => {
       <div className="headerBar">
         <h2 className="headerText">Hunch</h2>
       </div>
-      <div className='topbar'>
-      <div className="suggestAccuseBtns">
-        <button
-          onClick={() => setModalOpen(!modalOpen)}
-          className="modalBtnStyling"
-        >
-          Suggest/Accuse
-        </button>
-        <AccuseSuggest modalOpen={modalOpen} setModalOpen={setModalOpen} />
+      <div className="topbar">
+        <div className="suggestAccuseBtns">
+          <button
+            onClick={() => setModalOpen(!modalOpen)}
+            className="modalBtnStyling"
+          >
+            Suggest/Accuse
+          </button>
+          <AccuseSuggest modalOpen={modalOpen} setModalOpen={setModalOpen} />
         </div>
-        <div className='opponentlegend'>
-        {opponentpieces.map((o, i) => {
-        return (
-          <span>
-            <p>P {o.player}: </p>
-            <div className={`${o.token}Current`} style={{height: '20px', width: '20px', 
-          padding: '0', margin: '0, 0', marginTop: '3px', boxShadow: 'none'}}></div>
-          </span>
-        )
-      })}
+        <div className="opponentlegend">
+          {opponentpieces.map((o, i) => {
+            return (
+              <span key={i}>
+                <p>P {o.player}: </p>
+                <div
+                  className={`${o.token}Current`}
+                  style={{
+                    height: "20px",
+                    width: "20px",
+                    padding: "0",
+                    margin: "0, 0",
+                    marginTop: "3px",
+                    boxShadow: "none",
+                  }}
+                ></div>
+              </span>
+            );
+          })}
         </div>
       </div>
       <div className="flexGameboard">
@@ -81,11 +90,13 @@ const Game = () => {
       />
       <WinModal />
       <LoseModal />
-      <LastMan/>
+      <LastMan />
       <Suggestion />
       <ResetGame />
     </>
-  ) : <div></div>;
+  ) : (
+    <div></div>
+  );
 };
 
 export default Game;
