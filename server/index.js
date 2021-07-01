@@ -169,6 +169,43 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     console.log(`Socket ${socket.id} disconnected.`);
 
+    if (gameroom) {
+      const roomindex = gamerooms.findIndex((r, i) => {
+        return r.roomId === gameroom;
+      });
+
+      const playerindex = gamerooms[roomindex].roomPlayers.findIndex((p, i) => {
+        return p.id === socket.id;
+      })
+    
+    
+
+      if(playerindex !== -1 && gamerooms[roomindex].roomPlayers.length < 3) {
+        io.to(gameroom).emit('last-man-standing', {id: socket.id});
+        setTimeout(() => {
+          gamerooms[roomindex].roomPlayers = [];
+          gamerooms[roomindex].active = false;
+          gamerooms[roomindex].roomCards = [];
+          io.emit('room-join-info', gamerooms);
+          io.to(gameroom).emit('player-disconnect', {gamewon: true});
+        }, 5000)
+      }
+
+      if (playerindex !== -1 && gamerooms[roomindex].roomPlayers.length > 2) {
+        const firstplayers = [...gamerooms[roomindex].roomPlayers.slice(playerindex + 1)];
+        const lastplayers = [...gamerooms[roomindex].roomPlayers.slice(0, playerindex)];
+        const orderedplayers = [...firstplayers, ...lastplayers];
+
+      gamerooms[roomindex].roomPlayers.splice(playerindex, 1);
+      io.emit('room-join-info', gamerooms);
+      io.to(gameroom).emit("update-players", gamerooms[roomindex].roomPlayers);
+      io.to(gameroom).emit("player-start", orderedplayers[0]);
+    }
+
+
+  };
+
+
     // if (gameroom) {
     //   let roomindex = gamerooms.findIndex((r, i) => {
     //     return r.roomId === gameroom;
