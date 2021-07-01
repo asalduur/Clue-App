@@ -237,6 +237,7 @@ export const SocketProvider = (props) => {
         if (body.gamewon) {
         setCurrentRoom(null);
         setLossMsg(null);
+        setResetMsg(null);
         socket.disconnect();
         setRoomId('');
         socket.connect();
