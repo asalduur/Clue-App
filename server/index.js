@@ -312,14 +312,14 @@ io.on("connection", (socket) => {
         io.emit('test', gamerooms);
 
 
-      } else {
+      } else if (gamerooms[roomindex].roomPlayers.length < 3) {
         io.to(gameroom).emit('last-man-standing', data.body);
         setTimeout(() => {
           gamerooms[roomindex].roomPlayers = [];
           gamerooms[roomindex].active = false;
           gamerooms[roomindex].roomCards = [];
           io.emit('room-join-info', gamerooms);
-          io.to(gameroom).emit('playerdisconnect', {gamewon: true});
+          io.to(gameroom).emit('player-disconnect', {gamewon: true});
         }, 5000)
       }
     }
