@@ -274,7 +274,7 @@ io.on("connection", (socket) => {
     io.to(gameroom).emit("update-players", gamerooms[roomindex].roomPlayers);
     gamerooms[roomindex].roomPlayers.forEach((p, i) => {
       if (p.id === body.id) {
-        if (p.roll >= 2) {
+        if (p.roll >= 20) {
           io.to(gameroom).emit("room-choose", p);
           p.roll = 0;
           socket.emit("send-roll-total", p);
