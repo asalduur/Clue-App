@@ -52,7 +52,7 @@ const AccuseSuggest = ({ modalOpen, setModalOpen }) => {
         <button className="closeModal" onClick={() => setModalOpen(!modalOpen)}>
           X
         </button>
-        <div style={{width: '100%', textAlign: 'center'}}><p>Please make a suggestion or accusation.</p></div>
+        <div className='title'><p>Please make a suggestion or accusation.</p></div>
         <div className="modal_display">
           <select
             className="suspectSelect"

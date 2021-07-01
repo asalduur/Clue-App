@@ -2,10 +2,22 @@
   @include modalStyling;
   width: 35vw;
   height: 12.5vh;
+
+  .title {
+    width: 100%;
+    text-align: center;
+    p {
+      font-family: $font-main;
+      font-size: 1.5rem;
+    }
+  }
 }
 
 .closeModal {
   @include closeModalBtn;
+  position: relative;
+  top: -16px;
+  right: -10px;
 }
 
 .modal_display {
@@ -13,6 +25,10 @@
   flex-direction: row;
   justify-content: space-evenly;
   padding-top: 5%;
+
+  select {
+    max-width: 200px;
+  }
 }
 
 .suspectSelect {
