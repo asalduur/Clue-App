@@ -968,6 +968,16 @@
   height: 12.5vh;
 }
 
+.accuseSuggestModal .title {
+  width: 100%;
+  text-align: center;
+}
+
+.accuseSuggestModal .title p {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1.5rem;
+}
+
 .closeModal {
   background: none;
   border: none;
@@ -979,6 +989,9 @@
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  position: relative;
+  top: -16px;
+  right: -10px;
 }
 
 .modal_display {
@@ -993,6 +1006,10 @@
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
   padding-top: 5%;
+}
+
+.modal_display select {
+  max-width: 200px;
 }
 
 .suspectSelect {
