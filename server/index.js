@@ -274,7 +274,7 @@ io.on("connection", (socket) => {
     io.to(gameroom).emit("update-players", gamerooms[roomindex].roomPlayers);
     gamerooms[roomindex].roomPlayers.forEach((p, i) => {
       if (p.id === body.id) {
-        if (p.roll >= 2) {
+        if (p.roll >= 20) {
           io.to(gameroom).emit("room-choose", p);
           p.roll = 0;
           socket.emit("send-roll-total", p);
@@ -374,6 +374,15 @@ io.on("connection", (socket) => {
       players.splice(i, 1);
     }
     });
+    if (!currentplayer.player) {
+      gamerooms.forEach((r, j) => {
+       for (let i = 0; i < r.roomPlayers.length;i++) {
+         if (r.roomPlayers[i].id === body.id) {
+           currentplayer = r.roomPlayers[i];
+         }
+       }
+      })
+    };
     currentplayer.gameRoomId = gameroom;
     gamerooms.forEach((room, i) => {
       let index = room.roomPlayers.findIndex((p, i) => {
@@ -382,8 +391,7 @@ io.on("connection", (socket) => {
       if (index !== -1) {
         room.roomPlayers.splice(index, 1);
       }
-    })
-
+    });
 
     gamerooms.forEach((room, i) => {
       if (room.roomId === body.roomid) {
