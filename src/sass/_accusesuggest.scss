@@ -1,7 +1,8 @@
 .accuseSuggestModal {
   @include modalStyling;
   width: 35vw;
-  height: 12.5vh;
+  height: fit-content;
+  padding: 2%;
 
   .title {
     width: 100%;
