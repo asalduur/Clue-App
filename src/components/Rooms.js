@@ -28,7 +28,6 @@ const Rooms = ({ roomNames, modalOpen, setModalOpen }) => {
     }
   });
 
-
   return (
     <>
       {roomNames.map((room, index) => {
@@ -44,11 +43,9 @@ const Rooms = ({ roomNames, modalOpen, setModalOpen }) => {
               ) : (
                 <div className="filler"></div>
               )}
-            </div>
-            <div className="flexTokens">
               {opponentpieces.map((o, i) => {
                 if (o.location === room.room) {
-                  return <div className={`${o.token}Current`}></div>;
+                  return <div className={`${o.token}Current`} key={i}></div>;
                 } else {
                   return null;
                 }
