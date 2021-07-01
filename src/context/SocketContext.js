@@ -17,7 +17,6 @@ export const SocketProvider = (props) => {
   const [activeAccuse, setActiveAccuse] = useState(false);
   const [casefile, setCaseFile] = useState(null);
   const [suggestion, setSuggestion] = useState(null);
-  const [accusation, setAccusation] = useState(null);
   const [lossmsg, setLossMsg] = useState(null);
   const [winmsg, setWinMsg] = useState(null);
   const [proofmsg, setProofMsg] = useState(null);
@@ -26,25 +25,20 @@ export const SocketProvider = (props) => {
   const [resetmsg, setResetMsg] = useState(null);
   const [playerlost, setPlayerLost] = useState(false);
   const [playerwin, setPlayerWin] = useState(false);
-  const [inactiveRoll, setInactiveRoll] = useState(true);
   const [inactiveMsg, setInactiveMsg] = useState("");
   const [rolltotal, setRollTotal] = useState(0);
-  //Waiting added
   const [waiting, setWaiting] = useState(false);
   const [roomId, setRoomId] = useState('');
   const [gameRooms, setGameRooms] = useState(null);
   const [lastMan, setLastMan] = useState(false);
-
   const playerRef = useRef(player);
   const playersRef = useRef(players);
-  const roomIdRef = useRef(roomId);
   const history = useHistory();
 
   useEffect(() => {
     playerRef.current = player;
     playersRef.current = players;
-    roomIdRef.current = roomId;
-  }, [player, players, roomId]);
+  }, [player, players]);
 
   useEffect(() => {
     if (!socket) {
@@ -59,7 +53,6 @@ export const SocketProvider = (props) => {
   useEffect(() => {
     if (socket) {
       socket.on("relay-message", (body) => {
-        console.log(body.message);
         setMessages((currentstate) => [...currentstate, body]);
       });
       socket.on("player-disconnected", (msg) => {
@@ -67,8 +60,6 @@ export const SocketProvider = (props) => {
       });
 
       socket.on("update-players", (players) => {
-        console.log("UPDATE PLAYERS - PLAYERS:", players);
-        console.log("UPDATE PLAYERS SOCKET ID:", socket.id);
         setPlayers(players);
         const fplayer = players.find((p, i) => {
           if (p.id === socket.id) {
@@ -77,23 +68,13 @@ export const SocketProvider = (props) => {
           }
         });
         setPlayer(fplayer);
-        // setPlayer(() => {
-        //   players.forEach((p, i) => {
-        //     if (p.id === socket.id) {
-        //       console.log('P:', p);
-        //       return p;
-        //     }
-        //   });
-
-        // });
       });
       socket.on("case-file", (casefile) => {
-        console.log('CASEFILE:', casefile);
         setCaseFile(casefile);
       });
-      socket.on('game-start', (body) => {
-        console.log(body);
-      });
+      // socket.on('game-start', (body) => {
+      //   console.log(body);
+      // });
       socket.on("player-start", (start_player) => {
         setLossMsg(null);
         setProofMsg(null);
@@ -139,15 +120,12 @@ export const SocketProvider = (props) => {
           ${card.room ? card.room : ''}${card.weapon ? card.weapon : ''}.`);
         }
         if (card.suspect) {
-          console.log('SUSPECT PROOF')
           setProofMsg(`Player ${player.player} proves beyond a shadow of doubt 
           the ${card.suspect} wasn't involved!`);
         } else if (card.room) {
-          console.log('ROOM PROOF')
           setProofMsg(`Player ${player.player} proves beyond a shadow of doubt 
           that it didn't happen in the ${card.room}!`);
         } else if (card.weapon) {
-          console.log('WEAPON PROOF')
           setProofMsg(`Player ${player.player} proves beyond a shadow of doubt 
           that a ${card.weapon} couldn't have been the murder weapon!`);
         }
@@ -180,12 +158,7 @@ export const SocketProvider = (props) => {
         }
         setTimeout(() => {
           if (body.id === socket.id) {
-            // setLossMsg(null);
-            // setActiveSA(false);
-
             socket.emit('player-lose', data);
-
-            // socket.disconnect({ lost: true, win: false });
           }
         }, 7000);
       });
@@ -214,7 +187,6 @@ export const SocketProvider = (props) => {
           );
           setWinMsg(null);
           socket.emit("game-win-reset");
-          // socket.disconnect({ lost: false, won: true });
           setTimeout(() => {history.push('/')}, 1000)
         }, 7000);
       });
@@ -227,9 +199,6 @@ export const SocketProvider = (props) => {
         } else {
           setWaiting(true);
         }
-        // if (playerRef.current.id === activeplayer.id) {
-        //   setActiveSA(false);
-        // }
       });
       socket.on("accuse-choice", (player) => {
         if (playerRef.current.id === player.id) {
@@ -256,12 +225,7 @@ export const SocketProvider = (props) => {
         }
       });
       socket.on('room-join-info', (body) => {
-        console.log('ROOMJOININFOBODY:', body);
         setGameRooms(body);
-        // console.log('GAMEROOMS:', body);
-      });
-      socket.on('test', (body) => {
-        console.log('TEST:', body);
       });
       socket.on('player-disconnect', (body) => {
         if (body.id) {
@@ -322,7 +286,6 @@ export const SocketProvider = (props) => {
   };
 
   const joinRoom = (roomid) => {
-    // if (!roomId) {
     setRoomId(roomid);
     socket.emit('join-room', {roomid, id: socket.id});
     

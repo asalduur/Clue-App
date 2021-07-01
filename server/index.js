@@ -19,8 +19,6 @@ let gamerooms = [{roomNum: 1, roomId: '32hd72grf3g',
                   roomPlayers: [], roomCards: [], active: false},    
                 ];
 
-
-
 const cards = [
   [
     { weapon: "Poisoned Cocktail" },
@@ -59,7 +57,6 @@ const io = require("socket.io")(
   ),
   { cors: { origin: true } }
 );
-
 const getOtherPlayers = (body, room) => {
   let roomindex = gamerooms.findIndex((r, i) => {
     return r.roomId === room;
@@ -72,14 +69,10 @@ const getOtherPlayers = (body, room) => {
   const orderplayers = [...firstplayers, ...lastplayers];
   return orderplayers;
 };
-
 const getActivePlayer = (body, room) => {
   let roomindex = gamerooms.findIndex((r, i) => {
-    console.log(room);
-    console.log(r);
     return r.roomId === room;
   });
-  console.log(roomindex);
   let aplayer = {};
   gamerooms[roomindex].roomPlayers.forEach((p, i) => {
     if (p.id === body.id) {
@@ -102,69 +95,6 @@ io.on("connection", (socket) => {
     location: 'home',
     cards: []
   });
-  // tokens.sort(function () {
-  //   return 0.5 - Math.random();
-  // });
-  // console.log(tokens);
-  // switch (players.length) {
-  //   case 0:
-  //     players.push({
-  //       player: 1,
-  //       id: socket.id,
-  //       location: "home",
-  //       roll: 0,
-  //       token: tokens.splice(0, 1),
-  //     });
-  //     break;
-  //   case 1:
-  //     players.push({
-  //       player: 2,
-  //       id: socket.id,
-  //       location: "home",
-  //       roll: 0,
-  //       token: tokens.splice(0, 1),
-  //     });
-  //     break;
-  //   case 2:
-  //     players.push({
-  //       player: 3,
-  //       id: socket.id,
-  //       location: "home",
-  //       roll: 0,
-  //       token: tokens.splice(0, 1),
-  //     });
-  //     break;
-  //   case 3:
-  //     players.push({
-  //       player: 4,
-  //       id: socket.id,
-  //       location: "home",
-  //       roll: 0,
-  //       token: tokens.splice(0, 1),
-  //     });
-  //     break;
-  //     case 4:
-  //       players.push({
-  //         player: 5,
-  //         id: socket.id,
-  //         location: "home",
-  //         roll: 0,
-  //         token: tokens.splice(0, 1),
-  //       });
-  //       break;
-  //       case 5:
-  //         players.push({
-  //           player: 6,
-  //           id: socket.id,
-  //           location: "home",
-  //           roll: 0,
-  //           token: tokens.splice(0, 1),
-  //         });
-  //         break;
-  //   default:
-  //     socket.emit("Max players reached.");
-  //     socket.disconnect();
-  // }
   io.to(gameroom).emit("update-players", players);
   socket.on("disconnect", () => {
     console.log(`Socket ${socket.id} disconnected.`);
@@ -204,149 +134,35 @@ io.on("connection", (socket) => {
 
 
   };
-
-
-    // if (gameroom) {
-    //   let roomindex = gamerooms.findIndex((r, i) => {
-    //     return r.roomId === gameroom;
-    //   });
-    //   let playerindex = gamerooms[roomindex].roomPlayers.findIndex((p, i) => {
-    //     return p.id === socket.id;
-    //   })
-
-    //   const firstplayers = [...gamerooms[roomindex].roomPlayers.slice(playerindex + 1)];
-    //   const lastplayers = [...gamerooms[roomindex].roomPlayers.slice(0, playerindex)];
-    //   const orderedplayers = [...firstplayers, ...lastplayers];
-    //   gamerooms[roomindex].roomPlayers.splice(playerindex, 1);
-
-    //   console.log('BODYWON:', body);
-    //   console.log('BODYLOST:', body.lost);
-    //   if (body.won) {
-    //     console.log('BODYWONGAMEROOM:', gamerooms[roomindex]);
-    //     gamerooms[roomindex].active = false;
-    //     gamerooms[roomindex].roomCards = [];
-    //   }
-
-      // if (gamerooms[roomindex].roomPlayers.length < 1) {
-      //   gamerooms[roomindex].active = false;
-      // }
-
-      // if (gamerooms[roomindex].roomPlayers.length < 2 && body.lost) {
-      //   io.emit('last-man-standing', {playerlost: socket.id})
-      // } else if (gamerooms[roomindex].roomPlayers.length < 2 && !body.lost) {
-      //   io.emit
-      // }
-      // if (!body.lost) {
-      //   io.emit('player-disconnected', {player: socket.id});
-
-      //   let roomindex = gamerooms.findIndex((r, i) => {
-      //     return r.roomId === gameroom;
-      //   });
-
-      // }
-      // io.emit('room-join-info', gamerooms);
-    // }
-
-    // console.log(socket.rooms.values().next().value);
-    // const [pgameroom] = Array.from(socket.rooms);
-    // console.log(pgameroom);
-
-
-    // let roomindex = gamerooms.findIndex((r, i) => {
-    //   return r.roomId === gameroom;
-    // });
-    // console.log('DISCONNECTGAMEROOM:', gameroom);
-    // console.log('DISCONNECTROOMINDEX:', roomindex)
-
-    // if (gamerooms[roomindex].roomPlayers.length >= 3) {
-    //   let index = gamerooms[roomindex].roomPlayers.findIndex((p, i) => {
-    //     return p.id === socket.id;
-    //   });
-    //   const firstplayers = [...gamerooms[roomindex].roomPlayers.slice(index + 1)];
-    //   const lastplayers = [...gamerooms[roomindex].roomPlayers.slice(0, index)];
-    //   const orderedplayers = [...firstplayers, ...lastplayers];
-    //   gamerooms[roomindex].roomPlayers.splice(index, 1);
-    //   console.log("PLAYERSFROMINDEX:", gamerooms[roomindex].roomPlayers);
-    //   io.to(gameroom).emit("update-players", players);
-    //   io.to(gameroom).emit("player-start", orderedplayers[0]);
-    // } else if (body.lost) {
-    //   io.to(gameroom).emit("This game has ended. Please refresh to start a new game!");
-    //   io.to(gameroom).disconnectSockets();
-
-    // } else {
-    //   io.to(gameroom).emit(
-    //     "player-disconnected",
-    //     "A player disconnected and the game has ended. Please refresh to start a new game."
-    //   );
-    //   io.to(gameroom).disconnectSockets();
-
-    // }
   });
   socket.on("game-win-reset", (body) => {
     let roomindex = gamerooms.findIndex((r, i) => {
       return r.roomId === gameroom;
     });
-    // let playerindex = gamerooms[roomindex].roomPlayers.findIndex((p, i) => {
-    //   return p.id === socket.id;
-    // });
-
-    // if (gamerooms[roomindex].roomPlayers >= 2) {
-
-    // gamerooms[roomindex].roomPlayers.splice(playerindex, 1);
-
-
-    // } else {
-    //   gamerooms[roomindex].roomPlayers.splice(0, 1);
-    // }
     gamerooms[roomindex].roomPlayers = [];
     gamerooms[roomindex].active = false;
     gamerooms[roomindex].roomCards = [];
-
-
-
-
     io.emit('room-join-info', gamerooms);
     io.to(gameroom).emit('player-disconnect', {gamewon: true});
-    console.log("PLAYERWINGAMEROOMS:", gamerooms);
-
-
-    // io.to(gameroom).disconnectSockets();
-    // players = [];
-    // tokens = ["blue", "red", "green", "yellow", 'purple', 'orange'];
   });
   socket.on('player-lose', (data) => {
-
-
-
     if (gameroom) {
       let roomindex = gamerooms.findIndex((r, i) => {
         return r.roomId === gameroom;
       });
-      console.log(roomindex);
       let playerindex = gamerooms[roomindex].roomPlayers.findIndex((p, i) => {
-        console.log('PLAYERLOSEPID:', p.id);
         return p.id === data.body.id;
       });
-      console.log(playerindex);
-
       if (gamerooms[roomindex].roomPlayers.length > 2) {
         const firstplayers = [...gamerooms[roomindex].roomPlayers.slice(playerindex + 1)];
         const lastplayers = [...gamerooms[roomindex].roomPlayers.slice(0, playerindex)];
         const orderedplayers = [...firstplayers, ...lastplayers];
         
         gamerooms[roomindex].roomPlayers.splice(playerindex, 1);
-
-        console.log('ORDEREDPLAYERSLOSE:', orderedplayers[0] )
-        // console.log("PLAYERSFROMINDEX:", gamerooms[roomindex].roomPlayers);
-        
         io.to(gameroom).emit('player-disconnect', data.body);
         io.to(gameroom).emit("update-players", gamerooms[roomindex].roomPlayers);
-        console.log('GAMEROOMSPLAYERSAFTERSpLICE:', gamerooms[roomindex].roomPlayers );
         io.to(gameroom).emit("player-start", orderedplayers[0]);
-        console.log(gamerooms);
-
         io.emit('room-join-info', gamerooms);
-        io.emit('test', gamerooms);
 
 
       } else if (gamerooms[roomindex].roomPlayers.length < 3) {
@@ -362,25 +178,13 @@ io.on("connection", (socket) => {
     }
   })
   socket.on("send-message", (body) => {
-    console.log(body);
     io.to(gameroom).emit("relay-message", body);
   });
   socket.on("game-start", async (body) => {
-    console.log('GAMESTARTGAMEROOMVAR:', gameroom);
-
     let roomindex = gamerooms.findIndex((r, i) => {
       return r.roomId === gameroom;
     });
-    console.log('GAMESTARTROOMINDEX:', roomindex);
     gamerooms[roomindex].active = true;
-
-    console.log('GAMEROOMAFTERACTIVESET:', gamerooms[roomindex]);
-    
-    // gamerooms.forEach((room, i) => {
-    //   if (room.roomId === gameroom) {
-    //     roomplayers = [...room.roomPlayers]
-    //   }
-    // });
     let tokenscopy = [...tokens];
     tokenscopy.sort(function () {
       return 0.5 - Math.random();
@@ -392,30 +196,6 @@ io.on("connection", (socket) => {
     })
 
     if (gamerooms[roomindex].roomPlayers.length >= 3) {
-      // gamerooms[roomindex].roomPlayers.forEach((e, i) => {
-      //   switch (i) {
-      //     case 0:
-      //       gamerooms[roomindex].roomPlayers[0].cards = [];
-      //       break;
-      //     case 1:
-      //       gamerooms[roomindex].roomPlayers[1].cards = [];
-      //       break;
-      //     case 2:
-      //       gamerooms[roomindex].roomPlayers[2].cards = [];
-      //       break;
-      //     case 3:
-      //       gamerooms[roomindex].roomPlayers[3].cards = [];
-      //       break;
-      //     case 4:
-      //       gamerooms[roomindex].roomPlayers[4].cards = [];
-      //       break;
-      //     case 5:
-      //       gamerooms[roomindex].roomPlayers[5].cards = [];
-      //       break;
-      //     default:
-      //       null;
-      //   }
-      // });
       let playercopy = [...gamerooms[roomindex].roomPlayers];
       playercopy.sort(function () {
         return 0.5 - Math.random();
@@ -437,9 +217,7 @@ io.on("connection", (socket) => {
         1
       );
       case_file = { ...murder_weapon, ...murder_perp, ...murder_room };
-      console.log('CASE_FILE:', case_file);
       let cardArray = [...weaponArr, ...roomArr, ...peopleArr];
-      // console.log('CARDARRAY:', cardArray);
 
       cardArray.sort(function () {
         return 0.5 - Math.random();
@@ -447,7 +225,6 @@ io.on("connection", (socket) => {
       while (cardArray.length > 0) {
         for (let i = 0; i < gamerooms[roomindex].roomPlayers.length; i++) {
           let card = cardArray.splice(0, 1);
-          // console.log('CARDBEINGDEALT:', card[0]);
           if (card[0]) {
           switch (i) {
             case 0:
@@ -475,16 +252,12 @@ io.on("connection", (socket) => {
         }
         }
       }
-      console.log('PLAYERSAFTERCARDSDEALT:', gamerooms[roomindex].roomPlayers);
-      gamerooms[roomindex].roomCards = [...gamerooms[roomindex].roomPlayers]; // will need to be fixed per room.
+      gamerooms[roomindex].roomCards = [...gamerooms[roomindex].roomPlayers];
       io.emit('room-join-info', gamerooms);
       io.to(gameroom).emit("update-players", gamerooms[roomindex].roomPlayers);
       io.to(gameroom).emit("case-file", case_file);
       io.to(gameroom).emit("player-start", playercopy[playerturn]);
-    } else {
-      io.to(gameroom).emit("more-players"); // FINISH THIS HERE -- currently handled on front end --
-      // start button only shows if there are enough players.
-    }
+    };
   });
 
   socket.on("send-roll", (body) => {
@@ -515,7 +288,6 @@ io.on("connection", (socket) => {
 
   socket.on("send-location", (body) => {
     const activeplayer = getActivePlayer(body, gameroom);
-    //ADD CODE TO UPDATE PLAYER LOCATION ON BACKEND.
     let roomindex = gamerooms.findIndex((r, i) => {
       return r.roomId === gameroom;
     });
@@ -524,7 +296,6 @@ io.on("connection", (socket) => {
         p.location = body.location;
       }
     });
-    console.log('PLAYERROOMUPDATE:', gamerooms[roomindex].roomPlayers);
     io.to(gameroom).emit("update-players", gamerooms[roomindex].roomPlayers);
     io.to(gameroom).emit("accuse-suggest", activeplayer);
   });
@@ -535,7 +306,6 @@ io.on("connection", (socket) => {
     let roomindex = gamerooms.findIndex((r, i) => {
       return r.roomId === gameroom;
     });
-    // const orderedplayers = getOtherPlayers(body);
 
     let index = gamerooms[roomindex].roomCards.findIndex((p, i) => {
       return p.id === body.id;
@@ -565,7 +335,6 @@ io.on("connection", (socket) => {
       setTimeout(() => {
         io.to(gameroom).emit("send-proof", othercard);
       }, 7000);
-      // io.emit('send-proof', othercards[0]);
     } else {
       setTimeout(() => {
         io.to(gameroom).emit("accuse-choice", activeplayer);
@@ -580,8 +349,6 @@ io.on("connection", (socket) => {
 
   socket.on("send-accusation", (body) => {
     const activeplayer = getActivePlayer(body, gameroom);
-    // const otherplayers = getOtherPlayers(body);
-    console.log('ACCUSATION CASE_FILE:', case_file);
     if (
       body.room === case_file.room &&
       body.weapon === case_file.weapon &&
@@ -595,26 +362,11 @@ io.on("connection", (socket) => {
   socket.on("end-turn", (body) => {
     io.to(gameroom).emit("update-messages");
     const orderedplayers = getOtherPlayers(body, gameroom);
-    console.log('ENDTURNPLAYERSTART:', orderedplayers[0]);
-    console.log(body);
     io.to(gameroom).emit("player-start", orderedplayers[0]);
   });
 
   socket.on('join-room', (body) => {
-    // players.forEach((player, i) => {
-    //   if (player.id === body.playerId) {
-    //     player.gameRoom = body.roomId
-    //   }
-    // })
-    console.log('ROOMJOINBODY:', body)
     gameroom = body.roomid;
-    // gamerooms.forEach((room, i) => {
-    //   if (room.Id === body.roomId) {
-    //     room.roomPlayers.push(body.playerId);
-    //   }
-    // });
-    // currentplayer = getActivePlayer(body);
-
     let currentplayer = {};
     players.forEach((p, i) => {
     if (p.id === body.id) {
@@ -638,10 +390,7 @@ io.on("connection", (socket) => {
         room.roomPlayers.push(currentplayer)
       }
     });
-    console.log('GAMEROOMSAFTERPLAYERADD:', gamerooms);
     io.emit('room-join-info', gamerooms);
-
-    // gametracker.body[playerId] = body.roomId;
     socket.join(body.roomid);
   })
 });

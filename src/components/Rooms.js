@@ -28,9 +28,6 @@ const Rooms = ({ roomNames, modalOpen, setModalOpen }) => {
     }
   });
 
-  console.log("opponentpieces:", opponentpieces);
-
-  console.log("ROOMPLAYERS:", players);
 
   return (
     <>
